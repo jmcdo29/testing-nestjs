@@ -1,0 +1,36 @@
+{
+  "name": "testing-nestjs",
+  "version": "1.0.0",
+  "description": "A repository to show off to the community methods of testing NestJS including Unit Tests, Integration Tests, E2E Tests, pipes, filters, interceptors, GraphQL, Mongo, TypeORM, and more!",
+  "scripts": {
+    "format:check": "prettier --check \"./**/*.ts\"",
+    "format": "prettier --write \"./**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmcdo29/testing-nestjs.git"
+  },
+  "keywords": [
+    "Nest",
+    "Testing",
+    "Jest",
+    "Test",
+    "Unit",
+    "E2E",
+    "e2e",
+    "integration",
+    "NestJS"
+  ],
+  "author": "Jay McDoniel <jmcdo29@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmcdo29/testing-nestjs/issues"
+  },
+  "homepage": "https://github.com/jmcdo29/testing-nestjs#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "husky": "^3.0.1",
+    "prettier": "^1.18.2"
+  }
+}
