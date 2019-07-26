@@ -5,10 +5,15 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2017",
+    "target": "es6",
     "sourceMap": true,
     "baseUrl": "./",
-    "incremental": true
+    "incremental": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "noUnusedLocals": true,
+    "pretty": true,
+    "lib": ["esnext"]
   },
   "exclude": ["node_modules", "dist"]
 }

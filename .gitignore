@@ -59,3 +59,15 @@ typings/
 
 # next.js build output
 .next
+
+# typescript builds
+dist/
+coverage/
+
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+yarn.lock
