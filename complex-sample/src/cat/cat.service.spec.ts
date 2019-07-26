@@ -37,8 +37,13 @@ describe('CatService', () => {
       expect(cat.name).toBe('Terra');
       expect(cat.id).toBe(2);
     });
-    it('should return undefined for a bad id', () => {
-      expect(service.getById(15874)).toBe(undefined);
+    it('should throw and error for a bad id', () => {
+      try {
+        service.getById(15874);
+      } catch (err) {
+        expect(err.message.message).toBe('No cat found with id 15874.');
+        expect(err.message.error).toBe('Bad Request');
+      }
     });
   });
   describe('addCat', () => {

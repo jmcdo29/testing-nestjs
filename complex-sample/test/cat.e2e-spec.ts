@@ -11,6 +11,9 @@ describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   describe('with mocking', () => {
+    // let service: CatService;
+    // let pipe: CatPipe;
+    // let intPipe: ParseIntPipe;
     /**
      * Notice there is a lot going on here with all the mocking we are doing
      * This isn't necessarily necessary, but it gives a really good picture
@@ -52,6 +55,11 @@ describe('AppController (e2e)', () => {
         .compile();
 
       app = moduleFixture.createNestApplication();
+      // just as in out unit tests we can get the values of the providers/pipes/etc.
+      // these are just commented out to show you how to do it
+      // service = moduleFixture.get<CatService>(CatService);
+      // pipe = moduleFixture.get<CatPipe>(CatPipe);
+      // intPipe = moduleFixture.get<ParseIntPipe>(ParseIntPipe);
       await app.init();
     });
     describe('/cat/ GET', () => {
