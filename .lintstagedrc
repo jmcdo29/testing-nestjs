@@ -1,6 +1,10 @@
 {
   "*.ts": [
     "prettier --write",
+    "tslint -p tsconfig.json",
     "git add"
   ]
+},
+{
+  "*.{md,html,json,js}": ["prettier --write", "git add"]
 }
