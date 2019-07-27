@@ -1,19 +1,24 @@
-import { INestApplication } from '@nestjs/common';
+import { BadRequestException, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { of } from 'rxjs';
 import * as request from 'supertest';
+import { CatInterceptor } from './../src/cat/cat.interceptor';
 import { CatModule } from './../src/cat/cat.module';
 import { CatPipe } from './../src/cat/cat.pipe';
 import { CatService } from './../src/cat/cat.service';
 import { Cat } from './../src/cat/models/cats';
 import { ParseIntPipe } from './../src/parse-int.pipe';
 
+// TODO: Look into adding user field or other fields into req object
+// TODO: Install Jest Runner
+
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   describe('with mocking', () => {
-    // let service: CatService;
+    let service: CatService;
     // let pipe: CatPipe;
-    // let intPipe: ParseIntPipe;
+    let intPipe: ParseIntPipe;
     /**
      * Notice there is a lot going on here with all the mocking we are doing
      * This isn't necessarily necessary, but it gives a really good picture
@@ -52,14 +57,17 @@ describe('AppController (e2e)', () => {
         .useValue({
           transform: jest.fn().mockReturnValue(1),
         })
+        .overrideInterceptor(CatInterceptor)
+        .useValue({
+          transform: (data: any) => jest.fn().mockReturnValue(of({ data })),
+        })
         .compile();
 
       app = moduleFixture.createNestApplication();
       // just as in out unit tests we can get the values of the providers/pipes/etc.
-      // these are just commented out to show you how to do it
-      // service = moduleFixture.get<CatService>(CatService);
+      service = moduleFixture.get<CatService>(CatService);
       // pipe = moduleFixture.get<CatPipe>(CatPipe);
-      // intPipe = moduleFixture.get<ParseIntPipe>(ParseIntPipe);
+      intPipe = moduleFixture.get<ParseIntPipe>(ParseIntPipe);
       await app.init();
     });
     describe('/cat/ GET', () => {
@@ -76,13 +84,27 @@ describe('AppController (e2e)', () => {
           });
       });
     });
-    describe('/cat/:id GET', () => {
+    describe.only('/cat/:id GET', () => {
       it('should return the singular cat', () => {
         return request(app.getHttpServer())
           .get('/cat/1')
           .expect(200)
           .expect({
             data: { id: 1, name: 'Ventus', breed: 'Russian Blue', age: 3 },
+          });
+      });
+      it.only('should return a 400', () => {
+        intPipe.transform = jest.fn().mockReturnValueOnce(45785487);
+        service.getById = jest.fn().mockImplementationOnce(() => {
+          throw new BadRequestException('Cat with id 45785487 does not exist.');
+        });
+        return request(app.getHttpServer())
+          .get('/cat/45785487')
+          .expect(400)
+          .expect({
+            statusCode: 400,
+            error: 'Bad Request',
+            message: 'Cat with id 45785487 does not exist.',
           });
       });
     });
