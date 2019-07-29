@@ -10,6 +10,10 @@ Each folder is a fully functional Nest application on its own. All you need to d
 
 I've noticed a lot of people seem to get stuck on testing, and how to do it using the utilities given to us by Nest. Hopefully with a community driven repository of tests it will help others get a better understanding and feel for how to get tests running.
 
+## Please Note
+
+This is not necessarily the Nest canonical way to test an application, nor is it the only way in any scenario. I will do my best to show different ways to run tests, but I will more than likely miss certain ways of running the tests, whether it is mocking in a specific way or otherwise. Again, this is a community maintained project and not a part of the official documentation. If you find other ways to test applications, great, I'd love to see them, but please do not think this is the only way.
+
 ## Running the Project
 
 1. `git clone https://github.com/jmcdo29/testing-nestjs.git`
@@ -19,7 +23,7 @@ I've noticed a lot of people seem to get stuck on testing, and how to do it usin
 
 ## Contributing
 
-Did I miss your _favorite_ topic? Did I miss out on something you absolutely **need** tested? Well then [open an issue](https://github.com/jmcdo29/testing-nestjs/issues/new), or better yet, [a pull request](https://github.com/jmcdo29/testing-nestjs/compare)! I'll be happy to look over any topics and try to help figure out how to test them or to merge any PRs that add to the value of the repository.
+Did I miss your _favorite_ topic? Did I miss out on something you absolutely **need** tested? Well then [open an issue](https://github.com/jmcdo29/testing-nestjs/issues/new), or better yet, [a pull request](https://github.com/jmcdo29/testing-nestjs/compare)! I'll be happy to look over any topics and try to help figure out how to test them or to merge any PRs that add to the value of the repository. If you do end up making a pull request, please add a screenshot of the test coverage so others can see how well the tests run. The [complex-sample](/tree/master/complex-sample) branch has a good example.
 
 ## Change log
 
