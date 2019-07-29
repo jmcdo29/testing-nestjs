@@ -4,7 +4,7 @@
 
 # Complex Sample
 
-So, this really is more of an intermediately complex example, as it only scratches the surface of getting into a lot of mocking. The test classes give this project 100% statement, line, branch, and function coverage, and also has all E2E tests passing with both mocking and non mocking exmaples.
+So, this really is more of an intermediately complex example, as it only scratches the surface of getting into a lot of mocking. The test classes give this project 100% statement, line, branch, and function coverage, and also has all E2E tests passing with both mocking and non mocking examples.
 
 ## Hangups
 

@@ -52,7 +52,7 @@ describe('Cat Controller', () => {
   });
   describe('getAllCats', () => {
     it('should get the list of cats', () => {
-      const retCats = controller.getAllCats({ user: 'my user value' } as any);
+      const retCats = controller.getAllCats();
       expect(typeof retCats).toBe('object');
       expect(retCats[0].id).toBe(1);
       expect(retCats[1].name).toBe('Test Cat 2');
