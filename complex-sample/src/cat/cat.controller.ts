@@ -5,9 +5,11 @@ import {
   Get,
   Param,
   Post,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { ParseIntPipe } from '../parse-int.pipe';
+import { CatGuard } from './cat.guard';
 import { CatInterceptor } from './cat.interceptor';
 import { CatPipe } from './cat.pipe';
 import { CatService } from './cat.service';
@@ -16,6 +18,7 @@ import { Cat } from './models/cats';
 
 @Controller('cat')
 @UseInterceptors(CatInterceptor)
+@UseGuards(CatGuard)
 export class CatController {
   constructor(private readonly catService: CatService) {}
 
