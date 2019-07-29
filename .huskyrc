@@ -1,6 +1,0 @@
-{
-  "hooks": {
-    "pre-commit": "npm run format:check || npm run format",
-    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-  }
-}

@@ -2,10 +2,6 @@
   "name": "testing-nestjs",
   "version": "1.0.0",
   "description": "A repository to show off to the community methods of testing NestJS including Unit Tests, Integration Tests, E2E Tests, pipes, filters, interceptors, GraphQL, Mongo, TypeORM, and more!",
-  "scripts": {
-    "format:check": "prettier --check \"./**/*.ts\"",
-    "format": "prettier --write \"./**/*.ts\""
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jmcdo29/testing-nestjs.git"
@@ -30,7 +26,60 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@types/jest": "^24.0.15",
     "husky": "^3.0.1",
-    "prettier": "^1.18.2"
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "pretest": "tsc --noEmit",
+    "test:jest": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test": "npm run test:jest",
+    "posttest": "npm run format",
+    "format": "prettier --write \"**/*.{ts,js,html,md,css}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "tslint -p tsconfig.json",
+      "git add"
+    ],
+    "*.{md,html,json,js}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/lib/"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
   }
 }
