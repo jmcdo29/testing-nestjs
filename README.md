@@ -23,7 +23,7 @@ This is not necessarily the Nest canonical way to test an application, nor is it
 
 ## Contributing
 
-Did I miss your _favorite_ topic? Did I miss out on something you absolutely **need** tested? Well then [open an issue](https://github.com/jmcdo29/testing-nestjs/issues/new), or better yet, [a pull request](https://github.com/jmcdo29/testing-nestjs/compare)! I'll be happy to look over any topics and try to help figure out how to test them or to merge any PRs that add to the value of the repository. If you do end up making a pull request, please add a screenshot of the test coverage so others can see how well the tests run. The [complex-sample](/tree/master/complex-sample) branch has a good example.
+Did I miss your _favorite_ topic? Did I miss out on something you absolutely **need** tested? Well then [open an issue](https://github.com/jmcdo29/testing-nestjs/issues/new), or better yet, [a pull request](https://github.com/jmcdo29/testing-nestjs/compare)! I'll be happy to look over any topics and try to help figure out how to test them or to merge any PRs that add to the value of the repository. If you do end up making a pull request, please add a screenshot of the test coverage so others can see how well the tests run. The [complex-sample](/complex-sample) branch has a good example.
 
 ## Change log
 
