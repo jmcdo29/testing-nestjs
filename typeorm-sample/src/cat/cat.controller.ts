@@ -8,7 +8,6 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { DeleteResult } from 'typeorm';
 import { CatDTO } from './cat.dto';
 import { Cat } from './cat.entity';
 import { CatService } from './cat.service';
@@ -43,7 +42,7 @@ export class CatController {
   }
 
   @Delete('/delete/:id')
-  async deleteCat(@Param('id') id: string): Promise<DeleteResult> {
+  async deleteCat(@Param('id') id: string): Promise<{ deleted: boolean }> {
     return this.catService.deleteOne(id);
   }
 }
