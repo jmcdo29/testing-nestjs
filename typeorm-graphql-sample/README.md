@@ -14,3 +14,7 @@ Welcome to the example of using TypeORM with Nest and running tests! Everyone's 
 - Run this SQL statement once in your database so that you can use UUID as primary column.
   > CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 - Visit http://localhost:3000/graphql to play with GraphQL api
+
+# Debugging in vscode:
+
+- From debugging menu launch "Debug dev". it should start the server and attach the debugger to it and allow you to but your break points in typescripe code.

@@ -1,0 +1,7 @@
+{
+  "jestrunner.runOptions": {
+    "env": {
+      "DEV_ENV": "test-dev"
+    }
+  }
+}
