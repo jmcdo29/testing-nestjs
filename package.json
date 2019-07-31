@@ -24,17 +24,17 @@
   },
   "homepage": "https://github.com/jmcdo29/testing-nestjs#readme",
   "devDependencies": {
-    "@commitlint/cli": "^8.1.0",
-    "@commitlint/config-conventional": "^8.1.0",
-    "@types/jest": "^24.0.15",
-    "husky": "^3.0.1",
-    "jest": "^24.8.0",
-    "lint-staged": "^9.2.1",
-    "prettier": "^1.18.2",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.18.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.5.3"
+    "@commitlint/cli": "8.1.0",
+    "@commitlint/config-conventional": "8.1.0",
+    "@types/jest": "24.0.15",
+    "husky": "3.0.1",
+    "jest": "24.8.0",
+    "lint-staged": "9.2.1",
+    "prettier": "1.18.2",
+    "ts-jest": "24.0.2",
+    "tslint": "5.18.0",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "3.5.3"
   },
   "engines": {
     "node": ">=10"
@@ -71,7 +71,7 @@
       "<rootDir>/lib/"
     ],
     "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [

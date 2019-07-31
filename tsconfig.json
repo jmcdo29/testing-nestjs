@@ -7,11 +7,13 @@
     "experimentalDecorators": true,
     "target": "es6",
     "sourceMap": true,
+    "inlineSources": true, // Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set.
     "baseUrl": "./",
     "incremental": true,
     "moduleResolution": "node",
     "strict": true,
     "noUnusedLocals": true,
+    "strictPropertyInitialization": false,
     "pretty": true,
     "lib": ["esnext"]
   },

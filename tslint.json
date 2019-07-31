@@ -12,7 +12,11 @@
     "member-ordering": [false],
     "interface-name": [false],
     "arrow-parens": true,
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "no-console": [false]
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["**/node_modules/**/*", "coverage/**/", "jest.config.js"]
+  }
 }

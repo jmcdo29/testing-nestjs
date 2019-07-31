@@ -8,9 +8,10 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { CatDTO } from './cat.dto';
 import { Cat } from './cat.entity';
 import { CatService } from './cat.service';
+import { CatDTO } from './dto/cat.dto';
+import { CreateCatInputDto } from './dto/create-cat-input.dto';
 
 @Controller('cat')
 export class CatController {
@@ -32,7 +33,7 @@ export class CatController {
   }
 
   @Post('/new')
-  async newCat(@Body() cat: CatDTO): Promise<Cat> {
+  async newCat(@Body() cat: CreateCatInputDto): Promise<Cat> {
     return this.catService.insertOne(cat);
   }
 

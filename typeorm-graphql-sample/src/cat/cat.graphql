@@ -1,0 +1,27 @@
+scalar JSON
+scalar UUID
+scalar DateTime
+
+type Query {
+  getAll: [Cat]
+  Cat(id: UUID!): Cat
+}
+
+type Mutation {
+  createCat(createCatInput: CreateCatInput): Cat
+}
+
+type Cat {
+  id: UUID!
+  name: String!
+  breed: String
+  age: Int
+  # created: DateTime
+  # updated: DateTime
+}
+
+input CreateCatInput {
+  name: String!
+  age: Int
+  # info: JSON
+}
