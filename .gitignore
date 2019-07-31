@@ -67,7 +67,6 @@ coverage/
 .DS_Store
 Thumbs.db
 .idea/
-.vscode/
 *.sublime-project
 *.sublime-workspace
 yarn.lock
