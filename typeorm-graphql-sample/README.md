@@ -9,11 +9,18 @@ Welcome to the example of using TypeORM with Nest and running tests! Everyone's 
 # Notes:
 
 - Added basic GraphQL based on example https://docs.nestjs.com/graphql/quick-start
-- Run to generate types from GraphQl schema
-  > npm run codegen
+
+## Databse Setup
+
+- Create a Postgres database and update the connection string DATABASE_URL in src/app.module.ts
 - Run this SQL statement once in your database so that you can use UUID as primary column.
   > CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-- Visit http://localhost:3000/graphql to play with GraphQL api
+
+## Run Example
+
+- Run to generate types from GraphQl schema
+  > npm run codegen
+  - Visit http://localhost:3000/graphql to play with GraphQL api
 
 # Debugging in vscode:
 
