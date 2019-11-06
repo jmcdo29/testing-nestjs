@@ -1,3 +1,5 @@
+import { makeMock } from '@levelup-nestjs/testing';
+import { ExecutionContext } from '@nestjs/common';
 import { CatGuard } from './cat.guard';
 
 describe('CatGuard', () => {
@@ -11,29 +13,20 @@ describe('CatGuard', () => {
     expect(guard).toBeDefined();
   });
   it('should return true with auth', () => {
-    expect(
-      guard.canActivate({
-        switchToHttp: () => ({
-          getRequest: () => ({
-            headers: {
-              authorization: 'auth',
-            },
-          }),
-        }),
-      } as any),
-    ).toBeTruthy();
+    const context = makeMock<ExecutionContext>();
+
+    context.switchToHttp().getRequest.mockReturnValue({
+      headers: {
+        authorization: 'auth',
+      },
+    });
+
+    expect(guard.canActivate(context)).toBeTruthy();
   });
   it('should return false without auth', () => {
-    expect(
-      guard.canActivate({
-        switchToHttp: () => ({
-          getRequest: () => ({
-            headers: {
-              authorization: '',
-            },
-          }),
-        }),
-      } as any),
-    ).toBeFalsy();
+    const context = makeMock<ExecutionContext>();
+
+    expect(guard.canActivate(context)).toBeFalsy();
+    expect(context.switchToHttp).toBeCalledTimes(1);
   });
 });
