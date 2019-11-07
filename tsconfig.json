@@ -5,17 +5,15 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es6",
+    "target": "es2017",
     "sourceMap": true,
-    "inlineSources": true, // Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set.
+    "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "moduleResolution": "node",
-    "strict": true,
-    "noUnusedLocals": true,
-    "strictPropertyInitialization": false,
-    "pretty": true,
-    "lib": ["esnext"]
+    "paths": {}
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "testing-nestjs",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A repository to show off to the community methods of testing NestJS including Unit Tests, Integration Tests, E2E Tests, pipes, filters, interceptors, GraphQL, Mongo, TypeORM, and more!",
   "repository": {
     "type": "git",
@@ -23,30 +23,60 @@
     "url": "https://github.com/jmcdo29/testing-nestjs/issues"
   },
   "homepage": "https://github.com/jmcdo29/testing-nestjs#readme",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+  },
+  "dependencies": {
+    "@levelup-nestjs/testing": "0.0.1-rc.0",
+    "@nestjs/common": "^6.7.2",
+    "@nestjs/core": "^6.7.2",
+    "@nestjs/graphql": "^6.5.3",
+    "@nestjs/mongoose": "^6.1.2",
+    "@nestjs/platform-express": "^6.7.2",
+    "@nestjs/typeorm": "^6.2.0",
+    "apollo-server-express": "^2.9.7",
+    "class-transformer": "^0.2.3",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.6",
+    "pg": "^7.12.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.0",
+    "rxjs": "^6.5.3",
+    "typeorm": "^0.2.20"
+  },
   "devDependencies": {
+    "@nestjs/cli": "^6.9.0",
+    "@nestjs/schematics": "^6.7.0",
+    "@nestjs/testing": "^6.7.1",
+    "@types/express": "^4.17.1",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.5",
+    "@types/supertest": "^2.0.8",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.1.1",
+    "ts-node": "^8.4.1",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3",
     "@commitlint/cli": "8.1.0",
     "@commitlint/config-conventional": "8.1.0",
-    "@types/jest": "24.0.15",
     "husky": "3.0.1",
-    "jest": "24.8.0",
     "lint-staged": "9.2.1",
-    "prettier": "1.18.2",
-    "ts-jest": "24.0.2",
-    "tslint": "5.18.0",
-    "tslint-config-prettier": "1.18.0",
-    "typescript": "3.5.3"
-  },
-  "engines": {
-    "node": ">=10"
-  },
-  "scripts": {
-    "pretest": "tsc --noEmit",
-    "test:jest": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "test": "npm run test:jest",
-    "posttest": "npm run format",
-    "format": "prettier --write \"**/*.{ts,js,html,md,css}\""
+    "tslint-config-prettier": "1.18.0"
   },
   "husky": {
     "hooks": {
@@ -66,20 +96,19 @@
     ]
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/lib/"
-    ],
-    "transform": {
-      ".+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
-      "ts",
-      "tsx",
       "js",
-      "jsx",
-      "json"
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": "[.]spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/apps/"
     ]
   }
 }

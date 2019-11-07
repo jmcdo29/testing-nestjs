@@ -1,0 +1,57 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/testing-nestjs/src",
+  "monorepo": true,
+  "root": "apps/testing-nestjs",
+  "compilerOptions": {
+    "webpack": false,
+    "tsConfigPath": "apps/testing-nestjs/tsconfig.app.json"
+  },
+  "projects": {
+    "complex-sample": {
+      "type": "application",
+      "root": "apps/complex-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/complex-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/complex-sample/tsconfig.app.json"
+      }
+    },
+    "mongo-sample": {
+      "type": "application",
+      "root": "apps/mongo-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/mongo-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/mongo-sample/tsconfig.app.json"
+      }
+    },
+    "simple-sample": {
+      "type": "application",
+      "root": "apps/simple-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/simple-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/simple-sample/tsconfig.app.json"
+      }
+    },
+    "typeorm-graphql-sample": {
+      "type": "application",
+      "root": "apps/typeorm-graphql-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/typeorm-graphql-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/typeorm-graphql-sample/tsconfig.app.json"
+      }
+    },
+    "typeorm-sample": {
+      "type": "application",
+      "root": "apps/typeorm-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/typeorm-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/typeorm-sample/tsconfig.app.json"
+      }
+    }
+  }
+}
