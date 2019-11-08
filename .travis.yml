@@ -1,0 +1,7 @@
+language: node_js
+install: npm ci
+script:
+  - "npm run test -- complex-sample"
+  - "npm run test -- simple-sample"
+  - "npm run test -- typeorm-graphql-sample"
+  - "npm run test -- typeorm-sample""
