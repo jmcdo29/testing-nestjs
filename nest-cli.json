@@ -1,11 +1,11 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/testing-nestjs/src",
+  "sourceRoot": "apps/complex-sample/src",
   "monorepo": true,
-  "root": "apps/testing-nestjs",
+  "root": "apps/complex-sample",
   "compilerOptions": {
     "webpack": false,
-    "tsConfigPath": "apps/testing-nestjs/tsconfig.app.json"
+    "tsConfigPath": "apps/complex-sample/tsconfig.app.json"
   },
   "projects": {
     "complex-sample": {
