@@ -1,6 +1,6 @@
 name: Node CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   test:
@@ -21,6 +21,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm test -- ${{ sample-name }}
+      run: npm test -- ${{ matrix.sample-name }}
       env:
         CI: true
