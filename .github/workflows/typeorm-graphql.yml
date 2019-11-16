@@ -1,8 +1,8 @@
-name: Node CI
+name: TypeORM GraphQL Sample
 
-on: 
+on:
   pull_request:
-    branches: 
+    branches:
       - 'master'
   push:
 
@@ -14,7 +14,6 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x, 12.x]
-        sample-name: [complex-sample, simple-sample, typeorm-sample, typeorm-graphql-sample]
 
     steps:
     - uses: actions/checkout@v1
@@ -25,6 +24,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm test -- ${{ matrix.sample-name }}
+      run: npm test -- typeorm-graphql-sample
       env:
         CI: true
