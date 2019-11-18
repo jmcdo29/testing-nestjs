@@ -1,9 +1,8 @@
-name: Complex Sample
+name: CRON Job
 
 on:
-  pull_request:
-    branches:
-      - 'master'
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   test:
@@ -13,6 +12,7 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x, 12.x]
+        app-name: [simple-sample, complex-sample, mongo-sample, typeorm-sample, typeorm-graphql-sample,]
 
     steps:
     - uses: actions/checkout@v1
@@ -23,6 +23,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm test -- complex-sample
+      run: npm test -- ${{ matrix.app-name }}
       env:
         CI: true

@@ -1,5 +1,11 @@
 # testing-nestjs
 
+<div align="center">
+
+[![Actions Status](https://github.com/jmcdo29/testing-nestjs/workflows/CRON%20Job/badge.svg)](https://github.com/jmcdo29/testing-nestjs/actions) [![Actions Status](https://github.com/jmcdo29/testing-nestjs/workflows/Complex%20Sample/badge.svg)](https://github.com/jmcdo29/testing-nestjs/actions) [![Actions Status](https://github.com/jmcdo29/testing-nestjs/workflows/Simple%20Sample/badge.svg)](https://github.com/jmcdo29/testing-nestjs/actions) [![Actions Status](https://github.com/jmcdo29/testing-nestjs/workflows/Mongo%20Sample/badge.svg)](https://github.com/jmcdo29/testing-nestjs/actions) [![Actions Status](https://github.com/jmcdo29/testing-nestjs/workflows/TypeORM%20GraphQL%20Sample/badge.svg)](https://github.com/jmcdo29/testing-nestjs/actions) [![Actions Status](https://github.com/jmcdo29/testing-nestjs/workflows/TypeORM%20Sample/badge.svg)](https://github.com/jmcdo29/testing-nestjs/actions)
+
+</div>
+
 A repository to show off to the community methods of testing NestJS including Unit Tests, Integration Tests, E2E Tests, pipes, filters, interceptors, GraphQL, Mongo, TypeORM, and more!
 
 ## Project Structure
