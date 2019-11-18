@@ -24,6 +24,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm test -- mgo-sample
+      run: npm test -- mongo-sample
       env:
         CI: true
