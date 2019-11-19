@@ -42,7 +42,7 @@
     "@nestjs/core": "^6.7.2",
     "@nestjs/graphql": "^6.5.3",
     "@nestjs/mongoose": "^6.1.2",
-    "@nestjs/platform-express": "^6.7.2",
+    "@nestjs/platform-express": "^6.10.1",
     "@nestjs/typeorm": "^6.2.0",
     "apollo-server-express": "^2.9.7",
     "class-transformer": "^0.2.3",
