@@ -69,7 +69,7 @@
     "@types/supertest": "^2.0.8",
     "husky": "3.0.1",
     "jest": "^24.9.0",
-    "lint-staged": "^9.2.1",
+    "lint-staged": "^9.4.3",
     "prettier": "^1.18.2",
     "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
