@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "8.2.0",
-    "@commitlint/config-conventional": "8.1.0",
+    "@commitlint/config-conventional": "8.2.0",
     "@golevelup/nestjs-testing": "^0.1.2",
     "@nestjs/cli": "^6.9.0",
     "@nestjs/schematics": "^6.7.0",
