@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<head>
+  <title>WebSocket NestJS</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+  <script>
+    const socket = io('http://localhost:3000');
+    setInterval(() => {
+      if (socket.connected) {
+        socket.emit('message', { name: 'Test User' }, (data) => {
+          document.getElementById('socket-data').innerHTML +=
+            '<li>' + data.trim() + '<li/>';
+        });
+      }
+    }, 1000);
+    setInterval(() => socket.disconnect(), 30 * 1000);
+  </script>
+  <style>
+    .header {
+      padding: 2em;
+    }
+
+    .bordered {
+      border: 2px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Websocket Testing</h1>
+  </div>
+  <div class="bordered">
+    <ul id="socket-data"></ul>
+  </div>
+</body>

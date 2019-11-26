@@ -1,9 +1,10 @@
+import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as request from 'supertest';
+import * as io from 'socket.io-client';
 import { AppModule } from './../src/app.module';
 
 describe('AppController (e2e)', () => {
-  let app;
+  let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -14,10 +15,15 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  afterEach(async () => {
+    await app.close();
+  });
+
+  it('should call message', async () => {
+    const socket = io.connect();
+    socket.emit('message', { name: 'Test' }, (data) => {
+      expect(data).toBe('Hello, Test!');
+    });
+    return socket.disconnect();
   });
 });
