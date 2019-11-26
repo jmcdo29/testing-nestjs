@@ -1,8 +1,12 @@
-name: CRON Job
+name: WebSocket Sample
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  pull_request:
+    branches:
+      - 'master'
+  push:
+    branches:
+      - 'websocket-sample'
 
 jobs:
   test:
@@ -12,7 +16,6 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x, 12.x]
-        app-name: [simple-sample, complex-sample, mongo-sample, typeorm-sample, typeorm-graphql-sample, websocket-sample]
 
     steps:
     - uses: actions/checkout@v1
@@ -23,6 +26,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm test -- ${{ matrix.app-name }}
+      run: npm test -- websocket-sample
       env:
         CI: true
