@@ -52,6 +52,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/typeorm-sample/tsconfig.app.json"
       }
+    },
+    "websocket-sample": {
+      "type": "application",
+      "root": "apps/websocket-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/websocket-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/websocket-sample/tsconfig.app.json"
+      }
     }
   }
 }

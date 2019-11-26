@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/jmcdo29/testing-nestjs#readme",
   "scripts": {
+    "commit": "git-cz",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
@@ -43,7 +44,9 @@
     "@nestjs/graphql": "^6.5.3",
     "@nestjs/mongoose": "^6.1.2",
     "@nestjs/platform-express": "^6.10.1",
+    "@nestjs/platform-socket.io": "^6.10.1",
     "@nestjs/typeorm": "^6.2.0",
+    "@nestjs/websockets": "^6.10.1",
     "apollo-server-express": "^2.9.12",
     "class-transformer": "^0.2.3",
     "graphql": "^14.5.8",
@@ -66,7 +69,9 @@
     "@types/jest": "^24.0.23",
     "@types/mongoose": "^5.5.32",
     "@types/node": "^12.12.14",
+    "@types/socket.io": "^2.1.4",
     "@types/supertest": "^2.0.8",
+    "cz-conventional-changelog": "^3.0.2",
     "husky": "3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.3",
@@ -112,5 +117,10 @@
     "roots": [
       "<rootDir>/apps/"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
