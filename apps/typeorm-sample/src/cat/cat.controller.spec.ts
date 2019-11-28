@@ -18,13 +18,11 @@ describe('Cat Controller', () => {
         {
           provide: CatService,
           useValue: {
-            getAll: jest
-              .fn()
-              .mockResolvedValue([
-                { name: 'Test Cat 1', breed: 'Test Breed 1', age: 4 },
-                { name: 'Test Cat 2', breed: 'Test Breed 2', age: 3 },
-                { name: 'Test Cat 3', breed: 'Test Breed 3', age: 2 },
-              ]),
+            getAll: jest.fn().mockResolvedValue([
+              { name: 'Test Cat 1', breed: 'Test Breed 1', age: 4 },
+              { name: 'Test Cat 2', breed: 'Test Breed 2', age: 3 },
+              { name: 'Test Cat 3', breed: 'Test Breed 3', age: 2 },
+            ]),
             getOne: jest.fn().mockImplementation((id: string) =>
               Promise.resolve({
                 name: 'Test Cat 1',

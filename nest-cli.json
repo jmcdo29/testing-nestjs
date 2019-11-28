@@ -61,6 +61,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/websocket-sample/tsconfig.app.json"
       }
+    },
+    "rxjs-sample": {
+      "type": "application",
+      "root": "apps/rxjs-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/rxjs-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/rxjs-sample/tsconfig.app.json"
+      }
     }
   }
 }
