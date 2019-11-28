@@ -81,7 +81,7 @@
     "supertest": "^4.0.2",
     "ts-jest": "^24.2.0",
     "ts-loader": "^6.1.1",
-    "ts-node": "^8.5.2",
+    "ts-node": "^8.5.3",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "1.18.0",
