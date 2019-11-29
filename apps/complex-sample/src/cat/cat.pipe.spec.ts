@@ -2,6 +2,9 @@ import { CatPipe } from './cat.pipe';
 import { CatDTO } from './dto/cats.dto';
 
 const metadata = {} as any;
+const testBreed = 'Test Breed';
+const badRequest = 'Bad Request';
+const failString = 'should throw an error for incorrect type';
 
 describe('CatPipe', () => {
   let pipe: CatPipe;
@@ -14,7 +17,7 @@ describe('CatPipe', () => {
   });
   describe('successful calls', () => {
     it('should let the cat DTO go on through', () => {
-      const catDTO = { name: 'Test Name', breed: 'Test Breed', age: 4 };
+      const catDTO = { name: 'Test Name', breed: testBreed, age: 4 };
       expect(pipe.transform(catDTO, metadata)).toEqual(catDTO);
     });
   });
@@ -28,7 +31,7 @@ describe('CatPipe', () => {
     describe('age errors', () => {
       const badAgeCat: CatDTO = {
         name: 'Test Name',
-        breed: 'Test Breed',
+        breed: testBreed,
       } as any;
       it('should throw an error for missing age', () => {
         try {
@@ -38,10 +41,10 @@ describe('CatPipe', () => {
             'Incoming cat is not formated correctly. Age must be a number.',
           );
           expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe('Bad Request');
+          expect(err.message.error).toBe(badRequest);
         }
       });
-      it('should throw an error for incorrect type', () => {
+      it(failString, () => {
         try {
           badAgeCat.age = '5' as any;
           pipe.transform(badAgeCat, metadata);
@@ -50,14 +53,14 @@ describe('CatPipe', () => {
             'Incoming cat is not formated correctly. Age must be a number.',
           );
           expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe('Bad Request');
+          expect(err.message.error).toBe(badRequest);
         }
       });
     });
     describe('name errors', () => {
       const badNameCat: CatDTO = {
         age: 5,
-        breed: 'Test Breed',
+        breed: testBreed,
       } as any;
       it('should throw an error for missing name', () => {
         try {
@@ -67,10 +70,10 @@ describe('CatPipe', () => {
             'Incoming cat is not formated correctly. Name must be a string.',
           );
           expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe('Bad Request');
+          expect(err.message.error).toBe(badRequest);
         }
       });
-      it('should throw an error for incorrect type', () => {
+      it(failString, () => {
         try {
           badNameCat.name = true as any;
           pipe.transform(badNameCat as any, metadata);
@@ -79,7 +82,7 @@ describe('CatPipe', () => {
             'Incoming cat is not formated correctly. Name must be a string.',
           );
           expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe('Bad Request');
+          expect(err.message.error).toBe(badRequest);
         }
       });
     });
@@ -96,10 +99,10 @@ describe('CatPipe', () => {
             'Incoming cat is not formated correctly. Breed must be a string.',
           );
           expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe('Bad Request');
+          expect(err.message.error).toBe(badRequest);
         }
       });
-      it('should throw an error for incorrect type', () => {
+      it(failString, () => {
         try {
           badBreedCat.breed = true as any;
           pipe.transform(badBreedCat as any, metadata);
@@ -108,7 +111,7 @@ describe('CatPipe', () => {
             'Incoming cat is not formated correctly. Breed must be a string.',
           );
           expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe('Bad Request');
+          expect(err.message.error).toBe(badRequest);
         }
       });
     });

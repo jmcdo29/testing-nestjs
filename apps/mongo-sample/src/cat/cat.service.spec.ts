@@ -17,6 +17,8 @@ import { createMock } from '@golevelup/nestjs-testing';
 import { Model, DocumentQuery } from 'mongoose';
 import { CatDoc } from './interfaces/cat-document.interface';
 
+const lasagna = 'lasagna lover';
+
 // I'm lazy and like to have functions that can be re-used to deal with a lot of my initialization/creation logic
 const mockCat: (
   name?: string,
@@ -161,7 +163,7 @@ describe('CatService', () => {
     jest.spyOn(model, 'findOne').mockReturnValueOnce(
       createMock<DocumentQuery<CatDoc, CatDoc, {}>>({
         exec: jest.fn().mockResolvedValueOnce({
-          _id: 'lasagna lover',
+          _id: lasagna,
           name: 'Garfield',
           breed: 'Tabby',
           age: 42,
@@ -169,14 +171,12 @@ describe('CatService', () => {
       }),
     );
     const updatedCat = await service.updateOne({
-      _id: 'lasagna lover',
+      _id: lasagna,
       name: 'Garfield',
       breed: 'Tabby',
       age: 42,
     });
-    expect(updatedCat).toEqual(
-      mockCat('Garfield', 'lasagna lover', 42, 'Tabby'),
-    );
+    expect(updatedCat).toEqual(mockCat('Garfield', lasagna, 42, 'Tabby'));
   });
   it('should delete a cat successfully', async () => {
     // really just returning a truthy value here as we aren't doing any logic with the return

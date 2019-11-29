@@ -13,7 +13,7 @@ export class RxjsService {
   genericRetryStrategy<T extends any>(
     options?: RxJSRetryOptions,
   ): (obs: Observable<T>) => Observable<number> {
-    options = { ...options, ...defaultRetryOptions };
+    options = { ...defaultRetryOptions, ...options };
     return (obs) =>
       obs.pipe(
         mergeMap((error, i) => {

@@ -5,6 +5,9 @@ import { CatDTO } from './cat.dto';
 import { CatService } from './cat.service';
 import { Cat } from './interfaces/cat.interface';
 
+const testCat1 = 'Test Cat 1';
+const testBreed1 = 'Test Breed 1';
+
 describe('Cat Controller', () => {
   let controller: CatController;
   let service: CatService;
@@ -21,14 +24,14 @@ describe('Cat Controller', () => {
           provide: CatService,
           useValue: {
             getAll: jest.fn().mockResolvedValue([
-              { name: 'Test Cat 1', breed: 'Test Breed 1', age: 4 },
+              { name: testCat1, breed: testBreed1, age: 4 },
               { name: 'Test Cat 2', breed: 'Test Breed 2', age: 3 },
               { name: 'Test Cat 3', breed: 'Test Breed 3', age: 2 },
             ]),
             getOne: jest.fn().mockImplementation((id: string) =>
               Promise.resolve({
-                name: 'Test Cat 1',
-                breed: 'Test Breed 1',
+                name: testCat1,
+                breed: testBreed1,
                 age: 4,
                 _id: id,
               }),
@@ -36,7 +39,7 @@ describe('Cat Controller', () => {
             getOneByName: jest
               .fn()
               .mockImplementation((name: string) =>
-                Promise.resolve({ name, breed: 'Test Breed 1', age: 4 }),
+                Promise.resolve({ name, breed: testBreed1, age: 4 }),
               ),
             insertOne: jest
               .fn()
@@ -66,8 +69,8 @@ describe('Cat Controller', () => {
     it('should get an array of cats', () => {
       expect(controller.getCats()).resolves.toEqual([
         {
-          name: 'Test Cat 1',
-          breed: 'Test Breed 1',
+          name: testCat1,
+          breed: testBreed1,
           age: 4,
         },
         {
@@ -86,14 +89,14 @@ describe('Cat Controller', () => {
   describe('getById', () => {
     it('should get a single cat', () => {
       expect(controller.getById('a strange id')).resolves.toEqual({
-        name: 'Test Cat 1',
-        breed: 'Test Breed 1',
+        name: testCat1,
+        breed: testBreed1,
         age: 4,
         _id: 'a strange id',
       });
       expect(controller.getById('a different id')).resolves.toEqual({
-        name: 'Test Cat 1',
-        breed: 'Test Breed 1',
+        name: testCat1,
+        breed: testBreed1,
         age: 4,
         _id: 'a different id',
       });
@@ -103,7 +106,7 @@ describe('Cat Controller', () => {
     it('should get a cat back', async () => {
       expect(controller.getByName('Ventus')).resolves.toEqual({
         name: 'Ventus',
-        breed: 'Test Breed 1',
+        breed: testBreed1,
         age: 4,
       });
       // using the really cool @golevelup/nestjs-testing module's utility function here

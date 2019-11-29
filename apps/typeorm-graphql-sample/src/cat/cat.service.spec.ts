@@ -4,13 +4,16 @@ import { Repository } from 'typeorm';
 import { Cat } from './cat.entity';
 import { CatService } from './cat.service';
 
+const testCat1 = 'Test Cat 1';
+const testBreed1 = 'Test Breed 1';
+
 const catArray = [
-  new Cat('Test Cat 1', 'Test Breed 1', 4, 'uuid1'),
+  new Cat(testCat1, testBreed1, 4, 'uuid1'),
   new Cat('Test Cat 2', 'Test Breed 2', 3, 'uuid2'),
   new Cat('Test Cat 3', 'Test Breed 3', 2, 'uuid3'),
 ];
 
-const oneCat = new Cat('Test Cat 1', 'Test Breed 1', 4, 'a uuid');
+const oneCat = new Cat(testCat1, testBreed1, 4, 'a uuid');
 
 describe('CatService', () => {
   let service: CatService;
@@ -62,21 +65,21 @@ describe('CatService', () => {
   describe('getOneByName', () => {
     it('should get one cat', () => {
       const repoSpy = jest.spyOn(repo, 'findOneOrFail');
-      expect(service.getOneByName('Test Cat 1')).resolves.toEqual(oneCat);
-      expect(repoSpy).toBeCalledWith({ name: 'Test Cat 1' });
+      expect(service.getOneByName(testCat1)).resolves.toEqual(oneCat);
+      expect(repoSpy).toBeCalledWith({ name: testCat1 });
     });
   });
   describe('insertOne', () => {
     it('should successfully insert a cat', () => {
       expect(
         service.insertOne({
-          name: 'Test Cat 1',
+          name: testCat1,
           age: 4,
         }),
       ).resolves.toEqual(oneCat);
       expect(repo.create).toBeCalledTimes(1);
       expect(repo.create).toBeCalledWith({
-        name: 'Test Cat 1',
+        name: testCat1,
         age: 4,
       });
       expect(repo.save).toBeCalledTimes(1);
@@ -86,8 +89,8 @@ describe('CatService', () => {
     it('should call the update method', () => {
       expect(
         service.updateOne({
-          name: 'Test Cat 1',
-          breed: 'Test Breed 1',
+          name: testCat1,
+          breed: testBreed1,
           age: 4,
           id: 'a uuid',
         }),
@@ -95,7 +98,7 @@ describe('CatService', () => {
       expect(repo.update).toBeCalledTimes(1);
       expect(repo.update).toBeCalledWith(
         { id: 'a uuid' },
-        { name: 'Test Cat 1', breed: 'Test Breed 1', age: 4, id: 'a uuid' },
+        { name: testCat1, breed: testBreed1, age: 4, id: 'a uuid' },
       );
     });
   });

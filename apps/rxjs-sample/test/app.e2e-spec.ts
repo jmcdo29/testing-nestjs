@@ -1,9 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
+import { INestApplication } from '@nestjs/common';
+
+const requestFunction = (
+  url: string,
+  data: { data: any; status: number },
+  app: INestApplication,
+) =>
+  request(app.getHttpServer())
+    .get(url)
+    .expect(data.status)
+    .expect(data.data);
 
 describe('AppController (e2e)', () => {
-  let app;
+  let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -15,9 +26,20 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+    return requestFunction(
+      '/',
+      {
+        data: { statusCode: 500, message: 'Internal server error' },
+        status: 500,
+      },
+      app,
+    );
+  });
+  it('/?takeAmount=10&maxVal=50', () => {
+    return requestFunction(
+      '/?takeAmount=10&maxVal=50',
+      { data: '10', status: 200 },
+      app,
+    );
   });
 });

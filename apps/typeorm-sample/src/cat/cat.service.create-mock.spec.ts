@@ -50,6 +50,7 @@ describe('CatService using createMock without DI', () => {
   it('should have the repo mocked', async () => {
     const cat = { name: 'cat1', age: 2, breed: 'tabby', id: '1' };
     repo.find.mockResolvedValue([cat]);
+    // tslint:disable-next-line: no-invalid-await
     expect(await repo.find()).toEqual([cat]);
   });
 });
