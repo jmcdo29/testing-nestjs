@@ -2,6 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CatService } from './cat.service';
 import { CatDTO } from './dto/cats.dto';
 
+const testCat1 = 'Test Cat 1';
+const testBreed1 = 'Test Breed 1';
+
 describe('CatService', () => {
   let service: CatService;
 
@@ -49,8 +52,8 @@ describe('CatService', () => {
   describe('addCat', () => {
     it('should add the cat', () => {
       const catDTO: CatDTO = {
-        name: 'Test Cat 1',
-        breed: 'Test Breed 1',
+        name: testCat1,
+        breed: testBreed1,
         age: 8,
       };
       const newCat = service.addCat(catDTO);
@@ -77,14 +80,14 @@ describe('CatService', () => {
       const firstCatSetLength = firstCatSet.length;
       expect(firstCatSet.length).toBe(3);
       const newCat = service.addCat({
-        name: 'Test Cat 1',
-        breed: 'Test Breed 1',
+        name: testCat1,
+        breed: testBreed1,
         age: 4,
       });
       expect(newCat).toEqual({
         id: 4,
-        name: 'Test Cat 1',
-        breed: 'Test Breed 1',
+        name: testCat1,
+        breed: testBreed1,
         age: 4,
       });
       const secondCatSet = service.getAll();

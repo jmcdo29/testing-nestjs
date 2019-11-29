@@ -3,6 +3,12 @@ import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { INestApplication } from '@nestjs/common';
 
+const requestFunction = (url: string, data: string, app: INestApplication) =>
+  request(app.getHttpServer())
+    .get(url)
+    .expect(200)
+    .expect(data);
+
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
@@ -17,16 +23,10 @@ describe('AppController (e2e)', () => {
 
   describe('/ (GET)', () => {
     it('/ (GET)', () => {
-      return request(app.getHttpServer())
-        .get('/')
-        .expect(200)
-        .expect('Hello, World!');
+      return requestFunction('/', 'Hello, World!', app);
     });
     it('/?name=Tester', () => {
-      return request(app.getHttpServer())
-        .get('/?name=Tester')
-        .expect(200)
-        .expect('Hello, Tester!');
+      return requestFunction('/?name=Tester', 'Hello, Tester!', app);
     });
   });
 });

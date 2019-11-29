@@ -57,7 +57,7 @@ export class CatService {
 
   async updateOne(cat: CatDTO): Promise<Cat> {
     const { _id } = cat;
-    await this.catModel.update({ _id }, cat);
+    this.catModel.update({ _id }, cat);
     const foundCat = await this.catModel.findOne({ _id }).exec();
     return {
       id: foundCat._id,
@@ -69,6 +69,7 @@ export class CatService {
 
   async deleteOne(id: string): Promise<{ deleted: boolean; message?: string }> {
     try {
+      // tslint:disable-next-line: no-invalid-await
       await this.catModel.remove({ id });
       return { deleted: true };
     } catch (err) {

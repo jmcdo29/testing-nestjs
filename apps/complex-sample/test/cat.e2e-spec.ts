@@ -15,6 +15,12 @@ import { CatService } from './../src/cat/cat.service';
 import { Cat } from './../src/cat/models/cats';
 import { ParseIntPipe } from './../src/parse-int.pipe';
 
+const testCatName = 'Test Cat 1';
+const testCatBreed = 'Test Breed 1';
+const russianBlue = 'Russian Blue';
+const maineCoon = 'Maine Coon';
+const badRequest = 'Bad Request';
+
 // TODO: Look into adding user field or other fields into req object
 
 // I like to declare pipe/guard/interceptor/filter mocks before the tests
@@ -33,18 +39,20 @@ const catGuardMock = jest
   });
 
 const catPipeMock = jest.fn().mockReturnValue({
-  name: 'Test Cat 1',
-  breed: 'Test Breed 1',
+  name: testCatName,
+  breed: testCatBreed,
   age: 3,
 });
 
 const parseIntPipeMock = jest.fn().mockReturnValue(1);
 
+// tslint:disable-next-line: no-big-function
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   describe('with mocking', () => {
     let service: CatService;
+    // tslint:disable-next-line: no-commented-code
     // let pipe: CatPipe;
     let intPipe: ParseIntPipe;
     let guard: CatGuard;
@@ -62,16 +70,16 @@ describe('AppController (e2e)', () => {
           getAll: jest
             .fn()
             .mockReturnValue([
-              new Cat(1, 'Ventus', 'Russian Blue', 3),
+              new Cat(1, 'Ventus', russianBlue, 3),
               new Cat(2, 'Terra', 'Siberian', 6),
-              new Cat(3, 'Aqua', 'Maine Coon', 5),
+              new Cat(3, 'Aqua', maineCoon, 5),
             ]),
           getById: jest
             .fn()
-            .mockReturnValue(new Cat(1, 'Ventus', 'Russian Blue', 3)),
+            .mockReturnValue(new Cat(1, 'Ventus', russianBlue, 3)),
           addCat: jest
             .fn()
-            .mockReturnValue(new Cat(4, 'Test Cat 1', 'Test Breed 1', 3)),
+            .mockReturnValue(new Cat(4, testCatName, testCatBreed, 3)),
           deleteCat: jest.fn().mockReturnValue(true),
         })
         .overridePipe(CatPipe)
@@ -108,9 +116,9 @@ describe('AppController (e2e)', () => {
           .expect(200)
           .expect({
             data: [
-              { id: 1, name: 'Ventus', breed: 'Russian Blue', age: 3 },
+              { id: 1, name: 'Ventus', breed: russianBlue, age: 3 },
               { id: 2, name: 'Terra', breed: 'Siberian', age: 6 },
-              { id: 3, name: 'Aqua', breed: 'Maine Coon', age: 5 },
+              { id: 3, name: 'Aqua', breed: maineCoon, age: 5 },
             ],
           });
       });
@@ -129,7 +137,7 @@ describe('AppController (e2e)', () => {
           .get('/cat/1')
           .expect(200)
           .expect({
-            data: { id: 1, name: 'Ventus', breed: 'Russian Blue', age: 3 },
+            data: { id: 1, name: 'Ventus', breed: russianBlue, age: 3 },
           });
       });
       it('should return a 400', () => {
@@ -142,7 +150,7 @@ describe('AppController (e2e)', () => {
           .expect(400)
           .expect({
             statusCode: 400,
-            error: 'Bad Request',
+            error: badRequest,
             message: 'Cat with id 45785487 does not exist.',
           });
       });
@@ -151,10 +159,10 @@ describe('AppController (e2e)', () => {
       it('should return the new cat', () => {
         return request(app.getHttpServer())
           .post('/cat/new')
-          .send({ age: 3, name: 'Test Cat 1', breed: 'Test Breed 1' })
+          .send({ age: 3, name: testCatName, breed: testCatBreed })
           .expect(201)
           .expect({
-            data: { id: 4, name: 'Test Cat 1', breed: 'Test Breed 1', age: 3 },
+            data: { id: 4, name: testCatName, breed: testCatBreed, age: 3 },
           });
       });
     });
@@ -190,9 +198,9 @@ describe('AppController (e2e)', () => {
           .expect(200)
           .expect({
             data: [
-              { id: 1, name: 'Ventus', breed: 'Russian Blue', age: 3 },
+              { id: 1, name: 'Ventus', breed: russianBlue, age: 3 },
               { id: 2, name: 'Terra', breed: 'Siberian', age: 6 },
-              { id: 3, name: 'Aqua', breed: 'Maine Coon', age: 5 },
+              { id: 3, name: 'Aqua', breed: maineCoon, age: 5 },
             ],
           });
       });
@@ -205,7 +213,7 @@ describe('AppController (e2e)', () => {
           .expect(400)
           .expect({
             statusCode: 400,
-            error: 'Bad Request',
+            error: badRequest,
             message: 'Id parameter should be a number.',
           });
       });
@@ -230,13 +238,13 @@ describe('AppController (e2e)', () => {
           .post('/cat/new')
           .set('authorization', 'auth')
           .send({
-            name: 'Test Cat 1',
-            breed: 'Test Breed 1',
+            name: testCatName,
+            breed: testCatBreed,
           })
           .expect(400)
           .expect({
             statusCode: 400,
-            error: 'Bad Request',
+            error: badRequest,
             message:
               'Incoming cat is not formated correctly. Age must be a number.',
           });
@@ -247,12 +255,12 @@ describe('AppController (e2e)', () => {
           .set('authorization', 'auth')
           .send({
             age: 5,
-            breed: 'Test Breed 1',
+            breed: testCatBreed,
           })
           .expect(400)
           .expect({
             statusCode: 400,
-            error: 'Bad Request',
+            error: badRequest,
             message:
               'Incoming cat is not formated correctly. Name must be a string.',
           });
@@ -263,12 +271,12 @@ describe('AppController (e2e)', () => {
           .set('authorization', 'auth')
           .send({
             age: 5,
-            name: 'Test Cat 1',
+            name: testCatName,
           })
           .expect(400)
           .expect({
             statusCode: 400,
-            error: 'Bad Request',
+            error: badRequest,
             message:
               'Incoming cat is not formated correctly. Breed must be a string.',
           });
@@ -279,16 +287,16 @@ describe('AppController (e2e)', () => {
           .set('authorization', 'auth')
           .send({
             age: 5,
-            name: 'Test Cat 1',
-            breed: 'Test Breed 1',
+            name: testCatName,
+            breed: testCatBreed,
           })
           .expect(201)
           .expect({
             data: {
               id: 4,
               age: 5,
-              name: 'Test Cat 1',
-              breed: 'Test Breed 1',
+              name: testCatName,
+              breed: testCatBreed,
             },
           });
       });
