@@ -70,6 +70,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/rxjs-sample/tsconfig.app.json"
       }
+    },
+    "render-sample": {
+      "type": "application",
+      "root": "apps/render-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/render-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/render-sample/tsconfig.app.json"
+      }
     }
   }
 }

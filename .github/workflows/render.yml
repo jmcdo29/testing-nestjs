@@ -1,9 +1,12 @@
-name: Complex Sample
+name: Render Sample
 
 on:
   pull_request:
     branches:
       - 'master'
+  push:
+    branches:
+      - 'render-sample'
 
 jobs:
   test:
@@ -23,6 +26,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm run test:cov -- complex-sample
+      run: npm run test:cov -- render-sample
       env:
         CI: true

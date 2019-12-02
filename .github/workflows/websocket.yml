@@ -26,6 +26,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm test -- websocket-sample
+      run: npm run test:cov -- websocket-sample
       env:
         CI: true
