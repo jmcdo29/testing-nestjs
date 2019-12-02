@@ -23,6 +23,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm test -- simple-sample
+      run: npm run test:cov -- simple-sample
       env:
         CI: true

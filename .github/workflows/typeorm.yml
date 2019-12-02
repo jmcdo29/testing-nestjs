@@ -23,6 +23,6 @@ jobs:
     - name: npm install
       run: npm ci
     - name: npm test
-      run: npm test -- typeorm-sample
+      run: npm run test:cov -- typeorm-sample
       env:
         CI: true
