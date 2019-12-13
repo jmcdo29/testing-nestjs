@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^6.10.11",
-    "@nestjs/core": "^6.10.10",
+    "@nestjs/core": "^6.10.11",
     "@nestjs/graphql": "^6.5.3",
     "@nestjs/mongoose": "^6.1.2",
     "@nestjs/platform-express": "^6.10.11",
