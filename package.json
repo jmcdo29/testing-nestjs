@@ -54,7 +54,7 @@
     "graphql-tools": "^4.0.6",
     "hbs": "^4.0.6",
     "mongoose": "^5.8.3",
-    "pg": "^7.16.0",
+    "pg": "^7.16.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.4",
