@@ -61,7 +61,7 @@
     "typeorm": "^0.2.22"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.3.4",
+    "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
     "@golevelup/nestjs-testing": "^0.1.2",
     "@nestjs/cli": "^6.14.0",
