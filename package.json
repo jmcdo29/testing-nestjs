@@ -74,7 +74,7 @@
     "@types/socket.io": "^2.1.4",
     "@types/socket.io-client": "^1.4.32",
     "@types/supertest": "^2.0.8",
-    "cz-conventional-changelog": "^3.0.2",
+    "cz-conventional-changelog": "^3.1.0",
     "husky": "4.2.1",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.3",
