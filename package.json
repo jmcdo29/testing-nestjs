@@ -56,7 +56,7 @@
     "mongoose": "^5.8.11",
     "pg": "^7.18.1",
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.1",
+    "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
     "typeorm": "^0.2.22"
   },
