@@ -51,7 +51,7 @@
     "apollo-server-express": "^2.10.1",
     "class-transformer": "^0.2.3",
     "graphql": "^14.6.0",
-    "graphql-tools": "^4.0.6",
+    "graphql-tools": "^4.0.7",
     "hbs": "^4.1.0",
     "mongoose": "^5.9.1",
     "pg": "^7.18.1",
