@@ -51,8 +51,9 @@ describe('CatService', () => {
     expect(service).toBeDefined();
   });
   describe('getAll', () => {
-    it('should return an array of cats', () => {
-      expect(service.getAll()).resolves.toEqual(catArray);
+    it('should return an array of cats', async () => {
+      const cats = await service.getAll();
+      expect(cats).toEqual(catArray);
     });
   });
   describe('getOne', () => {
