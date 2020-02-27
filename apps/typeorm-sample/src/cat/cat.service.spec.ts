@@ -51,8 +51,9 @@ describe('CatService', () => {
     expect(service).toBeDefined();
   });
   describe('getAll', () => {
-    it('should return an array of cats', () => {
-      expect(service.getAll()).resolves.toEqual(catArray);
+    it('should return an array of cats', async () => {
+      const cats = await service.getAll();
+      expect(cats).toEqual(catArray);
     });
   });
   describe('getOne', () => {
@@ -88,15 +89,14 @@ describe('CatService', () => {
     });
   });
   describe('updateOne', () => {
-    it('should call the update method', () => {
-      expect(
-        service.updateOne({
-          name: testCat1,
-          breed: testBreed1,
-          age: 4,
-          id: 'a uuid',
-        }),
-      ).resolves.toEqual(oneCat);
+    it('should call the update method', async () => {
+      const cat = await service.updateOne({
+        name: testCat1,
+        breed: testBreed1,
+        age: 4,
+        id: 'a uuid',
+      });
+      expect(cat).toEqual(oneCat);
       expect(repo.update).toBeCalledTimes(1);
       expect(repo.update).toBeCalledWith(
         { id: 'a uuid' },
