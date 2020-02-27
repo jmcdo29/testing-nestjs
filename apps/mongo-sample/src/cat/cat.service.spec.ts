@@ -112,11 +112,12 @@ describe('CatService', () => {
   // add in the property function exec and tell it what to return
   // this way all of our mongo functions can and will be called
   // properly allowing for us to successfully test them.
-  it('should return all cats', () => {
+  it('should return all cats', async () => {
     jest.spyOn(model, 'find').mockReturnValue({
       exec: jest.fn().mockResolvedValueOnce(catDocArray),
     } as any);
-    expect(service.getAll()).resolves.toEqual(catArray);
+    const cats = await service.getAll();
+    expect(cats).toEqual(catArray);
   });
   it('should getOne by id', async () => {
     jest.spyOn(model, 'findOne').mockReturnValueOnce(
