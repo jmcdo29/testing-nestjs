@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x, 12.x]
-        app-name: [simple-sample, complex-sample, mongo-sample, typeorm-sample, typeorm-graphql-sample, websocket-sample, rxjs-sample, render-sample]
+        app-name: [simple-sample, complex-sample, mongo-sample, typeorm-sample, typeorm-graphql-sample, websocket-sample, rxjs-sample, render-sample, /graphql-sample]
 
     steps:
     - uses: actions/checkout@v1

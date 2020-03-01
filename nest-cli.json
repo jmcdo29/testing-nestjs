@@ -79,6 +79,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/render-sample/tsconfig.app.json"
       }
+    },
+    "graphql-sample": {
+      "type": "application",
+      "root": "apps/graphql-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/graphql-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/graphql-sample/tsconfig.app.json"
+      }
     }
   }
 }

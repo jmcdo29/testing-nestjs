@@ -58,6 +58,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
+    "type-graphql": "^0.17.6",
     "typeorm": "^0.2.24"
   },
   "devDependencies": {
@@ -98,12 +99,10 @@
   "lint-staged": {
     "*.ts": [
       "prettier --write",
-      "tslint -p tsconfig.json",
-      "git add"
+      "tslint -p tsconfig.json"
     ],
     "*.{md,html,json,js}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "jest": {
