@@ -1,4 +1,5 @@
 import { ParseIntPipe } from './parse-int.pipe';
+import { BadRequestException } from '@nestjs/common';
 
 describe('ParseIntPipe', () => {
   let pipe: ParseIntPipe;
@@ -21,13 +22,12 @@ describe('ParseIntPipe', () => {
   });
   describe('unsuccessful calls', () => {
     it('should throw an error if given a non-number string', () => {
-      try {
-        pipe.transform('true', {} as any);
-      } catch (err) {
-        expect(err.message.message).toBe('Id parameter should be a number.');
-        expect(err.message.statusCode).toBe(400);
-        expect(err.message.error).toBe('Bad Request');
-      }
+      expect(() => pipe.transform('true', {} as any)).toThrowError(
+        BadRequestException,
+      );
+      expect(() => pipe.transform('true', {} as any)).toThrowError(
+        'Id parameter should be a number.',
+      );
     });
   });
 });
