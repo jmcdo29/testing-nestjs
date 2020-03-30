@@ -52,12 +52,9 @@ describe('CatService', () => {
       });
     });
     it('should throw an error', () => {
-      try {
-        service.getOneCat({ id: 'not an id' });
-      } catch (err) {
-        expect(err).toBeInstanceOf(BadRequestException);
-        expect(err.message.message).toBe('No cat with id not an id found');
-      }
+      const noIdCall = () => service.getOneCat({ id: 'not an id' });
+      expect(noIdCall).toThrowError(BadRequestException);
+      expect(noIdCall).toThrowError('No cat with id not an id found');
     });
   });
 

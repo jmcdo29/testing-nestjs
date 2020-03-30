@@ -1,5 +1,6 @@
 import { CatPipe } from './cat.pipe';
 import { CatDTO } from './dto/cats.dto';
+import { BadRequestException } from '@nestjs/common';
 
 const metadata = {} as any;
 const testBreed = 'Test Breed';
@@ -34,27 +35,19 @@ describe('CatPipe', () => {
         breed: testBreed,
       } as any;
       it('should throw an error for missing age', () => {
-        try {
-          pipe.transform(badAgeCat as any, metadata);
-        } catch (err) {
-          expect(err.message.message).toBe(
-            'Incoming cat is not formated correctly. Age must be a number.',
-          );
-          expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe(badRequest);
-        }
+        const errorPipe = () => pipe.transform(badAgeCat as any, metadata);
+        expect(errorPipe).toThrowError(BadRequestException);
+        expect(errorPipe).toThrowError(
+          'Incoming cat is not formatted correctly. Age must be a number.',
+        );
       });
       it(failString, () => {
-        try {
-          badAgeCat.age = '5' as any;
-          pipe.transform(badAgeCat, metadata);
-        } catch (err) {
-          expect(err.message.message).toBe(
-            'Incoming cat is not formated correctly. Age must be a number.',
-          );
-          expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe(badRequest);
-        }
+        badAgeCat.age = '5' as any;
+        const errorPipe = () => pipe.transform(badAgeCat, metadata);
+        expect(errorPipe).toThrowError(BadRequestException);
+        expect(errorPipe).toThrowError(
+          'Incoming cat is not formatted correctly. Age must be a number.',
+        );
       });
     });
     describe('name errors', () => {
@@ -63,27 +56,19 @@ describe('CatPipe', () => {
         breed: testBreed,
       } as any;
       it('should throw an error for missing name', () => {
-        try {
-          pipe.transform(badNameCat as any, metadata);
-        } catch (err) {
-          expect(err.message.message).toBe(
-            'Incoming cat is not formated correctly. Name must be a string.',
-          );
-          expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe(badRequest);
-        }
+        const errorPipe = () => pipe.transform(badNameCat as any, metadata);
+        expect(errorPipe).toThrowError(BadRequestException);
+        expect(errorPipe).toThrowError(
+          'Incoming cat is not formatted correctly. Name must be a string.',
+        );
       });
       it(failString, () => {
-        try {
-          badNameCat.name = true as any;
-          pipe.transform(badNameCat as any, metadata);
-        } catch (err) {
-          expect(err.message.message).toBe(
-            'Incoming cat is not formated correctly. Name must be a string.',
-          );
-          expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe(badRequest);
-        }
+        badNameCat.name = true as any;
+        const errorPipe = () => pipe.transform(badNameCat, metadata);
+        expect(errorPipe).toThrowError(BadRequestException);
+        expect(errorPipe).toThrowError(
+          'Incoming cat is not formatted correctly. Name must be a string.',
+        );
       });
     });
     describe('breed errors', () => {
@@ -92,27 +77,19 @@ describe('CatPipe', () => {
         name: 'Test Name',
       } as any;
       it('should throw an error for missing breed', () => {
-        try {
-          pipe.transform(badBreedCat as any, metadata);
-        } catch (err) {
-          expect(err.message.message).toBe(
-            'Incoming cat is not formated correctly. Breed must be a string.',
-          );
-          expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe(badRequest);
-        }
+        const errorPipe = () => pipe.transform(badBreedCat as any, metadata);
+        expect(errorPipe).toThrowError(BadRequestException);
+        expect(errorPipe).toThrowError(
+          'Incoming cat is not formatted correctly. Breed must be a string.',
+        );
       });
       it(failString, () => {
-        try {
-          badBreedCat.breed = true as any;
-          pipe.transform(badBreedCat as any, metadata);
-        } catch (err) {
-          expect(err.message.message).toBe(
-            'Incoming cat is not formated correctly. Breed must be a string.',
-          );
-          expect(err.message.statusCode).toBe(400);
-          expect(err.message.error).toBe(badRequest);
-        }
+        badBreedCat.breed = true as any;
+        const errorPipe = () => pipe.transform(badBreedCat, metadata);
+        expect(errorPipe).toThrowError(BadRequestException);
+        expect(errorPipe).toThrowError(
+          'Incoming cat is not formatted correctly. Breed must be a string.',
+        );
       });
     });
   });
