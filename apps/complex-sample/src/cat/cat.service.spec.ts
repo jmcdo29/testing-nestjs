@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatService } from './cat.service';
 import { CatDTO } from './dto/cats.dto';
+import { BadRequestException } from '@nestjs/common';
 
 const testCat1 = 'Test Cat 1';
 const testBreed1 = 'Test Breed 1';
@@ -41,12 +42,12 @@ describe('CatService', () => {
       expect(cat.id).toBe(2);
     });
     it('should throw and error for a bad id', () => {
-      try {
-        service.getById(15874);
-      } catch (err) {
-        expect(err.message.message).toBe('No cat found with id 15874.');
-        expect(err.message.error).toBe('Bad Request');
-      }
+      // Due to how Nest makes its errors, there is a problem with testing the entire message directly.
+      expect(() => service.getById(15874)).toThrowError(BadRequestException);
+      // we can assert the type and the message like this though, so all is not lost
+      expect(() => service.getById(15874)).toThrowError(
+        'No cat found with id 15874.',
+      );
     });
   });
   describe('addCat', () => {
