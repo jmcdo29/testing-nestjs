@@ -135,6 +135,17 @@ describe('Cat Integration Tests', () => {
     });
   });
 
+  describe('Delete', () => {
+    it('should be able to update a cat', async () => {
+      // create new cat
+      const newCat = await service.insertOne(cat);
+
+      // delete cat
+      const deletedCat = await service.deleteOne(newCat.id);
+      expect(deletedCat).toMatchObject({ deleted: true });
+    });
+  });
+
   /**
    * after each test, delete everything from users table
    */
