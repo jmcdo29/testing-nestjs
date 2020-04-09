@@ -22,6 +22,11 @@ import { CatModule } from './cat.module';
 import { CatDTO } from './cat.dto';
 
 /**
+ * * Dependencies
+ */
+import * as faker from 'faker';
+
+/**
  * Casting type as DatabaseType
  */
 const postgresDatabase: DatabaseType = 'postgres';
@@ -50,7 +55,7 @@ const credentials = {
 /**
  * Test Cat Data
  */
-const testID = 'd6d98b88-c866-4496-9bd4-de7ba48d0f52';
+const testID = faker.random.uuid();
 const testName = 'Test Cat';
 const testBreed = 'Orange Tabby';
 const testAge = 5;
@@ -93,7 +98,7 @@ describe('Cat Integration Tests', () => {
   });
 
   describe('Add', () => {
-    it('should create a cat', async () => {
+    it('should be able to create a cat', async () => {
       // create new cat
       const newCat = await service.insertOne(cat);
 
@@ -101,6 +106,32 @@ describe('Cat Integration Tests', () => {
       expect(newCat).toMatchObject({ breed: testBreed });
       expect(newCat).toMatchObject({ age: testAge });
       expect(newCat).toBeTruthy();
+    });
+  });
+
+  describe('Edit', () => {
+    const testNewName = 'Some Other Cat';
+    const testNewBreed = 'Grey Tabby';
+    const testNewAge = 7;
+
+    const catDataToUpdate = {
+      id: testID,
+      name: testNewName,
+      breed: testNewBreed,
+      age: testNewAge,
+    };
+
+    it('should be able to update a cat', async () => {
+      // create new cat
+      await service.insertOne(cat);
+
+      // update cat
+      const updatedCat = await service.updateOne(catDataToUpdate);
+
+      expect(updatedCat).not.toMatchObject({ name: testName });
+      expect(updatedCat).not.toMatchObject({ breed: testBreed });
+      expect(updatedCat).not.toMatchObject({ age: testAge });
+      expect(updatedCat).toBeTruthy();
     });
   });
 
