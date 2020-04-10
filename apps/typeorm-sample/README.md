@@ -9,3 +9,24 @@ Welcome to the example of using TypeORM with Nest and running tests! Everyone's 
 ## Side Note
 
 For this application, I have added a side package called `@golevelup/nestjs-testing` (name subject to change) to help with mocking Repository objects without needing to create the entire mock on your own. You can find this [specific use here](./src/cat/cat.service.create-mock.spec.ts).
+
+## Cat Integration Test Setup
+
+In order to run the `cat.integration.spec.ts` test, you must install PostgreSQL locally on your machine. Once installed, run postgres and create a new user.
+
+For this test, the credentials are as follows:
+
+`user: rm` `password: root`
+
+You can execute this command to create a new user in pg:
+
+`CREATE USER rm WITH PASSWORD root;`
+
+Once a user is created, it's time to create a database in order to run the test. To do so, execute the following commands in postgres:
+
+```
+drop database cat_test_db;
+create database cat_test_db;
+\c cat_test_db;
+CREATE EXTENSION "pgcrypto";
+```
