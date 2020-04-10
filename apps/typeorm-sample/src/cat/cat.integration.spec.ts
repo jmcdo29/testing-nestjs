@@ -39,6 +39,7 @@ const postgresPassword = 'root';
 /**
  * Database Credentials
  */
+console.log('process.env', process.env);
 const credentials = {
   type: postgresDatabase,
   host: 'localhost',
@@ -181,14 +182,14 @@ describe('Cat Integration Tests', () => {
   });
 
   /**
-   * after each test, delete everything from users table
+   * after each test, delete everything from cat table
    */
   afterEach(async () => {
     await repo.query(`DELETE FROM cat`);
   });
 
   /**
-   * after all tests are done, delete everything from users table
+   * after all tests are done, delete everything from cat table
    */
   afterAll(async () => {
     const connection = getConnection();
