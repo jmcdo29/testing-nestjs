@@ -24,7 +24,7 @@ export class CatService {
 
   async insertOne(cat: CatDTO): Promise<Cat> {
     const newCat = this.catRepo.create(cat);
-    this.catRepo.save(newCat);
+    await this.catRepo.save(newCat);
     return newCat;
   }
 
