@@ -56,9 +56,13 @@ const credentials = {
  * Test Cat Data
  */
 const testID = faker.random.uuid();
+const testID2 = faker.random.uuid();
 const testName = 'Test Cat';
+const testName2 = 'Test Cat 2';
 const testBreed = 'Orange Tabby';
+const testBreed2 = 'Red Tabby';
 const testAge = 5;
+const testAge2 = 3;
 
 /**
  * Test cat object
@@ -74,9 +78,10 @@ const cat: Partial<CatDTO> = {
  * Second test cat object
  */
 const cat2: Partial<CatDTO> = {
-  name: testName,
-  breed: testBreed,
-  age: testAge,
+  id: testID2,
+  name: testName2,
+  breed: testBreed2,
+  age: testAge2,
 };
 
 describe('Cat Integration Tests', () => {
@@ -146,6 +151,35 @@ describe('Cat Integration Tests', () => {
     });
   });
 
+  describe('Get', () => {
+    it('should be able to find all cats', async () => {
+      // create new cat
+      await service.insertOne(cat);
+
+      // create new cat
+      await service.insertOne(cat2);
+
+      const cats = await service.getAll();
+      expect(cats.length).toEqual(2);
+    });
+  });
+
+  describe('Get One', () => {
+    it('should be able to find a cat by id', async () => {
+      // create new cat
+      const newCat = await service.insertOne(cat);
+      const foundCat = await service.getOne(newCat.id);
+      expect(foundCat.id).toEqual(newCat.id);
+    });
+
+    it('should be able to find a cat by name', async () => {
+      // create new cat
+      const newCat = await service.insertOne(cat);
+      const foundCat = await service.getOneByName(newCat.name);
+      expect(foundCat.name).toEqual(newCat.name);
+    });
+  });
+
   /**
    * after each test, delete everything from users table
    */
@@ -158,9 +192,7 @@ describe('Cat Integration Tests', () => {
    */
   afterAll(async () => {
     const connection = getConnection();
-
     await connection.createQueryBuilder().delete().from(Cat).execute();
-
     await connection.close();
   });
 });
