@@ -9,6 +9,7 @@ services:
       POSTGRES_PASSWORD: 'root'
       POSTGRES_DB: 'cat_test_db'
       PG_DATA: /var/lib/postgresql/data
+      PG_PORT: 5432
     ports:
       - 5432:5432
 volumes:
