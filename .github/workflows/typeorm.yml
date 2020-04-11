@@ -22,6 +22,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install
       run: npm ci
+    - name: Run docker-compose to setup PostgreSQL
+      run: docker-compose up -d
     - name: npm test
       run: npm run test:cov -- typeorm-sample
       env:
