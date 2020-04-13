@@ -7,6 +7,12 @@ on:
 
 jobs:
   test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
     services:
       postgres:
         image: postgres
@@ -20,22 +26,12 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Connect to PostgreSQL
-      env:
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: 5432
     - name: npm install
       run: npm ci
     # - name: Run docker-compose to setup PostgreSQL
@@ -44,3 +40,5 @@ jobs:
       run: npm run test:cov -- typeorm-sample
       env:
         CI: true
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
