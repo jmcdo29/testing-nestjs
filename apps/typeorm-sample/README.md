@@ -12,9 +12,38 @@ For this application, I have added a side package called `@golevelup/nestjs-test
 
 ## Cat Integration Test Setup
 
-In order to run the `cat.integration.spec.ts` test, you must install PostgreSQL locally on your machine. Once installed, run postgres and create a new user.
+In order to run the `cat.integration.spec.ts` test, you need access to a PostgreSQL database. There are two ways you can do that.
 
-For this test, the credentials are as follows:
+**Note:** You only need to follow **ONE** of these steps to have a working version of PostgreSQL.
+
+### Method 1: Running PostgreSQL in docker-compose
+
+A docker-compose file already exists which can spin up a database instance for you on the fly. All you have to do is start it in a shell.
+
+```
+cd testing-nestjs/apps/typeorm-sample
+docker-compose up
+```
+
+After this, in another terminal window, simply run
+
+```
+npm run test
+```
+
+or specify a test or set of tests you want to run using:
+
+```
+npm run test:watch
+```
+
+### Method 2: Installing PostgreSQL on your machine
+
+Similarly, you can install PostgreSQL on your computer. [This](https://tecadmin.net/install-postgresql-server-on-ubuntu/) tutorial explains how to do this on Ubuntu.
+
+Once installed, run postgres and create a new user.
+
+For this test, the credentials are as follows, but you are free to modify them if you wish (just make sure to update the environment variables after as explained below!):
 
 ```
 user: rm
