@@ -26,7 +26,6 @@ import { CatDTO } from './cat.dto';
  */
 const postgresDatabase: DatabaseType = 'postgres';
 
-console.log('process.env', process.env);
 /**
  * Database Credentials
  */
