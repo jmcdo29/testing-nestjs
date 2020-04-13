@@ -16,17 +16,31 @@ In order to run the `cat.integration.spec.ts` test, you must install PostgreSQL 
 
 For this test, the credentials are as follows:
 
-`user: rm` `password: root`
+```
+user: rm
+password: root
+```
 
 You can execute this command to create a new user in pg:
 
-`CREATE USER rm WITH PASSWORD root;`
+```
+CREATE USER rm WITH PASSWORD root;
+```
 
 Once a user is created, it's time to create a database in order to run the test. To do so, execute the following commands in postgres:
 
 ```
 drop database cat_test_db;
 create database cat_test_db;
-\c cat_test_db;
-CREATE EXTENSION "pgcrypto";
+GRANT ALL PRIVILEGES ON DATABASE "cat_test_db" to rm;
+```
+
+Before running the tests, make sure that the following environment variables are set in your shell `.rc` file:
+
+```
+POSTGRES_USER: rm
+POSTGRES_PASSWORD: root
+POSTGRES_DB: cat_test_db
+POSTGRES_HOST: localhost
+POSTGRES_PORT: 5432
 ```
