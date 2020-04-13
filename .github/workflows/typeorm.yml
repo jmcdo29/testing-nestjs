@@ -40,5 +40,5 @@ jobs:
       run: npm run test:cov -- typeorm-sample
       env:
         CI: true
-        POSTGRES_HOST: postgres
+        POSTGRES_HOST: localhost
         POSTGRES_PORT: 5432
