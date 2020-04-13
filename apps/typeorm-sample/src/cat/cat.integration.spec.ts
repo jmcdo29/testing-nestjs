@@ -22,30 +22,20 @@ import { CatModule } from './cat.module';
 import { CatDTO } from './cat.dto';
 
 /**
- * * Dependencies
- */
-import * as faker from 'faker';
-
-/**
  * Casting type as DatabaseType
  */
 const postgresDatabase: DatabaseType = 'postgres';
-
-/**
- * Making password a variable to bypass tslint checks
- */
-const postgresPassword = 'root';
 
 /**
  * Database Credentials
  */
 const credentials = {
   type: postgresDatabase,
-  host: 'localhost',
-  port: 5432,
-  username: 'rm',
-  password: postgresPassword,
-  database: 'cat_test_db',
+  host: process.env.POSTGRES_HOST,
+  port: Number(process.env.POSTGRES_PORT),
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
   entities: [__dirname + '/**/*.entity.{ts,js}'],
   dropSchema: false,
   synchronize: process.env.NODE_ENV.trim() !== 'production',
@@ -53,35 +43,21 @@ const credentials = {
 };
 
 /**
- * Test Cat Data
- */
-const testID = faker.random.uuid();
-const testID2 = faker.random.uuid();
-const testName = 'Test Cat';
-const testName2 = 'Test Cat 2';
-const testBreed = 'Orange Tabby';
-const testBreed2 = 'Red Tabby';
-const testAge = 5;
-const testAge2 = 3;
-
-/**
  * Test cat object
  */
 const cat: Partial<CatDTO> = {
-  id: testID,
-  name: testName,
-  breed: testBreed,
-  age: testAge,
+  name: 'Test Cat Mike',
+  breed: 'Orange Tabby',
+  age: 5,
 };
 
 /**
  * Second test cat object
  */
 const cat2: Partial<CatDTO> = {
-  id: testID2,
-  name: testName2,
-  breed: testBreed2,
-  age: testAge2,
+  name: 'Test Cat Mona',
+  breed: 'Grey Shorthair',
+  age: 7,
 };
 
 describe('Cat Integration Tests', () => {
@@ -107,9 +83,9 @@ describe('Cat Integration Tests', () => {
       // create new cat
       const newCat = await service.insertOne(cat);
 
-      expect(newCat).toMatchObject({ name: testName });
-      expect(newCat).toMatchObject({ breed: testBreed });
-      expect(newCat).toMatchObject({ age: testAge });
+      expect(newCat).toMatchObject({ name: cat.name });
+      expect(newCat).toMatchObject({ breed: cat.breed });
+      expect(newCat).toMatchObject({ age: cat.age });
       expect(newCat).toBeTruthy();
     });
   });
@@ -119,8 +95,7 @@ describe('Cat Integration Tests', () => {
     const testNewBreed = 'Grey Tabby';
     const testNewAge = 7;
 
-    const catDataToUpdate = {
-      id: testID,
+    let catDataToUpdate = {
       name: testNewName,
       breed: testNewBreed,
       age: testNewAge,
@@ -128,14 +103,20 @@ describe('Cat Integration Tests', () => {
 
     it('should be able to update a cat', async () => {
       // create new cat
-      await service.insertOne(cat);
+      const newCat = await service.insertOne(cat);
+
+      // get new cat's id
+      const { id } = newCat;
+
+      // assign the newly created cat's id into the update object
+      catDataToUpdate = { ...catDataToUpdate, ...{ id } };
 
       // update cat
       const updatedCat = await service.updateOne(catDataToUpdate);
 
-      expect(updatedCat).not.toMatchObject({ name: testName });
-      expect(updatedCat).not.toMatchObject({ breed: testBreed });
-      expect(updatedCat).not.toMatchObject({ age: testAge });
+      expect(updatedCat).not.toMatchObject({ name: cat.name });
+      expect(updatedCat).not.toMatchObject({ breed: cat.breed });
+      expect(updatedCat).not.toMatchObject({ age: cat.age });
       expect(updatedCat).toBeTruthy();
     });
   });

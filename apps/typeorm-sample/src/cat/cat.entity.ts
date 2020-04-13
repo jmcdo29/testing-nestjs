@@ -14,13 +14,11 @@ export class Cat {
   @Column({ type: 'int' })
   age: number;
 
-  constructor(name: string, breed?: string, age?: number, id?: string);
-  constructor(name: string, breed: string, age?: number, id?: string);
-  constructor(name: string, breed: string, age: number, id?: string);
-  constructor(name: string, breed: string, age: number, id: string);
-  constructor(name?: string, breed?: string, age?: number, id?: string);
-  constructor(name?: string, breed?: string, age?: number, id?: string) {
-    this.id = id || '';
+  constructor(name: string, breed?: string, age?: number);
+  constructor(name: string, breed: string, age?: number);
+  constructor(name: string, breed: string, age: number);
+  constructor(name?: string, breed?: string, age?: number);
+  constructor(name?: string, breed?: string, age?: number) {
     this.name = name || '';
     this.breed = breed || '';
     this.age = age || NaN;

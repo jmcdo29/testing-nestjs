@@ -50,7 +50,6 @@
     "@nestjs/websockets": "^7.0.7",
     "apollo-server-express": "^2.12.0",
     "class-transformer": "^0.2.3",
-    "faker": "^4.1.0",
     "graphql": "^14.6.0",
     "graphql-tools": "^4.0.7",
     "hbs": "^4.1.1",

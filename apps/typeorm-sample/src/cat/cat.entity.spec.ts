@@ -7,7 +7,6 @@ describe('Cat class', () => {
     expect(cat.name).toBe('');
     expect(cat.breed).toBe('');
     expect(cat.age).toBe(NaN);
-    expect(cat.id).toBe('');
   });
   it('should make a cat with name only', () => {
     const cat = new Cat('Test');
@@ -15,7 +14,6 @@ describe('Cat class', () => {
     expect(cat.name).toBe('Test');
     expect(cat.breed).toBe('');
     expect(cat.age).toBe(NaN);
-    expect(cat.id).toBe('');
   });
   it('should make a cat with name and breed', () => {
     const cat = new Cat('Test', 'Breed');
@@ -23,7 +21,6 @@ describe('Cat class', () => {
     expect(cat.name).toBe('Test');
     expect(cat.breed).toBe('Breed');
     expect(cat.age).toBe(NaN);
-    expect(cat.id).toBe('');
   });
   it('should make a cat with name breed and age', () => {
     const cat = new Cat('Test', 'Breed', 4);
@@ -31,14 +28,5 @@ describe('Cat class', () => {
     expect(cat.name).toBe('Test');
     expect(cat.breed).toBe('Breed');
     expect(cat.age).toBe(4);
-    expect(cat.id).toBe('');
-  });
-  it('should make a cat with name breed age and id', () => {
-    const cat = new Cat('Test', 'Breed', 4, 'an id');
-    expect(cat).toBeTruthy();
-    expect(cat.name).toBe('Test');
-    expect(cat.breed).toBe('Breed');
-    expect(cat.age).toBe(4);
-    expect(cat.id).toBe('an id');
   });
 });

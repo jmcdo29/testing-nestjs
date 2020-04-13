@@ -29,9 +29,9 @@ export class CatService {
   }
 
   async updateOne(cat: CatDTO): Promise<Cat> {
-    const { name, breed, age, id } = cat;
+    const { id } = cat;
     await this.catRepo.update({ id }, cat);
-    return new Cat(name, breed, age, id);
+    return this.getOne(id);
   }
 
   async deleteOne(id: string): Promise<{ deleted: boolean; message?: string }> {

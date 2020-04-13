@@ -8,12 +8,12 @@ const testCat1 = 'Test Cat 1';
 const testBreed1 = 'Test Breed 1';
 
 const catArray = [
-  new Cat(testCat1, testBreed1, 4, 'uuid1'),
-  new Cat('Test Cat 2', 'Test Breed 2', 3, 'uuid2'),
-  new Cat('Test Cat 3', 'Test Breed 3', 2, 'uuid3'),
+  new Cat(testCat1, testBreed1, 4),
+  new Cat('Test Cat 2', 'Test Breed 2', 3),
+  new Cat('Test Cat 3', 'Test Breed 3', 2),
 ];
 
-const oneCat = new Cat(testCat1, testBreed1, 4, 'a uuid');
+const oneCat = new Cat(testCat1, testBreed1, 4);
 
 describe('CatService', () => {
   let service: CatService;
