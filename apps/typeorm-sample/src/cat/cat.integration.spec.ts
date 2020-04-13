@@ -39,7 +39,6 @@ const postgresPassword = 'root';
 /**
  * Database Credentials
  */
-console.log('process.env', process.env);
 const credentials = {
   type: postgresDatabase,
   host: 'localhost',
