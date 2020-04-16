@@ -39,7 +39,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
-    "@nestjs/common": "^7.0.7",
+    "@nestjs/common": "^7.0.8",
     "@nestjs/core": "^7.0.7",
     "@nestjs/graphql": "^7.2.4",
     "@nestjs/mongoose": "^6.4.0",
