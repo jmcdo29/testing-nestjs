@@ -44,7 +44,7 @@
     "@nestjs/graphql": "^7.2.4",
     "@nestjs/mongoose": "^6.4.0",
     "@nestjs/platform-express": "^7.0.8",
-    "@nestjs/platform-socket.io": "^7.0.7",
+    "@nestjs/platform-socket.io": "^7.0.8",
     "@nestjs/serve-static": "^2.1.0",
     "@nestjs/typeorm": "^7.0.0",
     "@nestjs/websockets": "^7.0.8",
