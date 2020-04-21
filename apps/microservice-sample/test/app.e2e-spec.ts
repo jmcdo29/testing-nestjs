@@ -23,17 +23,11 @@ describe(`Microservices (e2e)`, () => {
   test(`makes call to publisher will trigger subscriber`, async () => {
     const httpServer = publisherApp.getHttpServer();
 
-    const response = await new Promise((resolve, reject) => {
-      request(httpServer)
-        .post('/')
-        .expect(201)
-        .set('Accept', 'application/json')
-        .end((err, res) => {
-          if (err) return reject(err);
-
-          resolve(res.body);
-        });
-    });
+    const response = await request(httpServer)
+      .post('/')
+      .expect(201)
+      .set('Accept', 'application/json')
+      .then((res) => res.body);
 
     expect(response).toMatchInlineSnapshot(`
       Object {
