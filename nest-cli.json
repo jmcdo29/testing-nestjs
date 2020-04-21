@@ -88,6 +88,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/graphql-sample/tsconfig.app.json"
       }
+    },
+    "microservice-sample": {
+      "type": "application",
+      "root": "apps/microservice-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/microservice-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/microservice-sample/tsconfig.app.json"
+      }
     }
   }
 }
