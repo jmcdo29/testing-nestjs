@@ -4,10 +4,14 @@
 
 # Microservice Sample
 
-Using e2e test to simulate the actual interactions of microservices.
+- Use unit test to test the behavior of an module
 
 ```bash
-npm run test:cov -- --config ./apps/microservice-sample/jest-e2e.json --runInBand --forceExit
+npm run test:cov -- microservice-sample
 ```
 
-- `--forceExit` flag is added as the test will stuck without reason. Jest's `--detectOpenHandles` flag is not helping.
+- Using e2e test to simulate the actual interactions of multiple microservices.
+
+```bash
+npm run test:cov -- --config ./apps/microservice-sample/jest-e2e.json --runInBand
+```

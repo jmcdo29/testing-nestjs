@@ -7,9 +7,9 @@ export class PublisherController {
 
   @Post()
   publishEvent() {
-    this.publisherService.publish();
+    const result = this.publisherService.publish();
     return {
-      success: true,
+      result,
     };
   }
 }
