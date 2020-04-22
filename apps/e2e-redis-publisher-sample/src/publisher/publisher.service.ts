@@ -20,9 +20,14 @@ export class PublisherService implements OnModuleInit, OnModuleDestroy {
   }
 
   publish(data: object) {
-    this.client.emit('log', JSON.stringify(data));
-    return {
-      success: true,
-    };
+    return this.client
+      .emit('log', JSON.stringify(data))
+      .toPromise()
+      .then(() => ({
+        success: true,
+      }))
+      .catch(() => ({
+        success: false,
+      }));
   }
 }

@@ -1,6 +1,6 @@
 # E2E Redis Example
 
-This app should be used in conjuction with `e2e-redis-publisher-sample` app together.
+This app should be used in conjuction with `e2e-redis-publisher-sample` app.
 
 ## Running Test
 

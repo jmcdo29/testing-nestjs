@@ -6,8 +6,8 @@ export class PublisherController {
   constructor(private readonly publisherService: PublisherService) {}
 
   @Post()
-  publishEvent(@Body() body: object) {
-    const result = this.publisherService.publish(body);
+  async publishEvent(@Body() body: object) {
+    const result = await this.publisherService.publish(body);
     return {
       result,
     };

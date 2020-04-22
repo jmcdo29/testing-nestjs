@@ -7,14 +7,23 @@ describe(`e2e redis`, () => {
   test(`data sent to publisher can be obtained from subscriber`, async () => {
     const contentType = 'application/json';
 
-    await request(publisherUrl)
+    const postResult = await request(publisherUrl)
       .post('/')
       .send({
         x: 'y',
       })
       .set('Accept', contentType)
       .set('Content-Type', contentType)
-      .expect(201);
+      .expect(201)
+      .then((res) => res.body);
+
+    expect(postResult).toMatchInlineSnapshot(`
+      Object {
+        "result": Object {
+          "success": true,
+        },
+      }
+    `);
 
     const result = await request(subscriberUrl)
       .get('/')
