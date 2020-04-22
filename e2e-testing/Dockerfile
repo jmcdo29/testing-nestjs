@@ -12,4 +12,4 @@ RUN npm ci
 
 COPY --chown=node:node . .
 
-CMD ["npm", "test e2e-testing -- --config jest.e2e.js"]
+CMD ["npm", "test", "e2e-testing", "--", "--config", "jest.e2e.js"]

@@ -12,4 +12,4 @@ RUN npm ci
 
 COPY --chown=node:node . .
 
-CMD ["npm", "start e2e-redis-subscriber-sample"]
+CMD ["npm", "start", "e2e-redis-subscriber-sample"]
