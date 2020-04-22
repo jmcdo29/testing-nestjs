@@ -23,7 +23,14 @@ services:
       context: .
       dockerfile: e2e-testing/Dockerfile
     command:
-      ['npm', 'test e2e-testing/e2e-redis.spec.ts -- --config jest.e2e.js']
+      [
+        'npm',
+        'test',
+        'e2e-testing/e2e-redis.spec.ts',
+        '--',
+        '--config',
+        'jest.e2e.js',
+      ]
     depends_on:
       - redispublisher
       - redissubscriber
