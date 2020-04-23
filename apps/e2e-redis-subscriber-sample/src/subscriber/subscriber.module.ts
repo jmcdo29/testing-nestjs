@@ -1,21 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
-import { MongooseModule } from '@nestjs/mongoose';
 import { SubscriberController } from './subscriber.controller';
-import { LogSchema } from './subscriber.schema';
-import { SubscriberService } from './subscriber.service';
-import { EVENT_HUB, LOG_SCHEMA } from './subscriber.type';
+import { EVENT_HUB } from './subscriber.type';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([
-      {
-        name: LOG_SCHEMA,
-        schema: LogSchema,
-      },
-    ]),
-  ],
+  imports: [],
   controllers: [SubscriberController],
   providers: [
     {
@@ -31,7 +21,6 @@ import { EVENT_HUB, LOG_SCHEMA } from './subscriber.type';
         });
       },
     },
-    SubscriberService,
   ],
 })
 export class SubscriberModule {}

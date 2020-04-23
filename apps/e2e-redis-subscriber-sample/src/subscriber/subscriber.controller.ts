@@ -1,18 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
-import { EventPattern } from '@nestjs/microservices';
-import { SubscriberService } from './subscriber.service';
+import { Controller } from '@nestjs/common';
+import { MessagePattern } from '@nestjs/microservices';
 
 @Controller()
 export class SubscriberController {
-  constructor(private readonly subscriberService: SubscriberService) {}
-
-  @EventPattern('log')
+  @MessagePattern({ cmd: 'log' })
   handleChange(data: object) {
-    return this.subscriberService.create(data);
-  }
-
-  @Get()
-  getLogs() {
-    return this.subscriberService.getAll();
+    return {
+      data,
+      message: 'Hello from subscriber',
+    };
   }
 }

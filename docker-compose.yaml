@@ -13,10 +13,8 @@ services:
       context: .
       dockerfile: apps/e2e-redis-subscriber-sample/Dockerfile
     links:
-      - db
       - msg
     environment:
-      MONGO_URL: mongodb://db:27017/logs
       REDIS_URL: redis://msg:6379
   redise2etest:
     build:
@@ -36,8 +34,5 @@ services:
       - redissubscriber
     environment:
       PUBLISHER_URL: http://redispublisher:3000
-      SUBSCRIBER_URL: http://redissubscriber:4000
-  db:
-    image: mongo:3
   msg:
     image: redis:4.0-alpine

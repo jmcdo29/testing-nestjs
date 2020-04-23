@@ -1,7 +1,6 @@
 import * as request from 'supertest';
 
 const publisherUrl = process.env.PUBLISHER_URL;
-const subscriberUrl = process.env.SUBSCRIBER_URL;
 
 describe(`e2e redis`, () => {
   test(`data sent to publisher can be obtained from subscriber`, async () => {
@@ -20,17 +19,11 @@ describe(`e2e redis`, () => {
     expect(postResult).toMatchInlineSnapshot(`
       Object {
         "result": Object {
+          "data": "{\\"x\\":\\"y\\"}",
+          "message": "Hello from subscriber",
           "success": true,
         },
       }
     `);
-
-    const result = await request(subscriberUrl)
-      .get('/')
-      .set('Accept', contentType)
-      .expect(200)
-      .then((res) => res.body);
-
-    expect(result[0].data).toMatchInlineSnapshot(`"{\\"x\\":\\"y\\"}"`);
   });
 });
