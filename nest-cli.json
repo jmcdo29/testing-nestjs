@@ -97,6 +97,24 @@
       "compilerOptions": {
         "tsConfigPath": "apps/microservice-sample/tsconfig.app.json"
       }
+    },
+    "e2e-redis-publisher-sample": {
+      "type": "application",
+      "root": "apps/e2e-redis-publisher-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/e2e-redis-publisher-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/e2e-redis-publisher-sample/tsconfig.app.json"
+      }
+    },
+    "e2e-redis-subscriber-sample": {
+      "type": "application",
+      "root": "apps/e2e-redis-subscriber-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/e2e-redis-subscriber-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/e2e-redis-subscriber-sample/tsconfig.app.json"
+      }
     }
   }
 }
