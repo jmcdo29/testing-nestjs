@@ -75,7 +75,7 @@
     "@types/jest": "^25.2.1",
     "@types/mongoose": "^5.7.15",
     "@types/node": "^13.13.4",
-    "@types/redis": "^2.8.18",
+    "@types/redis": "^2.8.20",
     "@types/socket.io": "^2.1.4",
     "@types/socket.io-client": "^1.4.32",
     "@types/supertest": "^2.0.9",
