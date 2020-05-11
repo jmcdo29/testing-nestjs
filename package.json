@@ -50,7 +50,7 @@
     "@nestjs/serve-static": "^2.1.0",
     "@nestjs/typeorm": "^7.0.0",
     "@nestjs/websockets": "^7.0.9",
-    "apollo-server-express": "^2.13.0",
+    "apollo-server-express": "^2.13.1",
     "class-transformer": "^0.2.3",
     "graphql": "^14.6.0",
     "graphql-tools": "^5.0.0",
