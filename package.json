@@ -47,7 +47,7 @@
     "@nestjs/mongoose": "^6.4.0",
     "@nestjs/platform-express": "^7.0.9",
     "@nestjs/platform-socket.io": "^7.0.9",
-    "@nestjs/serve-static": "^2.1.0",
+    "@nestjs/serve-static": "^2.1.1",
     "@nestjs/typeorm": "^7.0.0",
     "@nestjs/websockets": "^7.0.9",
     "apollo-server-express": "^2.13.1",
