@@ -73,7 +73,7 @@
     "@nestjs/testing": "^7.0.13",
     "@types/express": "^4.17.6",
     "@types/jest": "^25.2.2",
-    "@types/mongoose": "^5.7.16",
+    "@types/mongoose": "^5.7.19",
     "@types/node": "^13.13.5",
     "@types/redis": "^2.8.20",
     "@types/socket.io": "^2.1.4",
