@@ -76,7 +76,7 @@
     "@types/mongoose": "^5.7.20",
     "@types/node": "^13.13.5",
     "@types/redis": "^2.8.21",
-    "@types/socket.io": "^2.1.5",
+    "@types/socket.io": "^2.1.6",
     "@types/socket.io-client": "^1.4.33",
     "@types/supertest": "^2.0.9",
     "cz-conventional-changelog": "^3.2.0",
