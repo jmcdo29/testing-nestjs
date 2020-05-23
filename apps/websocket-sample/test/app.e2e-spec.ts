@@ -12,18 +12,19 @@ describe('AppController (e2e)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
-    await app.init();
+    await app.listen(0);
   });
 
   afterEach(async () => {
     await app.close();
   });
 
-  it('should call message', async () => {
-    const socket = io.connect();
+  it('should call message', async (done) => {
+    const socket = io.connect(await app.getUrl());
     socket.emit('message', { name: 'Test' }, (data) => {
       expect(data).toBe('Hello, Test!');
+      socket.disconnect();
+      done();
     });
-    return socket.disconnect();
   });
 });

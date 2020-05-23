@@ -242,7 +242,7 @@ describe('AppController (e2e)', () => {
             statusCode: 400,
             error: badRequest,
             message:
-              'Incoming cat is not formated correctly. Age must be a number.',
+              'Incoming cat is not formatted correctly. Age must be a number.',
           });
       });
       it('should throw an error for a bad name', () => {
@@ -258,7 +258,7 @@ describe('AppController (e2e)', () => {
             statusCode: 400,
             error: badRequest,
             message:
-              'Incoming cat is not formated correctly. Name must be a string.',
+              'Incoming cat is not formatted correctly. Name must be a string.',
           });
       });
       it('should throw an error for a bad breed', () => {
@@ -274,7 +274,7 @@ describe('AppController (e2e)', () => {
             statusCode: 400,
             error: badRequest,
             message:
-              'Incoming cat is not formated correctly. Breed must be a string.',
+              'Incoming cat is not formatted correctly. Breed must be a string.',
           });
       });
       it('should return the new cat with id', () => {
