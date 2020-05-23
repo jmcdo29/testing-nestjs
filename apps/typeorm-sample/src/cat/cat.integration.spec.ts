@@ -2,8 +2,8 @@
  * * Nest Modules
  */
 import { Test, TestingModule } from '@nestjs/testing';
-import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import { getConnection, Repository, DatabaseType } from 'typeorm';
+import { getRepositoryToken, TypeOrmModule } from '@nestjs/typeorm';
+import { DatabaseType, getConnection, Repository } from 'typeorm';
 
 /**
  * * Services
@@ -165,7 +165,7 @@ describe('Cat Integration Tests', () => {
    * after each test, delete everything from cat table
    */
   afterEach(async () => {
-    await repo.query(`DELETE FROM cat`);
+    await repo.query('DELETE FROM cat');
   });
 
   /**

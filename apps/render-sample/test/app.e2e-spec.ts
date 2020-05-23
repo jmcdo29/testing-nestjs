@@ -19,9 +19,8 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200).expect(`<!DOCTYPE html>
+    return request(app.getHttpServer()).get('/').expect(200)
+      .expect(`<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />

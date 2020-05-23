@@ -1,0 +1,69 @@
+version: "3"
+services:
+  # postgres:
+  #   image: postgres
+  # redis:
+  #   image: redis
+  # mongodb:
+  #   image: mongo
+  simple:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - APP_NAME=simple-sample
+  complex:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - APP_NAME=complex-sample
+  graphql:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - APP_NAME=graphql-sample
+  # typeorm:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: .
+  #     args:
+  #       - APP_NAME=typeorm-sample
+  websocket:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - APP_NAME=websocket-sample
+  rxjs:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - APP_NAME=rxjs-sample
+  # render:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: .
+  #     args:
+  #       - APP_NAME=render-sample
+  # redis-microservice:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: .
+  #     args:
+  #       - APP_NAME=
+  # mongo:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: .
+  #     args:
+  #       - APP_NAME=mongo-sample
+  # graphql-typeorm:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: .
+  #     args:
+  #       - APP_NAME=typeorm-graphql-sample
+

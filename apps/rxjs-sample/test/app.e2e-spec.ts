@@ -8,10 +8,7 @@ const requestFunction = (
   data: { data: any; status: number },
   app: INestApplication,
 ) =>
-  request(app.getHttpServer())
-    .get(url)
-    .expect(data.status)
-    .expect(data.data);
+  request(app.getHttpServer()).get(url).expect(data.status).expect(data.data);
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;

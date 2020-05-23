@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Cat } from './models/cat-query.dto';
 import { CatInsert } from './models/cat-mutation.dto';
 import { CatInput } from './models/cat-input.dto';

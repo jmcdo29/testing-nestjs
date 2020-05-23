@@ -123,12 +123,8 @@ describe('AppController (e2e)', () => {
           });
       });
       it('should return a 403 for unauthorized', () => {
-        jest
-          .spyOn(guard, 'canActivate')
-          .mockImplementationOnce((context: ExecutionContext) => false);
-        return request(app.getHttpServer())
-          .get('/cat/')
-          .expect(403);
+        jest.spyOn(guard, 'canActivate').mockImplementationOnce(() => false);
+        return request(app.getHttpServer()).get('/cat/').expect(403);
       });
     });
     describe('/cat/:id GET', () => {

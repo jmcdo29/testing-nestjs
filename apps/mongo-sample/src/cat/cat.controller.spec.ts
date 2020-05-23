@@ -1,4 +1,4 @@
-import { createMock, DeepMocked } from '@golevelup/nestjs-testing';
+import { createMock } from '@golevelup/nestjs-testing';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 import { CatDTO } from './cat.dto';

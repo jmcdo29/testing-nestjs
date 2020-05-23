@@ -1,13 +1,13 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { Observable, interval, throwError, of } from 'rxjs';
+import { Injectable } from '@nestjs/common';
+import { interval, Observable, of, throwError } from 'rxjs';
 import { RxjsService } from './rxjs/rxjs.service';
-import { mergeMap, catchError, retryWhen, take, skip } from 'rxjs/operators';
+import { catchError, mergeMap, retryWhen, skip, take } from 'rxjs/operators';
 
 @Injectable()
 export class AppService {
   constructor(private readonly rxjsService: RxjsService) {}
 
-  playWithRxJS(maxVal: number = 5, takeAmount: number = 10): Observable<any> {
+  playWithRxJS(maxVal = 5, takeAmount = 10): Observable<any> {
     // quick note: using `interval` kinda sets things up for failure
     // as it is only going to work when we pass in the correct values,
     // otherwise you're guaranteed an error

@@ -4,10 +4,7 @@ import { AppModule } from './../src/app.module';
 import { INestApplication } from '@nestjs/common';
 
 const requestFunction = (url: string, data: string, app: INestApplication) =>
-  request(app.getHttpServer())
-    .get(url)
-    .expect(200)
-    .expect(data);
+  request(app.getHttpServer()).get(url).expect(200).expect(data);
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;

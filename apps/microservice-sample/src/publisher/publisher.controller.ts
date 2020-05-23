@@ -6,7 +6,7 @@ export class PublisherController {
   constructor(private readonly publisherService: PublisherService) {}
 
   @Post()
-  publishEvent() {
+  publishEvent(): { result: { success: boolean } } {
     const result = this.publisherService.publish();
     return {
       result,
