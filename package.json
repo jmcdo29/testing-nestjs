@@ -36,7 +36,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "docker-compose -f docker-compose.ci.yml up -d --build && docker-compose -f docker-compose.ci.yml down",
+    "test:e2e:dev": "docker-compose -f docker-compose.ci.yml up --build",
+    "test:e2e:stop": "docker-compose -f docker-compose.ci.yml down"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.13",
@@ -61,7 +64,6 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.5",
-    "type-graphql": "^0.17.6",
     "typeorm": "^0.2.25"
   },
   "devDependencies": {

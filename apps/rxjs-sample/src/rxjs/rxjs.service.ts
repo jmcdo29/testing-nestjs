@@ -16,7 +16,7 @@ export class RxjsService {
     options = { ...defaultRetryOptions, ...options };
     return (obs) =>
       obs.pipe(
-        mergeMap((error, i) => {
+        mergeMap((error: any, i) => {
           i++;
           if (
             i > options.numberOfAttempts ||
