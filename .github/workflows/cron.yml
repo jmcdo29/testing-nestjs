@@ -15,6 +15,7 @@ jobs:
           [
             simple-sample,
             complex-sample,
+            cqrs-sample,
             mongo-sample,
             typeorm-sample,
             websocket-sample,

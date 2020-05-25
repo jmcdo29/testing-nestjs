@@ -115,6 +115,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/e2e-redis-subscriber-sample/tsconfig.app.json"
       }
+    },
+    "cqrs-sample": {
+      "type": "application",
+      "root": "apps/cqrs-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/cqrs-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/cqrs-sample/tsconfig.app.json"
+      }
     }
   }
 }
