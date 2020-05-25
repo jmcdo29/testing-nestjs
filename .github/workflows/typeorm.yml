@@ -13,21 +13,6 @@ jobs:
       matrix:
         node-version: [10.x, 12.x]
 
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_USER: rm
-          POSTGRES_PASSWORD: root
-          POSTGRES_DB: cat_test_db
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -38,10 +23,3 @@ jobs:
       run: npm ci
     - name: npm test
       run: npm run test:cov -- typeorm-sample
-      env:
-        CI: true
-        POSTGRES_USER: rm
-        POSTGRES_PASSWORD: root
-        POSTGRES_DB: cat_test_db
-        POSTGRES_HOST: localhost
-        POSTGRES_PORT: 5432

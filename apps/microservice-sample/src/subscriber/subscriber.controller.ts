@@ -4,7 +4,7 @@ import { EventPattern } from '@nestjs/microservices';
 @Controller()
 export class SubscriberController {
   @EventPattern('change')
-  handleChange() {
+  handleChange(): void {
     /* noop */
   }
 }

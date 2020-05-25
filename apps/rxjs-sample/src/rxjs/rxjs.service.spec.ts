@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { RxjsService } from './rxjs.service';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { retryWhen } from 'rxjs/operators';
 import { Observer } from 'zen-observable-ts';
 

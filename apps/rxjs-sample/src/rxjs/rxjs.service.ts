@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Observable, throwError, timer } from 'rxjs';
-import { mergeMap, finalize } from 'rxjs/operators';
+import { finalize, mergeMap } from 'rxjs/operators';
 import {
-  RxJSRetryOptions,
   defaultRetryOptions,
+  RxJSRetryOptions,
 } from './interfaces/rxjs-options.interface';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class RxjsService {
     options = { ...defaultRetryOptions, ...options };
     return (obs) =>
       obs.pipe(
-        mergeMap((error, i) => {
+        mergeMap((error: any, i) => {
           i++;
           if (
             i > options.numberOfAttempts ||

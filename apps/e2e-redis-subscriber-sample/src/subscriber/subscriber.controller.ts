@@ -4,7 +4,9 @@ import { MessagePattern } from '@nestjs/microservices';
 @Controller()
 export class SubscriberController {
   @MessagePattern({ cmd: 'log' })
-  handleChange(data: object) {
+  handleChange(
+    data: Record<string, any>,
+  ): { data: Record<string, any>; message: string } {
     return {
       data,
       message: 'Hello from subscriber',

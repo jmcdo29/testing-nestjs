@@ -32,15 +32,16 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "lint": "eslint \"apps/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "./scripts/test-e2e"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.13",
-    "@nestjs/config": "^0.4.0",
+    "@nestjs/config": "^0.4.2",
     "@nestjs/core": "^7.0.13",
     "@nestjs/graphql": "^7.3.11",
     "@nestjs/microservices": "^7.1.0",
@@ -52,8 +53,8 @@
     "@nestjs/websockets": "^7.1.0",
     "apollo-server-express": "^2.13.1",
     "class-transformer": "^0.2.3",
-    "graphql": "^14.6.0",
-    "graphql-tools": "^5.0.0",
+    "graphql": "^15.0.0",
+    "graphql-tools": "^6.0.0",
     "hbs": "^4.1.1",
     "mongoose": "^5.9.15",
     "pg": "^8.2.1",
@@ -61,8 +62,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.5",
-    "type-graphql": "^0.17.6",
-    "typeorm": "^0.2.24"
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
@@ -74,14 +74,19 @@
     "@types/express": "^4.17.6",
     "@types/jest": "^25.2.3",
     "@types/mongoose": "^5.7.21",
-    "@types/node": "^13.13.5",
+    "@types/node": "^14.0.5",
     "@types/redis": "^2.8.21",
     "@types/socket.io": "^2.1.8",
     "@types/socket.io-client": "^1.4.33",
     "@types/supertest": "^2.0.9",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
     "cz-conventional-changelog": "^3.2.0",
-    "husky": "4.2.5",
-    "jest": "^25.5.4",
+    "eslint": "<7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
     "lint-staged": "^10.2.6",
     "prettier": "^2.0.5",
     "supertest": "^4.0.2",
@@ -92,7 +97,7 @@
     "tslint": "^6.1.2",
     "tslint-config-prettier": "1.18.0",
     "tslint-sonarts": "^1.9.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.3"
   },
   "husky": {
     "hooks": {
@@ -103,7 +108,7 @@
   "lint-staged": {
     "*.ts": [
       "prettier --write",
-      "tslint -p tsconfig.json"
+      "eslint --ext ts"
     ],
     "*.{md,html,json,js}": [
       "prettier --write"

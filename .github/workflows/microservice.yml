@@ -26,6 +26,6 @@ jobs:
         env:
           CI: true
       - name: npm test:e2e
-        run: npm run test:cov -- --config ./apps/microservice-sample/jest-e2e.json --runInBand
+        run: npm run test:cov -- --config ./apps/microservice-sample/test/jest-e2e.json --runInBand
         env:
           CI: true

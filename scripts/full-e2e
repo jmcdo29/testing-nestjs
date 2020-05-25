@@ -1,0 +1,6 @@
+#! /bin/bash
+
+for i in {complex,graphql,mongo,render,rxjs,simple,typeorm,websocket,microservice};
+do
+  npm run test:e2e -- $i-sample;
+done;

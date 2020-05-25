@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ClientProxyFactory, Transport } from '@nestjs/microservices';
+import {
+  ClientProxy,
+  ClientProxyFactory,
+  Transport,
+} from '@nestjs/microservices';
 import { PublisherController } from './publisher.controller';
 import { PublisherService } from './publisher.service';
 import { EVENT_HUB } from './publisher.type';
@@ -11,7 +15,7 @@ import { EVENT_HUB } from './publisher.type';
     {
       provide: EVENT_HUB,
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
+      useFactory: (configService: ConfigService): ClientProxy => {
         const redisUrl = configService.get<string>('REDIS_URL');
         return ClientProxyFactory.create({
           transport: Transport.REDIS,

@@ -30,13 +30,17 @@ const gql = '/graphql';
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 
   describe(gql, () => {
@@ -72,49 +76,49 @@ describe('AppController (e2e)', () => {
             .expect(200)
             .expect((res) => {
               expect(res.body.data).toBe(null);
-              expect(res.body.errors[0].message).toEqual({
-                statusCode: 400,
-                error: 'Bad Request',
-                message: 'No cat with id 500 found',
-              });
+              expect(res.body.errors[0].message).toBe(
+                'No cat with id 500 found',
+              );
             });
         });
       });
       it('should create a new cat and have it added to the array', () => {
-        request(app.getHttpServer())
-          .post(gql)
-          .send({
-            query:
-              'mutation {insertCat(newCat: { name: "Vanitas", breed: "Calico", age: 100 }) {breed name id age}}',
-          })
-          .expect(200)
-          .expect((res) => {
-            expect(res.body.data.insertCat).toEqual({
-              name: 'Vanitas',
-              breed: 'Calico',
-              age: 100,
-              id: '4',
-            });
-          })
-          // chain another request to see our original one works as expected
-          .then(() =>
-            request(app.getHttpServer())
-              .post(gql)
-              .send({ query: '{getCats {id name breed age}}' })
-              .expect(200)
-              .expect((res) => {
-                expect(res.body.data.getCats).toEqual(
-                  cats.concat([
-                    {
-                      name: 'Vanitas',
-                      breed: 'Calico',
-                      age: 100,
-                      id: '4',
-                    },
-                  ]),
-                );
-              }),
-          );
+        return (
+          request(app.getHttpServer())
+            .post(gql)
+            .send({
+              query:
+                'mutation {insertCat(newCat: { name: "Vanitas", breed: "Calico", age: 100 }) {breed name id age}}',
+            })
+            .expect(200)
+            .expect((res) => {
+              expect(res.body.data.insertCat).toEqual({
+                name: 'Vanitas',
+                breed: 'Calico',
+                age: 100,
+                id: '4',
+              });
+            })
+            // chain another request to see our original one works as expected
+            .then(() =>
+              request(app.getHttpServer())
+                .post(gql)
+                .send({ query: '{getCats {id name breed age}}' })
+                .expect(200)
+                .expect((res) => {
+                  expect(res.body.data.getCats).toEqual(
+                    cats.concat([
+                      {
+                        name: 'Vanitas',
+                        breed: 'Calico',
+                        age: 100,
+                        id: '4',
+                      },
+                    ]),
+                  );
+                }),
+            )
+        );
       });
     });
   });

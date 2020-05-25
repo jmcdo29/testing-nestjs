@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { of, timer, throwError } from 'rxjs';
+import { throwError, timer } from 'rxjs';
 import { AppService } from './app.service';
 import { RxjsService } from './rxjs/rxjs.service';
 

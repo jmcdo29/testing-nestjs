@@ -2,9 +2,7 @@ import { CatPipe } from './cat.pipe';
 import { CatDTO } from './dto/cats.dto';
 import { BadRequestException } from '@nestjs/common';
 
-const metadata = {} as any;
 const testBreed = 'Test Breed';
-const badRequest = 'Bad Request';
 const failString = 'should throw an error for incorrect type';
 
 describe('CatPipe', () => {
@@ -19,7 +17,7 @@ describe('CatPipe', () => {
   describe('successful calls', () => {
     it('should let the cat DTO go on through', () => {
       const catDTO = { name: 'Test Name', breed: testBreed, age: 4 };
-      expect(pipe.transform(catDTO, metadata)).toEqual(catDTO);
+      expect(pipe.transform(catDTO)).toEqual(catDTO);
     });
   });
   /**
@@ -35,7 +33,7 @@ describe('CatPipe', () => {
         breed: testBreed,
       } as any;
       it('should throw an error for missing age', () => {
-        const errorPipe = () => pipe.transform(badAgeCat as any, metadata);
+        const errorPipe = () => pipe.transform(badAgeCat as any);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Age must be a number.',
@@ -43,7 +41,7 @@ describe('CatPipe', () => {
       });
       it(failString, () => {
         badAgeCat.age = '5' as any;
-        const errorPipe = () => pipe.transform(badAgeCat, metadata);
+        const errorPipe = () => pipe.transform(badAgeCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Age must be a number.',
@@ -56,7 +54,7 @@ describe('CatPipe', () => {
         breed: testBreed,
       } as any;
       it('should throw an error for missing name', () => {
-        const errorPipe = () => pipe.transform(badNameCat as any, metadata);
+        const errorPipe = () => pipe.transform(badNameCat as any);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Name must be a string.',
@@ -64,7 +62,7 @@ describe('CatPipe', () => {
       });
       it(failString, () => {
         badNameCat.name = true as any;
-        const errorPipe = () => pipe.transform(badNameCat, metadata);
+        const errorPipe = () => pipe.transform(badNameCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Name must be a string.',
@@ -77,7 +75,7 @@ describe('CatPipe', () => {
         name: 'Test Name',
       } as any;
       it('should throw an error for missing breed', () => {
-        const errorPipe = () => pipe.transform(badBreedCat as any, metadata);
+        const errorPipe = () => pipe.transform(badBreedCat as any);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Breed must be a string.',
@@ -85,7 +83,7 @@ describe('CatPipe', () => {
       });
       it(failString, () => {
         badBreedCat.breed = true as any;
-        const errorPipe = () => pipe.transform(badBreedCat, metadata);
+        const errorPipe = () => pipe.transform(badBreedCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Breed must be a string.',

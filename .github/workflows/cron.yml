@@ -17,11 +17,10 @@ jobs:
             complex-sample,
             mongo-sample,
             typeorm-sample,
-            typeorm-graphql-sample,
             websocket-sample,
             rxjs-sample,
             render-sample,
-            /graphql-sample,
+            graphql-sample,
             microservice-sample,
           ]
 
@@ -35,5 +34,25 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm run test:cov -- ${{ matrix.app-name }}
-        env:
-          CI: true
+
+  e2e:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Start Docker-Compose
+        run: docker-compose up -d
+      - name: npm install
+        run: npm ci
+      - name: Run tests
+        run: ./scripts/full-e2e
+      - name: Stop Docker-Compose
+        run: docker-compose down

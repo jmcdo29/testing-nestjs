@@ -11,15 +11,15 @@ import { EVENT_HUB } from './publisher.type';
 export class PublisherService implements OnModuleInit, OnModuleDestroy {
   constructor(@Inject(EVENT_HUB) private readonly client: ClientProxy) {}
 
-  onModuleInit() {
+  async onModuleInit(): Promise<void> {
     return this.client.connect();
   }
 
-  onModuleDestroy() {
+  onModuleDestroy(): void {
     return this.client.close();
   }
 
-  publish(data: object) {
+  async publish(data: Record<string, any>): Promise<unknown> {
     return new Promise((fulfill) => {
       this.client.send({ cmd: 'log' }, JSON.stringify(data)).subscribe(
         (value) =>

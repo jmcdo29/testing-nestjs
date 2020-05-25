@@ -6,7 +6,7 @@ import { Cat } from './cat.entity';
 import { CatService } from './cat.service';
 
 describe('CatService using createMock with DI', () => {
-  let service: CatService;
+  // let service: CatService;
   let repo: Repository<Cat>;
 
   beforeEach(async () => {
@@ -20,7 +20,7 @@ describe('CatService using createMock with DI', () => {
       ],
     }).compile();
 
-    service = module.get<CatService>(CatService);
+    // service = module.get<CatService>(CatService);
     repo = module.get<Repository<Cat>>(getRepositoryToken(Cat));
   });
 
@@ -30,11 +30,10 @@ describe('CatService using createMock with DI', () => {
 });
 
 describe('CatService using createMock without DI', () => {
-  let service: CatService;
   const repo = createMock<Repository<Cat>>();
 
   beforeEach(async () => {
-    const module = await Test.createTestingModule({
+    await Test.createTestingModule({
       providers: [
         CatService,
         {
@@ -43,8 +42,6 @@ describe('CatService using createMock without DI', () => {
         },
       ],
     }).compile();
-
-    service = module.get<CatService>(CatService);
   });
 
   it('should have the repo mocked', async () => {

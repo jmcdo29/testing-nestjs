@@ -1,16 +1,11 @@
-import {
-  ArgumentMetadata,
-  BadRequestException,
-  Injectable,
-  PipeTransform,
-} from '@nestjs/common';
+import { BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
 import { CatDTO } from './dto/cats.dto';
 
 @Injectable()
 export class CatPipe implements PipeTransform<CatDTO, CatDTO> {
   private errorString = 'Incoming cat is not formatted correctly. ';
 
-  transform(value: CatDTO, metadata: ArgumentMetadata) {
+  transform(value: CatDTO): CatDTO {
     if (!value.age || typeof value.age !== 'number') {
       throw new BadRequestException(this.errorString + 'Age must be a number.');
     }

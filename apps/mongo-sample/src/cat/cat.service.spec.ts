@@ -14,7 +14,7 @@ import { CatService } from './cat.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { Cat } from './interfaces/cat.interface';
 import { createMock } from '@golevelup/nestjs-testing';
-import { Model, DocumentQuery } from 'mongoose';
+import { DocumentQuery, Model } from 'mongoose';
 import { CatDoc } from './interfaces/cat-document.interface';
 
 const lasagna = 'lasagna lover';
@@ -26,10 +26,10 @@ const mockCat: (
   age?: number,
   breed?: string,
 ) => Cat = (
-  name: string = 'Ventus',
-  id: string = 'a uuid',
-  age: number = 4,
-  breed: string = 'Russian Blue',
+  name = 'Ventus',
+  id = 'a uuid',
+  age = 4,
+  breed = 'Russian Blue',
 ) => {
   return {
     name,
@@ -121,7 +121,7 @@ describe('CatService', () => {
   });
   it('should getOne by id', async () => {
     jest.spyOn(model, 'findOne').mockReturnValueOnce(
-      createMock<DocumentQuery<CatDoc, CatDoc, {}>>({
+      createMock<DocumentQuery<CatDoc, CatDoc, unknown>>({
         exec: jest
           .fn()
           .mockResolvedValueOnce(mockCatDoc({ name: 'Ventus', id: 'an id' })),
@@ -133,7 +133,7 @@ describe('CatService', () => {
   });
   it('should getOne by name', async () => {
     jest.spyOn(model, 'findOne').mockReturnValueOnce(
-      createMock<DocumentQuery<CatDoc, CatDoc, {}>>({
+      createMock<DocumentQuery<CatDoc, CatDoc, unknown>>({
         exec: jest
           .fn()
           .mockResolvedValueOnce(
@@ -162,7 +162,7 @@ describe('CatService', () => {
   it('should update a cat successfully', async () => {
     jest.spyOn(model, 'update').mockResolvedValueOnce(true);
     jest.spyOn(model, 'findOne').mockReturnValueOnce(
-      createMock<DocumentQuery<CatDoc, CatDoc, {}>>({
+      createMock<DocumentQuery<CatDoc, CatDoc, unknown>>({
         exec: jest.fn().mockResolvedValueOnce({
           _id: lasagna,
           name: 'Garfield',

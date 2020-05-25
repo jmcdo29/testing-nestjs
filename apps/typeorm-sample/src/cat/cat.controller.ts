@@ -21,14 +21,14 @@ export class CatController {
     return this.catService.getAll();
   }
 
-  @Get('/:id')
-  async getById(@Param('id') id: string): Promise<Cat> {
-    return this.catService.getOne(id);
-  }
-
   @Get('/name')
   async getByName(@Query('name') name: string): Promise<Cat> {
     return this.catService.getOneByName(name);
+  }
+
+  @Get('/:id')
+  async getById(@Param('id') id: string): Promise<Cat> {
+    return this.catService.getOne(id);
   }
 
   @Post('/new')

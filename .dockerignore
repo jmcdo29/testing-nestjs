@@ -1,0 +1,13 @@
+node_modules/
+.git/
+dist/
+coverage/
+.vscode/
+.github/
+docker-compose*
+LICENSE
+*.md
+.sonarcloud*
+.editorconfig
+commitlint*
+*.gql

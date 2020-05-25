@@ -11,15 +11,15 @@ import { EVENT_HUB } from './publisher.type';
 export class PublisherService implements OnModuleInit, OnModuleDestroy {
   constructor(@Inject(EVENT_HUB) private readonly client: ClientProxy) {}
 
-  onModuleInit() {
+  async onModuleInit(): Promise<void> {
     return this.client.connect();
   }
 
-  onModuleDestroy() {
+  onModuleDestroy(): void {
     return this.client.close();
   }
 
-  publish() {
+  publish(): { success: boolean } {
     this.client.emit('change', 'world');
     return {
       success: true,

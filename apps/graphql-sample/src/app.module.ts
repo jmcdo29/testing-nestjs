@@ -7,7 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
   imports: [
     CatModule,
     GraphQLModule.forRoot({
-      autoSchemaFile: 'schema.gql',
+      autoSchemaFile: true,
       playground: true,
       debug: true,
     }),
