@@ -42,7 +42,7 @@
   "dependencies": {
     "@nestjs/common": "^7.0.13",
     "@nestjs/config": "^0.4.2",
-    "@nestjs/core": "^7.0.13",
+    "@nestjs/core": "^7.1.0",
     "@nestjs/graphql": "^7.3.11",
     "@nestjs/microservices": "^7.1.0",
     "@nestjs/mongoose": "^6.4.0",
