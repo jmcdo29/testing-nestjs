@@ -6,7 +6,7 @@ import { CatModule } from './cat/cat.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: process.env.DATABASE_URL,
+      url: 'postgres://postgres:postgres@localhost:5432/typeorm',
       synchronize: true,
       entities: [__dirname + '/**/*.entity.{ts,js}'],
     }),
