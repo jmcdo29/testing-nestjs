@@ -37,6 +37,6 @@ The change log can be found on the [Releases page](https://github.com/jmcdo29/te
 
 ## Authors and license
 
-[Jay McDoniel](http://jaymcdoniel.dev) and [contributors](https://github.com/jmcdo29/testing-nestjs/graphs/contributors).
+[Jay McDoniel](http://jaymcdoniel.dev) and [contributors](https://github.com/jmcdo29/testing-nestjs/graphs/contributors). Thanks to everyone who's helping with this effort!
 
 MIT License, see the included [License.md](LICENSE) file.
