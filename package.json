@@ -52,7 +52,7 @@
     "@nestjs/serve-static": "^2.1.3",
     "@nestjs/typeorm": "^7.1.0",
     "@nestjs/websockets": "^7.2.0",
-    "apollo-server-express": "^2.15.0",
+    "apollo-server-express": "^2.15.1",
     "class-transformer": "^0.2.3",
     "graphql": "^15.2.0",
     "graphql-tools": "^6.0.11",
