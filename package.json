@@ -75,7 +75,7 @@
     "@types/express": "^4.17.7",
     "@types/jest": "^26.0.5",
     "@types/mongoose": "^5.7.21",
-    "@types/node": "^14.0.24",
+    "@types/node": "^14.0.26",
     "@types/redis": "^2.8.25",
     "@types/socket.io": "^2.1.10",
     "@types/socket.io-client": "^1.4.33",
