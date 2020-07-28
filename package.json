@@ -57,7 +57,7 @@
     "graphql": "^15.3.0",
     "graphql-tools": "^6.0.15",
     "hbs": "^4.1.1",
-    "mongoose": "^5.9.25",
+    "mongoose": "^5.9.26",
     "pg": "^8.3.0",
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
