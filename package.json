@@ -62,7 +62,7 @@
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.0",
+    "rxjs": "^6.6.2",
     "typeorm": "^0.2.25"
   },
   "devDependencies": {
