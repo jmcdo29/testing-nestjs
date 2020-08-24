@@ -69,7 +69,7 @@
     "@commitlint/cli": "9.1.2",
     "@commitlint/config-conventional": "9.1.2",
     "@golevelup/nestjs-testing": "^0.1.2",
-    "@nestjs/cli": "^7.4.1",
+    "@nestjs/cli": "^7.5.1",
     "@nestjs/schematics": "^7.0.1",
     "@nestjs/testing": "^7.4.2",
     "@types/express": "^4.17.7",
