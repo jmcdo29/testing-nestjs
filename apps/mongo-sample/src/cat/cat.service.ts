@@ -42,11 +42,11 @@ export class CatService {
   /**
    * I would suggest against using something like `new this.catModel()`
    * because it becomes really _really_ hard to mock.
-   * Instead, you can use the class method `create` to acheive
+   * Instead, you can use the class method `create` to achieve
    * the same effect.
    */
   async insertOne(cat: CatDTO): Promise<Cat> {
-    const retCat = await this.catModel.create(cat);
+    const retCat = await this.catModel.create(cat as any);
     return {
       id: retCat._id,
       age: retCat.age,
