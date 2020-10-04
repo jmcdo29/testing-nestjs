@@ -23,6 +23,7 @@ jobs:
             render-sample,
             graphql-sample,
             microservice-sample,
+            sequelize-sample,
           ]
 
     steps:

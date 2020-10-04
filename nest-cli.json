@@ -124,6 +124,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/cqrs-sample/tsconfig.app.json"
       }
+    },
+    "sequelize-sample": {
+      "type": "application",
+      "root": "apps/sequelize-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/sequelize-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/sequelize-sample/tsconfig.app.json"
+      }
     }
   }
 }
