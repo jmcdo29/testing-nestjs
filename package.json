@@ -86,7 +86,7 @@
     "@types/socket.io-client": "^1.4.34",
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
-    "@typescript-eslint/parser": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
