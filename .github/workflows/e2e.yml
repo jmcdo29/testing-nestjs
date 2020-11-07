@@ -1,0 +1,40 @@
+name: E2E Tests
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Start Docker-Compose
+        run: docker-compose up -d
+      - name: npm install
+        run: npm ci
+      - name: Run tests
+        run: ./scripts/full-e2e
+      - name: Stop Docker-Compose
+        run: docker-compose down
+  test:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.author.login, 'dependabot')
+    steps:
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            /rebase
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
