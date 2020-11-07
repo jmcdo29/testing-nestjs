@@ -27,3 +27,14 @@ jobs:
         run: ./scripts/full-e2e
       - name: Stop Docker-Compose
         run: docker-compose down
+  test:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.author.login, 'dependabot')
+    steps:
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            /rebase
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
