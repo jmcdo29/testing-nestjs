@@ -29,7 +29,10 @@ jobs:
         run: docker-compose down
   test:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     needs: e2e
+=======
+>>>>>>> feat: auto-merge workflow for github actions
     if: contains(github.event.pull_request.author.login, 'dependabot')
     steps:
       - uses: mshick/add-pr-comment@v1
