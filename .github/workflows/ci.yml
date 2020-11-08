@@ -57,7 +57,7 @@ jobs:
       sequelize-test,
       simple-test,
       typeorm-test,
-      websocket0test
+      websocket-test
     ]
     steps:
     - uses: actions/checkout@v1
