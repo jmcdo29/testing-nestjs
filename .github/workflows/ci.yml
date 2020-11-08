@@ -23,7 +23,7 @@ jobs:
       - name: npm install
         run: npm ci
       - name: npm test
-        run: npm run test:cov -- conplex-sample
+        run: npm run test:cov -- complex-sample
 
   cqrs-test:
     runs-on: ubuntu-latest
