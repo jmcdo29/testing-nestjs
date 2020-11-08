@@ -218,14 +218,13 @@ jobs:
       - name: npm test
         run: npm run test:cov -- websocket-sample
 
-  rebase-comment:
-    runs-on: ubuntu-latest
+  automerge:
     needs: e2e-test
+    runs-on: ubuntu-latest
     steps:
-      - uses: mshick/add-pr-comment@v1
-        with:
-          message: |
-            /rebase
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
-          allow-repeats: false # This is the default
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.12.0"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABEL: ""
+          MERGE_METHOD: rebase
