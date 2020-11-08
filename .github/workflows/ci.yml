@@ -1,0 +1,223 @@
+name: Continuous Integration Testing
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+      - 'main'
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  complex-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- conplex-sample
+
+  cqrs-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- cqrs-sample
+
+  e2e-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    needs: [
+      complex-test,
+      cqrs-test,
+      graphql-test,
+      microservice-test,
+      mongo-test,
+      render-test,
+      rxjs-test,
+      sequelize-test,
+      simple-test,
+      typeorm-test,
+      websocket0test
+    ]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Start Docker-Compose
+      run: docker-compose up -d
+    - name: npm install
+      run: npm ci
+    - name: Run tests
+      run: ./scripts/full-e2e
+    - name: Stop Docker-Compose
+      run: docker-compose down
+
+  graphql-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- /graphql-sample
+
+  microservice-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- microservice-sample
+
+  mongo-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- mongo-sample
+
+  render-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- render-sample
+
+  rxjs-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- rxjs-sample
+
+  sequelize-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- sequelize-sample
+
+  simple-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- simple-sample
+
+  typeorm-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- typeorm-sample
+
+  websocket-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test:cov -- websocket-sample
+
+  rebase-comment:
+    runs-on: ubuntu-latest
+    needs: e2e-test
