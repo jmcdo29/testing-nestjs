@@ -5,7 +5,6 @@ on:
 jobs:
   auto_rebase:
     name: Auto Rebase
-    needs: e2e
     runs-on: ubuntu-latest
     if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/rebase')
     steps:
