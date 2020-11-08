@@ -14,25 +14,27 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Start Docker-Compose
-        run: docker-compose up -d
-      - name: npm install
-        run: npm ci
-      - name: Run tests
-        run: ./scripts/full-e2e
-      - name: Stop Docker-Compose
-        run: docker-compose down
-      - name: debug
-        run: echo ${{ fromJSON(github.event) }}
+    - uses: actions/checkout@v1
+    - name: debug
+      run: |
+        echo github.event.pull_request.user.login
+        echo ${{ github.event.pull_request.user.login }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Start Docker-Compose
+      run: docker-compose up -d
+    - name: npm install
+      run: npm ci
+    - name: Run tests
+      run: ./scripts/full-e2e
+    - name: Stop Docker-Compose
+      run: docker-compose down
   test:
     runs-on: ubuntu-latest
     needs: e2e
-    if: contains(github.event.pull_request.author.login, 'dependabot')
+    if: contains(github.event.pull_request.user.login, 'dependabot') || github.event.pull_request.user.login == 'jmcdo29'
     steps:
       - uses: mshick/add-pr-comment@v1
         with:
