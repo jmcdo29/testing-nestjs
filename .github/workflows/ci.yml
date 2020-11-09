@@ -220,6 +220,7 @@ jobs:
 
   automerge:
     needs: e2e-test
+    if: contains(github.event.pull_request.user.login, 'dependabot')
     runs-on: ubuntu-latest
     steps:
       - name: automerge
