@@ -97,7 +97,7 @@
     "prettier": "^2.1.2",
     "supertest": "^6.0.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.7",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^6.1.3",
