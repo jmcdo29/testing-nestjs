@@ -40,7 +40,7 @@
     "test:e2e": "./scripts/test-e2e"
   },
   "dependencies": {
-    "@nestjs/common": "^7.5.2",
+    "@nestjs/common": "^7.5.3",
     "@nestjs/config": "^0.6.0",
     "@nestjs/core": "^7.5.2",
     "@nestjs/cqrs": "^7.0.1",
