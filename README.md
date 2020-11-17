@@ -1,13 +1,5 @@
 # testing-nestjs
 
-## Sponsor
-
-testing-nestjs is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
-
-<a href="https://tracking.gitads.io/?repo=testing-nestjs">
- <img src="https://images.gitads.io/testing-nestjs" alt="GitAds"/>
-</a>
-
 ## Status
 
 <div align="center">
