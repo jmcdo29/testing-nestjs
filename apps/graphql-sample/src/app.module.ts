@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppService } from './app.service';
 import { CatModule } from './cat/cat.module';
 import { GraphQLModule } from '@nestjs/graphql';
 
@@ -12,6 +11,5 @@ import { GraphQLModule } from '@nestjs/graphql';
       debug: true,
     }),
   ],
-  providers: [AppService],
 })
 export class AppModule {}
