@@ -1,3 +1,0 @@
-#! /bin/sh
-echo "jest --config ./apps/$1/test/jest-e2e.json"
-./node_modules/.bin/jest --config ./apps/$1/test/jest-e2e.json

@@ -7,7 +7,7 @@ import { Observer } from 'zen-observable-ts';
 
 const createSource = (retryMax = 2): Observable<any> => {
   let retryCount = 0;
-  return Observable.create((observer: Observer<any>) => {
+  return new Observable((observer: Observer<any>) => {
     if (retryCount < retryMax) {
       retryCount++;
       const thrownError = new Error('Error');
