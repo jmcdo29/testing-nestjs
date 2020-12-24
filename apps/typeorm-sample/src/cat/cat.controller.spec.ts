@@ -64,8 +64,8 @@ describe('Cat Controller', () => {
   });
 
   describe('getCats', () => {
-    it('should get an array of cats', () => {
-      expect(controller.getCats()).resolves.toEqual([
+    it('should get an array of cats', async () => {
+      await expect(controller.getCats()).resolves.toEqual([
         {
           name: testCat1,
           breed: testBreed1,
@@ -85,14 +85,14 @@ describe('Cat Controller', () => {
     });
   });
   describe('getById', () => {
-    it('should get a single cat', () => {
-      expect(controller.getById('a strange id')).resolves.toEqual({
+    it('should get a single cat', async () => {
+      await expect(controller.getById('a strange id')).resolves.toEqual({
         name: testCat1,
         breed: testBreed1,
         age: 4,
         id: 'a strange id',
       });
-      expect(controller.getById('a different id')).resolves.toEqual({
+      await expect(controller.getById('a different id')).resolves.toEqual({
         name: testCat1,
         breed: testBreed1,
         age: 4,
@@ -101,8 +101,8 @@ describe('Cat Controller', () => {
     });
   });
   describe('getByName', () => {
-    it('should get a cat back', () => {
-      expect(controller.getByName('Ventus')).resolves.toEqual({
+    it('should get a cat back', async () => {
+      await expect(controller.getByName('Ventus')).resolves.toEqual({
         name: 'Ventus',
         breed: testBreed1,
         age: 4,
@@ -115,7 +115,7 @@ describe('Cat Controller', () => {
           age: 5,
           id: 'a new uuid',
         });
-      expect(controller.getByName('Aqua')).resolves.toEqual({
+      await expect(controller.getByName('Aqua')).resolves.toEqual({
         name: 'Aqua',
         breed: 'Maine Coon',
         age: 5,
@@ -125,42 +125,44 @@ describe('Cat Controller', () => {
     });
   });
   describe('newCat', () => {
-    it('should create a new cat', () => {
+    it('should create a new cat', async () => {
       const newCatDTO: CatDTO = {
         name: 'New Cat 1',
         breed: 'New Breed 1',
         age: 4,
       };
-      expect(controller.newCat(newCatDTO)).resolves.toEqual({
+      await expect(controller.newCat(newCatDTO)).resolves.toEqual({
         id: 'a uuid',
         ...newCatDTO,
       });
     });
   });
   describe('updateCat', () => {
-    it('should update a new cat', () => {
+    it('should update a new cat', async () => {
       const newCatDTO: CatDTO = {
         name: 'New Cat 1',
         breed: 'New Breed 1',
         age: 4,
       };
-      expect(controller.updateCat(newCatDTO)).resolves.toEqual({
+      await expect(controller.updateCat(newCatDTO)).resolves.toEqual({
         id: 'a uuid',
         ...newCatDTO,
       });
     });
   });
   describe('deleteCat', () => {
-    it('should return that it deleted a cat', () => {
-      expect(controller.deleteCat('a uuid that exists')).resolves.toEqual({
-        deleted: true,
-      });
+    it('should return that it deleted a cat', async () => {
+      await expect(controller.deleteCat('a uuid that exists')).resolves.toEqual(
+        {
+          deleted: true,
+        },
+      );
     });
-    it('should return that it did not delete a cat', () => {
+    it('should return that it did not delete a cat', async () => {
       const deleteSpy = jest
         .spyOn(service, 'deleteOne')
         .mockResolvedValueOnce({ deleted: false });
-      expect(
+      await expect(
         controller.deleteCat('a uuid that does not exist'),
       ).resolves.toEqual({ deleted: false });
       expect(deleteSpy).toBeCalledWith('a uuid that does not exist');
