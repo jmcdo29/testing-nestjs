@@ -57,8 +57,7 @@ export class CatService {
 
   async updateOne(cat: CatDTO): Promise<Cat> {
     const { _id } = cat;
-    this.catModel.update({ _id }, cat);
-    const foundCat = await this.catModel.findOne({ _id }).exec();
+    const foundCat = await this.catModel.findOneAndUpdate({ _id }, cat).exec();
     return {
       id: foundCat._id,
       age: foundCat.age,
