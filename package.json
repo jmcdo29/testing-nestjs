@@ -83,7 +83,7 @@
     "@types/redis": "^2.8.28",
     "@types/sequelize": "^4.28.9",
     "@types/serve-static": "^1.13.9",
-    "@types/socket.io": "^2.1.12",
+    "@types/socket.io": "^2.1.13",
     "@types/socket.io-client": "^1.4.35",
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
