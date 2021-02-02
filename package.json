@@ -53,7 +53,7 @@
     "@nestjs/sequelize": "^0.1.1",
     "@nestjs/serve-static": "^2.1.4",
     "@nestjs/typeorm": "^7.1.5",
-    "@nestjs/websockets": "^7.6.7",
+    "@nestjs/websockets": "^7.6.9",
     "apollo-server-express": "^2.19.2",
     "class-transformer": "^0.3.2",
     "graphql": "^15.5.0",
