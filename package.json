@@ -76,7 +76,7 @@
     "@golevelup/nestjs-testing": "^0.1.2",
     "@nestjs/cli": "^7.5.4",
     "@nestjs/schematics": "^7.2.7",
-    "@nestjs/testing": "^7.6.9",
+    "@nestjs/testing": "^7.6.11",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.22",
