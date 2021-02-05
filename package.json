@@ -47,7 +47,7 @@
     "@nestjs/cqrs": "^7.0.1",
     "@nestjs/graphql": "^7.9.8",
     "@nestjs/microservices": "^7.6.11",
-    "@nestjs/mongoose": "^7.2.2",
+    "@nestjs/mongoose": "^7.2.3",
     "@nestjs/platform-express": "^7.6.11",
     "@nestjs/platform-socket.io": "^7.6.11",
     "@nestjs/sequelize": "^0.1.1",
