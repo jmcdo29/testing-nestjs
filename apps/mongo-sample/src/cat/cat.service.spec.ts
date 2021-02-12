@@ -53,7 +53,7 @@ const mockCatDoc: (mock?: {
 }) => {
   return {
     name: mock?.name || 'Ventus',
-    _id: mock?._id || 'a uuid',
+    _id: mock?.id || 'a uuid',
     age: mock?.age || 4,
     breed: mock?.breed || 'Russian Blue',
   };
