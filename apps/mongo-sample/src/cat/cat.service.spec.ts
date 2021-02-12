@@ -20,17 +20,12 @@ import { CatDoc } from './interfaces/cat-document.interface';
 const lasagna = 'lasagna lover';
 
 // I'm lazy and like to have functions that can be re-used to deal with a lot of my initialization/creation logic
-const mockCat: (
-  name?: string,
-  id?: string,
-  age?: number,
-  breed?: string,
-) => Cat = (
+const mockCat = (
   name = 'Ventus',
   id = 'a uuid',
   age = 4,
   breed = 'Russian Blue',
-) => {
+): Cat => {
   return {
     name,
     id,
@@ -40,17 +35,7 @@ const mockCat: (
 };
 
 // still lazy, but this time using an object instead of multiple parameters
-const mockCatDoc: (mock?: {
-  name?: string;
-  id?: string;
-  breed?: string;
-  age?: number;
-}) => Partial<CatDoc> = (mock?: {
-  name: string;
-  id: string;
-  age: number;
-  breed: string;
-}) => {
+const mockCatDoc = (mock?: Partial<Cat>): Partial<CatDoc> => {
   return {
     name: mock?.name || 'Ventus',
     _id: mock?.id || 'a uuid',
@@ -59,7 +44,7 @@ const mockCatDoc: (mock?: {
   };
 };
 
-const catArray: Cat[] = [
+const catArray = [
   mockCat(),
   mockCat('Vitani', 'a new uuid', 2, 'Tabby'),
   mockCat('Simba', 'the king', 14, 'Lion'),
