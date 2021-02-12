@@ -25,24 +25,20 @@ const mockCat = (
   id = 'a uuid',
   age = 4,
   breed = 'Russian Blue',
-): Cat => {
-  return {
-    name,
-    id,
-    age,
-    breed,
-  };
-};
+): Cat => ({
+  name,
+  id,
+  age,
+  breed,
+});
 
 // still lazy, but this time using an object instead of multiple parameters
-const mockCatDoc = (mock?: Partial<Cat>): Partial<CatDoc> => {
-  return {
-    name: mock?.name || 'Ventus',
-    _id: mock?.id || 'a uuid',
-    age: mock?.age || 4,
-    breed: mock?.breed || 'Russian Blue',
-  };
-};
+const mockCatDoc = (mock?: Partial<Cat>): Partial<CatDoc> => ({
+  name: mock?.name || 'Ventus',
+  _id: mock?.id || 'a uuid',
+  age: mock?.age || 4,
+  breed: mock?.breed || 'Russian Blue',
+});
 
 const catArray = [
   mockCat(),
