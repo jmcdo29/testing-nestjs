@@ -8,9 +8,9 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { CatDTO } from './cat.dto';
-import { Cat } from './interfaces/cat.interface';
-import { CatService } from './cat.service';
+import { CreateCatDto, UpdateCatDto } from '../dto/cat-dto';
+import { Cat } from '../interfaces/cat.interface';
+import { CatService } from '../cat.service';
 
 @Controller('cat')
 export class CatController {
@@ -32,12 +32,12 @@ export class CatController {
   }
 
   @Post('/new')
-  async newCat(@Body() cat: CatDTO): Promise<Cat> {
+  async newCat(@Body() cat: CreateCatDto): Promise<Cat> {
     return this.catService.insertOne(cat);
   }
 
   @Patch('/update')
-  async updateCat(@Body() cat: CatDTO): Promise<Cat> {
+  async updateCat(@Body() cat: UpdateCatDto): Promise<Cat> {
     return this.catService.updateOne(cat);
   }
 
