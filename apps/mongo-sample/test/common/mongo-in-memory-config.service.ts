@@ -10,7 +10,7 @@ export class MongoInMemoryConfigService implements MongooseOptionsFactory {
     const mongod = new MongoMemoryServer({ autoStart: true });
     const uri = await mongod.getUri();
 
-    // await mongod.start();
+    await mongod.start();
 
     return {
       uri,
