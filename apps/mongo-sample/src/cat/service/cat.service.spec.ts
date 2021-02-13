@@ -9,12 +9,12 @@
  * and add your fields on top. Seriously, 59 plus fields is a lot.
  */
 
+import { Model, Query } from 'mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { createMock } from '@golevelup/nestjs-testing';
 import { getModelToken } from '@nestjs/mongoose';
 import { CatService } from './cat.service';
 import { Cat } from '../interface/cat.interface';
-import { Model, Query } from 'mongoose';
 import { CatDocument } from '../schema/cat.document';
 
 const lasagna = 'lasagna lover';
@@ -130,8 +130,10 @@ describe('CatService', () => {
           .mockResolvedValueOnce(mockCatDoc({ name: 'Ventus', id: 'an id' })),
       }),
     );
+
     const findMockCat = mockCat('Ventus', 'an id');
     const foundCat = await service.getOne('an id');
+
     expect(foundCat).toEqual(findMockCat);
   });
 
@@ -155,7 +157,7 @@ describe('CatService', () => {
   it('should insert a new cat', async () => {
     jest.spyOn(model, 'create').mockImplementationOnce(() =>
       Promise.resolve({
-        _id: 'some id',
+        id: 'some id',
         name: 'Oliver',
         age: 1,
         breed: 'Tabby',
@@ -196,7 +198,7 @@ describe('CatService', () => {
 
   it('should delete a cat successfully', async () => {
     // really just returning a truthy value here as we aren't doing any logic with the return
-    jest.spyOn(model, 'remove').mockResolvedValueOnce(true as any);
+    jest.spyOn(model, 'remove').mockResolvedValueOnce(true);
 
     expect(await service.deleteOne('a bad id')).toEqual({ deleted: true });
   });

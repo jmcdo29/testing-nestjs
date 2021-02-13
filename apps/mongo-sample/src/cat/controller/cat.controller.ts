@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { CreateCatDto, UpdateCatDto } from '../dto/cat-dto';
-import { Cat } from '../interfaces/cat.interface';
+import { Cat } from '../interface/cat.interface';
 import { CatService } from '../service/cat.service';
 
 @Controller('cat')

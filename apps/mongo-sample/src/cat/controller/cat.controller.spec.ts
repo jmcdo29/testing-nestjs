@@ -1,7 +1,7 @@
 import { createMock } from '@golevelup/nestjs-testing';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatController } from './cat.controller';
-import { CreateCatDto } from '../dto/cat-dto';
+import { CreateCatDto, UpdateCatDto } from '../dto/cat-dto';
 import { CatService } from '../service/cat.service';
 import { Cat } from '../interface/cat.interface';
 
@@ -86,6 +86,7 @@ describe('Cat Controller', () => {
       ]);
     });
   });
+
   describe('getById', () => {
     it('should get a single cat', () => {
       expect(controller.getById('a strange id')).resolves.toEqual({
@@ -102,6 +103,7 @@ describe('Cat Controller', () => {
       });
     });
   });
+
   describe('getByName', () => {
     it('should get a cat back', async () => {
       expect(controller.getByName('Ventus')).resolves.toEqual({
@@ -109,6 +111,7 @@ describe('Cat Controller', () => {
         breed: testBreed1,
         age: 4,
       });
+
       // using the really cool @golevelup/nestjs-testing module's utility function here
       // otherwise we need to pass `as any` or we need to mock all 54+ attributes of Document
       const aquaMock = createMock<Cat>({
@@ -116,14 +119,18 @@ describe('Cat Controller', () => {
         breed: 'Maine Coon',
         age: 5,
       });
+
       const getByNameSpy = jest
         .spyOn(service, 'getOneByName')
         .mockResolvedValueOnce(aquaMock);
+
       const getResponse = await controller.getByName('Aqua');
+
       expect(getResponse).toEqual(aquaMock);
       expect(getByNameSpy).toBeCalledWith('Aqua');
     });
   });
+
   describe('newCat', () => {
     it('should create a new cat', () => {
       const newCatDTO: CreateCatDto = {
@@ -137,32 +144,36 @@ describe('Cat Controller', () => {
       });
     });
   });
+
   describe('updateCat', () => {
     it('should update a new cat', () => {
-      const newCatDTO: Cat = {
+      const updateCatDto: UpdateCatDto = {
+        _id: 'a uuid',
         name: 'New Cat 1',
         breed: 'New Breed 1',
         age: 4,
       };
-      expect(controller.updateCat(newCatDTO)).resolves.toEqual({
-        _id: 'a uuid',
-        ...newCatDTO,
-      });
+
+      expect(controller.updateCat(updateCatDto)).resolves.toEqual(updateCatDto);
     });
   });
+
   describe('deleteCat', () => {
     it('should return that it deleted a cat', () => {
       expect(controller.deleteCat('a uuid that exists')).resolves.toEqual({
         deleted: true,
       });
     });
+
     it('should return that it did not delete a cat', () => {
       const deleteSpy = jest
         .spyOn(service, 'deleteOne')
         .mockResolvedValueOnce({ deleted: false });
+
       expect(
         controller.deleteCat('a uuid that does not exist'),
       ).resolves.toEqual({ deleted: false });
+
       expect(deleteSpy).toBeCalledWith('a uuid that does not exist');
     });
   });
