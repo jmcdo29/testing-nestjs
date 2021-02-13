@@ -2,8 +2,8 @@ import { createMock } from '@golevelup/nestjs-testing';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 import { CreateCatDto, UpdateCatDto } from '../dto/cat-dto';
-import { CatService } from '../service/cat.service';
-import { Cat } from '../interface/cat.interface';
+import { CatService } from '../cat.service';
+import { Cat } from '../interfaces/cat.interface';
 
 const testCat1 = 'Test Cat 1';
 const testBreed1 = 'Test Breed 1';

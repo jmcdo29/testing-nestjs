@@ -1,9 +1,9 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Cat } from '../interface/cat.interface';
-import { CatDocument } from '../schema/cat.document';
-import { CreateCatDto, UpdateCatDto } from '../dto/cat-dto';
+import { Cat } from './interfaces/cat.interface';
+import { CatDocument } from './schemas/cat.document';
+import { CreateCatDto, UpdateCatDto } from './dto/cat-dto';
 
 @Injectable()
 export class CatService {
@@ -12,7 +12,7 @@ export class CatService {
   ) {}
 
   async getAll(): Promise<Cat[]> {
-    return this.catModel.find().exec();
+    return this.catModel.find().lean().exec();
   }
 
   async getOne(id: string): Promise<Cat> {

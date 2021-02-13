@@ -14,8 +14,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { createMock } from '@golevelup/nestjs-testing';
 import { getModelToken } from '@nestjs/mongoose';
 import { CatService } from './cat.service';
-import { Cat } from '../interface/cat.interface';
-import { CatDocument } from '../schema/cat.document';
+import { Cat } from './interfaces/cat.interface';
+import { CatDocument } from './schemas/cat.document';
 
 const lasagna = 'lasagna lover';
 

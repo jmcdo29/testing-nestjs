@@ -1,4 +1,4 @@
-import { Cat } from '../interface/cat.interface';
+import { Cat } from '../interfaces/cat.interface';
 
 export type CreateCatDto = Readonly<Cat>;
 

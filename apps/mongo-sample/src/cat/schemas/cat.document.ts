@@ -1,8 +1,8 @@
 import { Document } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Cat } from '../interface/cat.interface';
+import { Cat } from '../interfaces/cat.interface';
 
-@Schema()
+@Schema({ versionKey: false })
 export class CatDocument extends Document implements Cat {
   @Prop()
   age: number;
