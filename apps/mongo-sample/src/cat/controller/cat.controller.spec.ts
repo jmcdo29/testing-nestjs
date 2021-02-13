@@ -1,9 +1,9 @@
 import { createMock } from '@golevelup/nestjs-testing';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatController } from './cat.controller';
-import { CatDTO } from './cat.dto';
-import { CatService } from './cat.service';
-import { Cat } from './interfaces/cat.interface';
+import { CreateCatDto } from '../dto/cat-dto';
+import { CatService } from '../service/cat.service';
+import { Cat } from '../interface/cat.interface';
 
 const testCat1 = 'Test Cat 1';
 const testBreed1 = 'Test Breed 1';
@@ -43,12 +43,12 @@ describe('Cat Controller', () => {
               ),
             insertOne: jest
               .fn()
-              .mockImplementation((cat: CatDTO) =>
+              .mockImplementation((cat: CreateCatDto) =>
                 Promise.resolve({ _id: 'a uuid', ...cat }),
               ),
             updateOne: jest
               .fn()
-              .mockImplementation((cat: CatDTO) =>
+              .mockImplementation((cat: CreateCatDto) =>
                 Promise.resolve({ _id: 'a uuid', ...cat }),
               ),
             deleteOne: jest.fn().mockResolvedValue({ deleted: true }),
@@ -126,7 +126,7 @@ describe('Cat Controller', () => {
   });
   describe('newCat', () => {
     it('should create a new cat', () => {
-      const newCatDTO: CatDTO = {
+      const newCatDTO: CreateCatDto = {
         name: 'New Cat 1',
         breed: 'New Breed 1',
         age: 4,
@@ -139,7 +139,7 @@ describe('Cat Controller', () => {
   });
   describe('updateCat', () => {
     it('should update a new cat', () => {
-      const newCatDTO: CatDTO = {
+      const newCatDTO: Cat = {
         name: 'New Cat 1',
         breed: 'New Breed 1',
         age: 4,

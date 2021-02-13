@@ -10,12 +10,12 @@
  */
 
 import { Test, TestingModule } from '@nestjs/testing';
-import { CatService } from './cat.service';
-import { getModelToken } from '@nestjs/mongoose';
-import { Cat } from './interfaces/cat.interface';
 import { createMock } from '@golevelup/nestjs-testing';
+import { getModelToken } from '@nestjs/mongoose';
+import { CatService } from './cat.service';
+import { Cat } from '../interface/cat.interface';
 import { Model, Query } from 'mongoose';
-import { CatDoc } from './interfaces/cat-document.interface';
+import { CatDocument } from '../schema/cat.document';
 
 const lasagna = 'lasagna lover';
 
@@ -45,7 +45,7 @@ const mockCatDoc: (mock?: {
   id?: string;
   breed?: string;
   age?: number;
-}) => Partial<CatDoc> = (mock?: {
+}) => Partial<CatDocument> = (mock?: {
   name: string;
   id: string;
   age: number;
@@ -73,7 +73,7 @@ const catDocArray = [
 
 describe('CatService', () => {
   let service: CatService;
-  let model: Model<CatDoc>;
+  let model: Model<CatDocument>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -97,7 +97,7 @@ describe('CatService', () => {
     }).compile();
 
     service = module.get<CatService>(CatService);
-    model = module.get<Model<CatDoc>>(getModelToken('Cat'));
+    model = module.get<Model<CatDocument>>(getModelToken('Cat'));
   });
 
   it('should be defined', () => {
@@ -116,12 +116,15 @@ describe('CatService', () => {
     jest.spyOn(model, 'find').mockReturnValue({
       exec: jest.fn().mockResolvedValueOnce(catDocArray),
     } as any);
+
     const cats = await service.getAll();
+
     expect(cats).toEqual(catArray);
   });
+
   it('should getOne by id', async () => {
     jest.spyOn(model, 'findOne').mockReturnValueOnce(
-      createMock<Query<CatDoc, CatDoc>>({
+      createMock<Query<CatDocument, CatDocument>>({
         exec: jest
           .fn()
           .mockResolvedValueOnce(mockCatDoc({ name: 'Ventus', id: 'an id' })),
@@ -131,9 +134,10 @@ describe('CatService', () => {
     const foundCat = await service.getOne('an id');
     expect(foundCat).toEqual(findMockCat);
   });
+
   it('should getOne by name', async () => {
     jest.spyOn(model, 'findOne').mockReturnValueOnce(
-      createMock<Query<CatDoc, CatDoc>>({
+      createMock<Query<CatDocument, CatDocument>>({
         exec: jest
           .fn()
           .mockResolvedValueOnce(
@@ -141,10 +145,13 @@ describe('CatService', () => {
           ),
       }),
     );
+
     const findMockCat = mockCat('Mufasa', 'the dead king');
     const foundCat = await service.getOneByName('Mufasa');
+
     expect(foundCat).toEqual(findMockCat);
   });
+
   it('should insert a new cat', async () => {
     jest.spyOn(model, 'create').mockImplementationOnce(() =>
       Promise.resolve({
@@ -154,17 +161,20 @@ describe('CatService', () => {
         breed: 'Tabby',
       }),
     );
+
     const newCat = await service.insertOne({
       name: 'Oliver',
       age: 1,
       breed: 'Tabby',
     });
+
     expect(newCat).toEqual(mockCat('Oliver', 'some id', 1, 'Tabby'));
   });
   // jest is complaining about findOneAndUpdate. Can't say why at the moment.
+
   it.skip('should update a cat successfully', async () => {
     jest.spyOn(model, 'findOneAndUpdate').mockReturnValueOnce(
-      createMock<Query<CatDoc, CatDoc>>({
+      createMock<Query<CatDocument, CatDocument>>({
         exec: jest.fn().mockResolvedValueOnce({
           _id: lasagna,
           name: 'Garfield',
@@ -173,22 +183,28 @@ describe('CatService', () => {
         }),
       }),
     );
+
     const updatedCat = await service.updateOne({
       _id: lasagna,
       name: 'Garfield',
       breed: 'Tabby',
       age: 42,
     });
+
     expect(updatedCat).toEqual(mockCat('Garfield', lasagna, 42, 'Tabby'));
   });
+
   it('should delete a cat successfully', async () => {
     // really just returning a truthy value here as we aren't doing any logic with the return
     jest.spyOn(model, 'remove').mockResolvedValueOnce(true as any);
+
     expect(await service.deleteOne('a bad id')).toEqual({ deleted: true });
   });
+
   it('should not delete a cat', async () => {
     // really just returning a falsy value here as we aren't doing any logic with the return
     jest.spyOn(model, 'remove').mockRejectedValueOnce(new Error('Bad delete'));
+
     expect(await service.deleteOne('a bad id')).toEqual({
       deleted: false,
       message: 'Bad delete',
