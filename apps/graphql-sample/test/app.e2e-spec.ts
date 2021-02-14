@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../src/app.module';
 import { Cat } from '../src/cat/models/cat-query.dto';
 import { INestApplication } from '@nestjs/common';
 
