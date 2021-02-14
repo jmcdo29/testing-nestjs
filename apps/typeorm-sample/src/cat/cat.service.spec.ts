@@ -33,10 +33,10 @@ describe('CatService', () => {
             create: jest.fn().mockReturnValue(oneCat),
             save: jest.fn(),
             // as these do not actually use their return values in our sample
-            // we just make sure that their resolee is true to not crash
+            // we just make sure that their resolve is true to not crash
             update: jest.fn().mockResolvedValue(true),
             // as these do not actually use their return values in our sample
-            // we just make sure that their resolee is true to not crash
+            // we just make sure that their resolve is true to not crash
             delete: jest.fn().mockResolvedValue(true),
           },
         },
