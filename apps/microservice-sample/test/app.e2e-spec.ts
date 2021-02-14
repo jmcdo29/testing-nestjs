@@ -65,7 +65,7 @@ describe('Microservices (e2e)', () => {
       }
     `);
 
-    // wait a while to allow suscriber to receive message
+    // wait a while to allow subscriber to receive message
     await new Promise((fulfill) => setTimeout(fulfill, 250));
   });
 });
