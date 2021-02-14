@@ -104,7 +104,7 @@ describe('Cat Controller', () => {
   });
   describe('getByName', () => {
     it('should get a cat back', async () => {
-      expect(controller.getByName('Ventus')).resolves.toEqual({
+      await expect(controller.getByName('Ventus')).resolves.toEqual({
         name: 'Ventus',
         breed: testBreed1,
         age: 4,
