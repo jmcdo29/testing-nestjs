@@ -41,7 +41,7 @@ jobs:
       - name: npm install
         run: npm ci
       - name: npm test
-        run: npm run test -- ${{ matrix.test }}
+        run: npm run test:cov -- ${{ matrix.test }}
       - name: publish coverage to github pages
         run: cp -Rvf coverage/lcov-report/ docs/coverage-report
 
