@@ -67,7 +67,7 @@ jobs:
   #       run: docker-compose down
 
   automerge:
-    needs: e2e-test
+    needs: unit-tests
     if: contains(github.event.pull_request.user.login, 'dependabot')
     runs-on: ubuntu-latest
     steps:
