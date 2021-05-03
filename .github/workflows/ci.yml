@@ -31,9 +31,6 @@ jobs:
           ]
     steps:
       - uses: actions/checkout@v2
-      - uses: artiomtr/jest-coverage-report-action@v1.2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Use NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -42,6 +39,9 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm run test:cov -- ${{ matrix.test }}
+      - uses: artiomtr/jest-coverage-report-action@v1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: publish coverage to github pages
         run: cp -Rvf coverage/lcov-report/ docs/coverage-report
 
