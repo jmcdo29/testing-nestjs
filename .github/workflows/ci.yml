@@ -42,6 +42,8 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm run test -- ${{ matrix.test }}
+      - name: publish coverage to github pages
+        run: cp -Rvf coverage/lcov-report/ docs/coverage-report
 
   # e2e-test:
   #   runs-on: ubuntu-latest
