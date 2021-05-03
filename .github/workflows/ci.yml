@@ -31,6 +31,9 @@ jobs:
           ]
     steps:
       - uses: actions/checkout@v2
+      - uses: artiomtr/jest-coverage-report-action@v1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Use NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -40,28 +43,28 @@ jobs:
       - name: npm test
         run: npm run test -- ${{ matrix.test }}
 
-  e2e-test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x]
-    needs: [unit-tests]
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Start Docker-Compose
-        run: docker-compose up -d
-      - name: npm install
-        run: npm ci
-      - name: Run tests
-        run: npm run test:e2e
-      - name: Collect coverage
-        run: npm run test:cov:total
-      - name: Stop Docker-Compose
-        run: docker-compose down
+  # e2e-test:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [12.x, 14.x]
+  #   needs: [unit-tests]
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - name: Start Docker-Compose
+  #       run: docker-compose up -d
+  #     - name: npm install
+  #       run: npm ci
+  #     - name: Run tests
+  #       run: npm run test:e2e
+  #     - name: Collect coverage
+  #       run: npm run test:cov:total
+  #     - name: Stop Docker-Compose
+  #       run: docker-compose down
 
   automerge:
     needs: e2e-test
