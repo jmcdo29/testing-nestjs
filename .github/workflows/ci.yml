@@ -42,8 +42,6 @@ jobs:
       - uses: artiomtr/jest-coverage-report-action@v1.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: publish coverage to github pages
-        run: cp -Rvf coverage/lcov-report/ docs/coverage-report
 
   # e2e-test:
   #   runs-on: ubuntu-latest
