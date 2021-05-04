@@ -39,10 +39,11 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm run test -- ${{ matrix.test }}
-      - uses: artiomtr/jest-coverage-report-action@v1.2
+      - uses: 5monkeys/cobertura-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          test_script: npm run test:cov -- ${{ matrix.test }}
+          path: coverage/clover.xml
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_coverage: 75
 
       # - uses: vebr/jest-lcov-reporter@v0.2.0
       #   with:
