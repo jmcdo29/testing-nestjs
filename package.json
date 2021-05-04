@@ -129,9 +129,6 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "coverageDirectory": "./coverage",
-    "coverageReporters": [
-      "text-summary"
-    ],
     "testEnvironment": "node",
     "roots": [
       "<rootDir>/apps/"
