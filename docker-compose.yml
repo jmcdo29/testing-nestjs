@@ -23,3 +23,9 @@ services:
       MYSQL_DATABASE: test
     ports:
       - '3306:3306'
+  console:
+    image: node
+    command: /bin/bash
+    working_dir: /app
+    volumes:
+      - .:/app

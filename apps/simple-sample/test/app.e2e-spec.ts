@@ -19,11 +19,11 @@ describe('AppController (e2e)', () => {
   });
 
   describe('/ (GET)', () => {
-    it('/ (GET)', () => {
-      return requestFunction('/', 'Hello, World!', app);
-    });
-    it('/?name=Tester', () => {
-      return requestFunction('/?name=Tester', 'Hello, Tester!', app);
-    });
+    // it('/ (GET)', () => {
+    //   return requestFunction('/', 'Hello, World!', app);
+    // });
+    // it('/?name=Tester', () => {
+    //   return requestFunction('/?name=Tester', 'Hello, Tester!', app);
+    // });
   });
 });
