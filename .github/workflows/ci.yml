@@ -38,7 +38,7 @@ jobs:
       - name: npm install
         run: npm ci
       - name: npm test
-        run: npm run test:cov -- ${{ matrix.test }}
+        run: npm run test -- ${{ matrix.test }}
       # - uses: vebr/jest-lcov-reporter@v0.2.0
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
