@@ -39,6 +39,11 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm run test -- ${{ matrix.test }}
+      - uses: artiomtr/jest-coverage-report-action@v1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          test_script: npm run test:cov -- ${{ matrix.test }}
+
       # - uses: vebr/jest-lcov-reporter@v0.2.0
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
