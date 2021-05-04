@@ -5,7 +5,9 @@ on:
     branches:
       - 'master'
       - 'main'
-      - '*'
+  push:
+    branches:
+      - master
   schedule:
     - cron: '0 0 * * *'
 
@@ -44,33 +46,32 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      # - uses: vebr/jest-lcov-reporter@v0.2.0
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     lcov-file: ./coverage/lcov.info
-
-  # e2e-test:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       node-version: [12.x, 14.x]
-  #   needs: [unit-tests]
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #     - name: Start Docker-Compose
-  #       run: docker-compose up -d
-  #     - name: npm install
-  #       run: npm ci
-  #     - name: Run tests
-  #       run: npm run test:e2e
-  #     - name: Collect coverage
-  #       run: npm run test:cov:total
-  #     - name: Stop Docker-Compose
-  #       run: docker-compose down
+  e2e-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    needs: [unit-tests]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Start Docker-Compose
+        run: docker-compose up -d
+      - name: npm install
+        run: npm ci
+      - name: Run tests
+        run: npm run test:e2e
+      - name: Collect coverage
+        run: npm run test:cov:total
+      - name: Stop Docker-Compose
+        run: docker-compose down
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   automerge:
     needs: unit-tests
