@@ -39,11 +39,14 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm run test:cov -- ${{ matrix.test }}
-      - uses: 5monkeys/cobertura-action@master
+      - uses: codecov/codecov-action@v1
         with:
-          path: ./coverage/clover.xml
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 75
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: ./coverage/clover.xml
+          flags: unittests # optional
+          name: codecov-examples
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
 
       # - uses: vebr/jest-lcov-reporter@v0.2.0
       #   with:
