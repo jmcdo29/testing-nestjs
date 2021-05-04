@@ -41,7 +41,7 @@ jobs:
         run: npm run test:cov -- ${{ matrix.test }}
       - uses: 5monkeys/cobertura-action@master
         with:
-          path: coverage/clover.xml
+          path: ./coverage/clover.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           minimum_coverage: 75
 
