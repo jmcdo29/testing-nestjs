@@ -44,7 +44,10 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
+          name: api-tests
+          flags: unittests
           token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
 
   e2e-test:
     runs-on: ubuntu-latest
@@ -71,7 +74,10 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
+          name: api-tests
+          flags: e2etests
           token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
 
   automerge:
     needs: unit-tests
