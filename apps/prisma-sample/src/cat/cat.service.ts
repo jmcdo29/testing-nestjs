@@ -1,7 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { Cat } from '@prisma/client';
-import { PrismaService } from '../prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { CatDTO } from './cat.dto';
 
 @Injectable()
