@@ -26,6 +26,7 @@ jobs:
             sequelize-sample,
             simple-sample,
             typeorm-sample,
+            prisma-sample,
             websocket-sample,
           ]
     steps:
