@@ -35,11 +35,14 @@ describe('CatService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [CatService, PrismaService],
-    })
-      .overrideProvider(PrismaService)
-      .useValue(db)
-      .compile();
+      providers: [
+        CatService,
+        {
+          provide: PrismaService,
+          useValue: db,
+        },
+      ],
+    }).compile();
 
     service = module.get<CatService>(CatService);
     prisma = module.get<PrismaService>(PrismaService);
