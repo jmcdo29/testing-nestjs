@@ -133,6 +133,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/sequelize-sample/tsconfig.app.json"
       }
+    },
+    "prisma-sample": {
+      "type": "application",
+      "root": "apps/prisma-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/prisma-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/prisma-sample/tsconfig.app.json"
+      }
     }
   }
 }
