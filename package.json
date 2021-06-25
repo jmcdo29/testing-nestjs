@@ -37,7 +37,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "./setupPrismaDatabase.sh && jest -c jest.e2e.js",
+    "test:e2e": "./setupPrismaDatabase.sh && DATABASE_URL=postgres://postgres:postgres@localhost:5433/prisma jest -c jest.e2e.js",
     "test:cov:total": "jest -c jest.cov.js"
   },
   "dependencies": {
