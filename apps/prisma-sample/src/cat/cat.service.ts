@@ -23,7 +23,9 @@ export class CatService {
       where: { name },
     });
 
-    if (!cat) throw new NotFoundException('Cat not found');
+    if (!cat) {
+      throw new NotFoundException('Cat not found');
+    }
 
     return cat;
   }
