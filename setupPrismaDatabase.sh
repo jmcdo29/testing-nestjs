@@ -1,3 +1,3 @@
 cd apps/prisma-sample
-npx prisma migrate deploy
+DATABASE_URL=postgres://postgres:postgres@localhost:5433/prisma npx prisma migrate deploy
 cd ../..
