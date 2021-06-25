@@ -12,6 +12,11 @@
     "incremental": true,
     "paths": {}
   },
-  "include": ["apps/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "apps/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
