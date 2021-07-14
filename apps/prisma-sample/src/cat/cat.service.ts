@@ -2,13 +2,20 @@ import { NotFoundException } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { Cat } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { CatUpdateDTO } from './cat-update.dto';
 import { CatDTO } from './cat.dto';
 
 @Injectable()
 export class CatService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getAll(): Promise<Cat[]> {
+  async getAll(name?: string | undefined): Promise<Cat[]> {
+    if (name) {
+      return this.prisma.cat.findMany({
+        where: { name },
+      });
+    }
+
     return this.prisma.cat.findMany();
   }
 
@@ -18,30 +25,15 @@ export class CatService {
     });
   }
 
-  async getOneByName(name: string): Promise<Cat> {
-    const cat = await this.prisma.cat.findFirst({
-      where: { name },
-    });
-
-    if (!cat) {
-      throw new NotFoundException('Cat not found');
-    }
-
-    return cat;
-  }
-
   async insertOne(cat: CatDTO): Promise<Cat> {
-    const newCat = this.prisma.cat.create({
+    return this.prisma.cat.create({
       data: cat,
     });
-    return newCat;
   }
 
-  async updateOne(cat: CatDTO): Promise<Cat> {
-    const { id, ...catAttributes } = cat;
-
+  async updateOne(id: string, cat: CatUpdateDTO): Promise<Cat> {
     return this.prisma.cat.update({
-      data: catAttributes,
+      data: cat,
       where: { id },
     });
   }

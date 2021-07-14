@@ -11,19 +11,15 @@ import {
 import { CatDTO } from './cat.dto';
 import { Cat } from '@prisma/client';
 import { CatService } from './cat.service';
+import { CatUpdateDTO } from './cat-update.dto';
 
-@Controller('cat')
+@Controller('cats')
 export class CatController {
   constructor(private readonly catService: CatService) {}
 
   @Get()
-  async getCats(): Promise<Cat[]> {
-    return this.catService.getAll();
-  }
-
-  @Get('/name')
-  async getByName(@Query('name') name: string): Promise<Cat> {
-    return this.catService.getOneByName(name);
+  async getCats(@Query('name') name?: string): Promise<Cat[]> {
+    return this.catService.getAll(name);
   }
 
   @Get('/:id')
@@ -31,17 +27,20 @@ export class CatController {
     return this.catService.getOne(id);
   }
 
-  @Post('/new')
+  @Post('/')
   async newCat(@Body() cat: CatDTO): Promise<Cat> {
     return this.catService.insertOne(cat);
   }
 
-  @Patch('/update')
-  async updateCat(@Body() cat: CatDTO): Promise<Cat> {
-    return this.catService.updateOne(cat);
+  @Patch('/:id')
+  async updateCat(
+    @Param('id') id: string,
+    @Body() cat: CatUpdateDTO,
+  ): Promise<Cat> {
+    return this.catService.updateOne(id, cat);
   }
 
-  @Delete('/delete/:id')
+  @Delete('/:id')
   async deleteCat(@Param('id') id: string): Promise<{ deleted: boolean }> {
     return this.catService.deleteOne(id);
   }
