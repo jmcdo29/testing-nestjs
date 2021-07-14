@@ -15,4 +15,19 @@ model Cat {
   name  String @default("")
   breed String @default("")
   age   Int?
+
+  owner   Owner  @relation(fields: [ownerId], references: [id])
+  ownerId String
+
+  @@map("cats")
+}
+
+model Owner {
+  id   String @id @default(uuid())
+  name String @default("")
+  age  Int?
+
+  cats Cat[]
+
+  @@map("owners")
 }
