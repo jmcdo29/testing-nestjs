@@ -2,9 +2,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 import { CatDTO } from './cat.dto';
 import { CatService } from './cat.service';
+import { v4 as uuidv4 } from 'uuid';
 
+const catId = uuidv4();
 const testCat1 = 'Test Cat 1';
 const testBreed1 = 'Test Breed 1';
+const ownerId = uuidv4();
 
 describe('Cat Controller', () => {
   let controller: CatController;
@@ -22,32 +25,38 @@ describe('Cat Controller', () => {
           provide: CatService,
           useValue: {
             getAll: jest.fn().mockResolvedValue([
-              { name: testCat1, breed: testBreed1, age: 4 },
-              { name: 'Test Cat 2', breed: 'Test Breed 2', age: 3 },
-              { name: 'Test Cat 3', breed: 'Test Breed 3', age: 2 },
+              { name: testCat1, breed: testBreed1, age: 4, ownerId },
+              {
+                name: 'Test Cat 2',
+                breed: 'Test Breed 2',
+                age: 3,
+                ownerId,
+              },
+              {
+                name: 'Test Cat 3',
+                breed: 'Test Breed 3',
+                age: 2,
+                ownerId,
+              },
             ]),
             getOne: jest.fn().mockImplementation((id: string) =>
               Promise.resolve({
                 name: testCat1,
                 breed: testBreed1,
                 age: 4,
+                ownerId,
                 id,
               }),
             ),
-            getOneByName: jest
-              .fn()
-              .mockImplementation((name: string) =>
-                Promise.resolve({ name, breed: testBreed1, age: 4 }),
-              ),
             insertOne: jest
               .fn()
               .mockImplementation((cat: CatDTO) =>
-                Promise.resolve({ id: 'a uuid', ...cat }),
+                Promise.resolve({ id: catId, ...cat }),
               ),
             updateOne: jest
               .fn()
-              .mockImplementation((cat: CatDTO) =>
-                Promise.resolve({ id: 'a uuid', ...cat }),
+              .mockImplementation((id: string, cat: CatDTO) =>
+                Promise.resolve({ id, ...cat }),
               ),
             deleteOne: jest.fn().mockResolvedValue({ deleted: true }),
           },
@@ -70,16 +79,19 @@ describe('Cat Controller', () => {
           name: testCat1,
           breed: testBreed1,
           age: 4,
+          ownerId: ownerId,
         },
         {
           name: 'Test Cat 2',
           breed: 'Test Breed 2',
           age: 3,
+          ownerId: ownerId,
         },
         {
           name: 'Test Cat 3',
           breed: 'Test Breed 3',
           age: 2,
+          ownerId: ownerId,
         },
       ]);
     });
@@ -91,37 +103,15 @@ describe('Cat Controller', () => {
         breed: testBreed1,
         age: 4,
         id: 'a strange id',
+        ownerId,
       });
       await expect(controller.getById('a different id')).resolves.toEqual({
         name: testCat1,
         breed: testBreed1,
         age: 4,
         id: 'a different id',
+        ownerId,
       });
-    });
-  });
-  describe('getByName', () => {
-    it('should get a cat back', async () => {
-      await expect(controller.getByName('Ventus')).resolves.toEqual({
-        name: 'Ventus',
-        breed: testBreed1,
-        age: 4,
-      });
-      const getByNameSpy = jest
-        .spyOn(service, 'getOneByName')
-        .mockResolvedValueOnce({
-          name: 'Aqua',
-          breed: 'Maine Coon',
-          age: 5,
-          id: 'a new uuid',
-        });
-      await expect(controller.getByName('Aqua')).resolves.toEqual({
-        name: 'Aqua',
-        breed: 'Maine Coon',
-        age: 5,
-        id: 'a new uuid',
-      });
-      expect(getByNameSpy).toBeCalledWith('Aqua');
     });
   });
   describe('newCat', () => {
@@ -130,22 +120,24 @@ describe('Cat Controller', () => {
         name: 'New Cat 1',
         breed: 'New Breed 1',
         age: 4,
+        ownerId,
       };
       await expect(controller.newCat(newCatDTO)).resolves.toEqual({
-        id: 'a uuid',
+        id: catId,
         ...newCatDTO,
       });
     });
   });
   describe('updateCat', () => {
-    it('should update a new cat', async () => {
+    it('should update a cat', async () => {
       const newCatDTO: CatDTO = {
         name: 'New Cat 1',
         breed: 'New Breed 1',
         age: 4,
+        ownerId,
       };
-      await expect(controller.updateCat(newCatDTO)).resolves.toEqual({
-        id: 'a uuid',
+      await expect(controller.updateCat(catId, newCatDTO)).resolves.toEqual({
+        id: catId,
         ...newCatDTO,
       });
     });
