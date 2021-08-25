@@ -5,7 +5,7 @@ import { Cat } from './cat.model';
 import { CatsService } from './cats.service';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Cat])],
+  imports: [],
   controllers: [CatsController],
   providers: [CatsService],
 })
