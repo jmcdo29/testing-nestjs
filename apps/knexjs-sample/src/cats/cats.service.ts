@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Knex } from 'knex';
-import { InjectModel } from 'nest-knexjs';
+import { InjectConnection } from 'nest-knexjs';
 import { CatDTO } from './cat.dto';
 import { Cat } from './cat.model';
 
