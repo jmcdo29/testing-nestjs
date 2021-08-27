@@ -6,7 +6,7 @@ import { Cat } from './cat.model';
 
 @Injectable()
 export class CatsService {
-  constructor(@InjectModel() private readonly knex: Knex) {}
+  constructor(@InjectConnection() private readonly knex: Knex) {}
 
   async findAllCat() {
     const cats = await this.knex.table('cats');
