@@ -5,4 +5,4 @@ There isn't much more to say except I hope this is found useful for the communit
 
 ## Side note
 
-For this application, I have added for use a knexjs package called `nest-knexjs`(see [here](https://github.com/Tony133/nestjs-knexjs)) for use of knexjs with Nestjs. Meanwhile, enjoy the rehearsals!
+For this application, I have added for use a knexjs package called [`nest-knexjs`](https://github.com/Tony133/nestjs-knexjs) for use of knexjs with Nestjs. Meanwhile, enjoy the test samples!
