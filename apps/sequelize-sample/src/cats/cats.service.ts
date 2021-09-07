@@ -11,7 +11,20 @@ export class CatsService {
     return this.catsRepo.findAll();
   }
 
+  async getCat(id: string): Promise<Cat> {
+    return this.catsRepo.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
   async addCat(cat: CatDTO): Promise<Cat> {
     return this.catsRepo.create(cat);
+  }
+
+  async removeCat(id: string): Promise<void> {
+    const cat = await this.getCat(id);
+    await cat.destroy();
   }
 }
