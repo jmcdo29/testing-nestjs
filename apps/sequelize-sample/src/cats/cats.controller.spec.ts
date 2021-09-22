@@ -48,8 +48,8 @@ describe('CatsController', () => {
     ).toEqual(testCat);
   });
 
-  it('should find a cat', () => {
-    controller.findOne('anyid');
+  it('should find a cat', async () => {
+    await controller.findOne('a id');
     expect(service.getCat).toHaveBeenCalled();
     expect(controller.findOne('a id')).resolves.toEqual({
       name: 'Test Cat',
@@ -59,8 +59,8 @@ describe('CatsController', () => {
     });
   });
 
-  it('should remove the cat', () => {
-    controller.remove('anyid');
+  it('should remove the cat', async () => {
+    await controller.remove('anyid');
     expect(service.removeCat).toHaveBeenCalled();
   });
 });
