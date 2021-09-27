@@ -36,22 +36,37 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   }
 
   async truncate() {
-    for (const { tablename } of await this
-      .$queryRaw`SELECT tablename FROM pg_tables WHERE schemaname='public'`) {
-      if (tablename !== '_prisma_migrations') {
-        // eslint-disable-next-line no-await-in-loop
-        await this.$queryRaw(`TRUNCATE TABLE "public"."${tablename}" CASCADE;`);
-      }
+    let records = await this.$queryRawUnsafe<Array<any>>(`SELECT tablename
+                                                          FROM pg_tables
+                                                          WHERE schemaname = 'public'`);
+    records.forEach((record) => this.truncateTable(record['tablename']));
+  }
+
+  async truncateTable(tablename) {
+    if (tablename === undefined || tablename === '_prisma_migrations') {
+      return;
+    }
+    try {
+      await this.$executeRawUnsafe(
+        `TRUNCATE TABLE "public"."${tablename}" CASCADE;`,
+      );
+    } catch (error) {
+      console.log({ error });
     }
   }
 
   async resetSequences() {
-    for (const { relname } of await this.$queryRaw(
-      `SELECT c.relname FROM pg_class AS c JOIN pg_namespace AS n ON c.relnamespace = n.oid WHERE c.relkind='S' AND n.nspname='public';`,
-    )) {
+    let results = await this.$queryRawUnsafe<Array<any>>(
+      `SELECT c.relname
+       FROM pg_class AS c
+                JOIN pg_namespace AS n ON c.relnamespace = n.oid
+       WHERE c.relkind = 'S'
+         AND n.nspname = 'public'`,
+    );
+    for (const { record } of results) {
       // eslint-disable-next-line no-await-in-loop
-      await this.$queryRaw(
-        `ALTER SEQUENCE "public"."${relname}" RESTART WITH 1;`,
+      await this.$executeRawUnsafe(
+        `ALTER SEQUENCE "public"."${record['relname']}" RESTART WITH 1;`,
       );
     }
   }
