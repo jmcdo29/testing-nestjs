@@ -41,6 +41,7 @@
     "test:cov:total": "DATABASE_URL=postgres://postgres:postgres@localhost:5433/prisma jest -c jest.cov.js"
   },
   "dependencies": {
+    "@nestjs/axios": "0.0.2",
     "@nestjs/common": "^7.6.13",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.6.13",
