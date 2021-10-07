@@ -60,7 +60,7 @@ describe('App (e2e)', () => {
         .expect(200)
         .expect({ deleted: true });
     });
-    it('post can, get by name, update, get by id, delete', async () => {
+    it('post cat, get by name, update, get by id, delete', async () => {
       const ventus = {
         name: 'Ventus',
         breed: 'Russian Blue',
