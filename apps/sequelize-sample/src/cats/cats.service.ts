@@ -20,7 +20,7 @@ export class CatsService {
   }
 
   async addCat(cat: CatDTO): Promise<Cat> {
-    return this.catsRepo.create(cat);
+    return this.catsRepo.create(cat as any);
   }
 
   async removeCat(id: string): Promise<void> {
