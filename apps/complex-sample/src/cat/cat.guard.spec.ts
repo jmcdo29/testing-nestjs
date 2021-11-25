@@ -1,4 +1,4 @@
-import { createMock } from '@golevelup/nestjs-testing';
+import { createMock } from '@golevelup/ts-jest';
 import { ExecutionContext } from '@nestjs/common';
 import { CatGuard } from './cat.guard';
 

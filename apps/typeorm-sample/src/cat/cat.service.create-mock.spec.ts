@@ -1,4 +1,4 @@
-import { createMock } from '@golevelup/nestjs-testing';
+import { createMock } from '@golevelup/ts-jest';
 import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
