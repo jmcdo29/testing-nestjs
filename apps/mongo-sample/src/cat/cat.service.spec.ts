@@ -13,7 +13,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CatService } from './cat.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { Cat } from './interfaces/cat.interface';
-import { createMock } from '@golevelup/nestjs-testing';
+import { createMock } from '@golevelup/ts-jest';
 import { Model, Query } from 'mongoose';
 import { CatDoc } from './interfaces/cat-document.interface';
 
@@ -106,7 +106,7 @@ describe('CatService', () => {
         exec: jest
           .fn()
           .mockResolvedValueOnce(mockCatDoc({ name: 'Ventus', id: 'an id' })),
-      }),
+      }) as any,
     );
     const findMockCat = mockCat('Ventus', 'an id');
     const foundCat = await service.getOne('an id');
@@ -120,7 +120,7 @@ describe('CatService', () => {
           .mockResolvedValueOnce(
             mockCatDoc({ name: 'Mufasa', id: 'the dead king' }),
           ),
-      }),
+      }) as any,
     );
     const findMockCat = mockCat('Mufasa', 'the dead king');
     const foundCat = await service.getOneByName('Mufasa');
@@ -152,7 +152,7 @@ describe('CatService', () => {
           breed: 'Tabby',
           age: 42,
         }),
-      }),
+      }) as any,
     );
     const updatedCat = await service.updateOne({
       _id: lasagna,

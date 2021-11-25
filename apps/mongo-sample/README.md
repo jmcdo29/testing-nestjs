@@ -8,4 +8,4 @@ Welcome to the example of using MongoDB with Nest and running tests! My _second 
 
 ## Side Note
 
-For this application, I have added a side package called `@golevelup/nestjs-testing` (name subject to change) to help with mocking Repository objects without needing to create the entire mock on your own. I did run into a few issues with the library this time around, namely matching mocks to mocks, so that's something I'll need to work on updating in the future. In the meantime, enjoy the tests!
+For this application, I have added a side package called `@golevelup/ts-jest` (name subject to change) to help with mocking Repository objects without needing to create the entire mock on your own. I did run into a few issues with the library this time around, namely matching mocks to mocks, so that's something I'll need to work on updating in the future. In the meantime, enjoy the tests!
