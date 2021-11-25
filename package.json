@@ -87,7 +87,7 @@
     "@nestjs/testing": "^8.2.3",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.32",
+    "@types/node": "^16.11.10",
     "@types/redis": "^2.8.28",
     "@types/sequelize": "^4.28.9",
     "@types/serve-static": "^1.13.9",
