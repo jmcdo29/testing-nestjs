@@ -1,9 +1,8 @@
-import { HttpService, HttpModule } from '@nestjs/axios';
+import { HttpService } from '@nestjs/axios';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatsService } from './cats.service';
 import { of } from 'rxjs';
 import { AxiosResponse } from 'axios';
-import { CreateCatDto } from './dto/create-cat.dto';
 
 describe('CatsService', () => {
   let service: CatsService;
@@ -11,17 +10,17 @@ describe('CatsService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule],
+      imports: [],
       providers: [
         CatsService,
         {
-          provide: CatsService,
+          provide: HttpService,
           useValue: {
-            findAll: jest.fn(),
-            findOne: jest.fn(),
-            create: jest.fn(),
-            update: jest.fn(),
-            remove: jest.fn(),
+            get: jest.fn(),
+            post: jest.fn(),
+            patch: jest.fn(),
+            put: jest.fn(),
+            delete: jest.fn(),
           },
         },
       ],
@@ -109,9 +108,7 @@ describe('CatsService', () => {
       statusText: 'OK',
     };
 
-    const newCat = jest
-      .spyOn(httpService, 'post')
-      .mockImplementationOnce(of(response) as any);
+    jest.spyOn(httpService, 'post').mockImplementation(() => of(response));
 
     service.create(createCatDto).subscribe({
       next: (val) => {
@@ -142,15 +139,16 @@ describe('CatsService', () => {
       statusText: 'OK',
     };
 
-    jest.spyOn(httpService, 'put').mockImplementationOnce(
-      of({
-        data: {
-          name: 'cat #1',
-          age: '10',
-          breed: 'Russian',
-          id: 5,
-        },
-      }) as any,
+    jest.spyOn(httpService, 'put').mockImplementation(
+      () =>
+        of({
+          data: {
+            name: 'cat #1',
+            age: '10',
+            breed: 'Russian',
+            id: 5,
+          },
+        }) as any,
     );
 
     httpService
