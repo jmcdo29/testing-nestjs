@@ -47,7 +47,6 @@
     "@nestjs/cqrs": "^8.0.0",
     "@nestjs/graphql": "^9.1.2",
     "@nestjs/axios": "0.0.2",
-    "@nestjs/common": "^7.6.13",
     "@nestjs/mapped-types": "^1.0.0",
     "@nestjs/microservices": "^8.2.3",
     "@nestjs/mongoose": "^9.0.1",
