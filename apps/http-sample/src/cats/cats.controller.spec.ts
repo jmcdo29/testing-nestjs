@@ -34,17 +34,17 @@ describe('CatsController', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should get the cats', async () => {
-    expect(await controller.findAll()).toEqual([testCat]);
+  it('should get the cats', () => {
+    expect(controller.findAll()).toEqual([testCat]);
   });
 
-  it('should get one cat', async () => {
-    expect(await controller.findOne('a id')).toEqual(testCat);
+  it('should get one cat', () => {
+    expect(controller.findOne('a id')).toEqual(testCat);
   });
 
-  it('should make a new cat', async () => {
+  it('should make a new cat', () => {
     expect(
-      await controller.create({
+      controller.create({
         name: 'Test Cat',
         age: 5,
         breed: 'Russian Blue',
@@ -52,7 +52,7 @@ describe('CatsController', () => {
     ).toEqual(testCat);
   });
 
-  it('should remove a one cat', async () => {
+  it('should remove a one cat', () => {
     const retVal = controller.remove('a id');
     expect(service.remove).toHaveBeenCalled();
     expect(retVal);
