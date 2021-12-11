@@ -33,7 +33,7 @@ describe('CatsService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should return all cats', async () => {
+  it('should return all cats', () => {
     const data = {};
 
     const response: AxiosResponse<any> = {
@@ -53,7 +53,7 @@ describe('CatsService', () => {
     });
   });
 
-  it('should return one cat', async () => {
+  it('should return one cat', () => {
     const data = {
       name: 'cat #1',
       age: '10',
@@ -85,7 +85,7 @@ describe('CatsService', () => {
     });
   });
 
-  it('should return a new cat', async () => {
+  it('should return a new cat', () => {
     const data = {
       name: 'cat #1',
       age: 10,
@@ -122,7 +122,7 @@ describe('CatsService', () => {
     });
   });
 
-  it('should return a cat update', async () => {
+  it('should return a cat update', () => {
     const data = {
       name: 'cat #1',
       age: '10',
@@ -157,7 +157,7 @@ describe('CatsService', () => {
       });
   });
 
-  it('should return remove a cat', async () => {
+  it('should return remove a cat', () => {
     const data = {
       name: 'cat #1',
       age: '10',
