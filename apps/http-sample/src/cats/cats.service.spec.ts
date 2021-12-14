@@ -3,6 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CatsService } from './cats.service';
 import { of } from 'rxjs';
 import { AxiosResponse } from 'axios';
+import { response } from 'express';
 
 describe('CatsService', () => {
   let service: CatsService;
@@ -34,7 +35,20 @@ describe('CatsService', () => {
   });
 
   it('should return all cats', () => {
-    const data = {};
+    const data = [
+      {
+        name: 'cat #1',
+        age: '10',
+        breed: 'Russian',
+        id: 1,
+      },
+      {
+        name: 'cat #2',
+        age: '5',
+        breed: 'Russian',
+        id: 2,
+      },
+    ];
 
     const response: AxiosResponse<any> = {
       data,
@@ -44,9 +58,28 @@ describe('CatsService', () => {
       statusText: 'OK',
     };
 
-    jest
-      .spyOn(httpService, 'get')
-      .mockReturnValue(of({ data: require('../../cats.json') }) as any);
+    jest.spyOn(httpService, 'get').mockReturnValue(
+      of({
+        data: [
+          {
+            name: 'cat #1',
+            age: '10',
+            breed: 'Russian',
+            id: 1,
+          },
+          {
+            name: 'cat #2',
+            age: '5',
+            breed: 'Russian',
+            id: 2,
+          },
+        ],
+        headers: {},
+        config: { url: 'http://localhost:3000/mockUrl' },
+        status: 200,
+        statusText: 'OK',
+      }) as any,
+    );
 
     httpService.get('http://localhost:3000/mockUrl').subscribe((res) => {
       expect(res).toEqual(response);
