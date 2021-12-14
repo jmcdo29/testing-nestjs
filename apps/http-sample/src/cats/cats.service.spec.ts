@@ -78,7 +78,7 @@ describe('CatsService', () => {
         config: { url: 'http://localhost:3000/mockUrl' },
         status: 200,
         statusText: 'OK',
-      }) as any,
+      } as any),
     );
 
     httpService.get('http://localhost:3000/mockUrl').subscribe((res) => {
@@ -110,6 +110,10 @@ describe('CatsService', () => {
           breed: 'Russian',
           id: 5,
         },
+        headers: {},
+        config: { url: 'http://localhost:3000/mockUrl/1' },
+        status: 200,
+        statusText: 'OK',
       }) as any,
     );
 
@@ -180,6 +184,10 @@ describe('CatsService', () => {
             breed: 'Russian',
             id: 5,
           },
+          headers: {},
+          config: { url: 'http://localhost:3000/mockUrl/5' },
+          status: 200,
+          statusText: 'OK',
         }) as any,
     );
 
@@ -202,7 +210,7 @@ describe('CatsService', () => {
       data,
       headers: {},
       config: { url: 'http://localhost:3000/mockUrl/5' },
-      status: 200,
+      status: 204,
       statusText: 'OK',
     };
 
@@ -214,11 +222,15 @@ describe('CatsService', () => {
           breed: 'Russian',
           id: 5,
         },
+        headers: {},
+        config: { url: 'http://localhost:3000/mockUrl/5' },
+        status: 204,
+        statusText: 'OK',
       }) as any,
     );
 
     httpService.delete('http://localhost:3000/mockUrl/5').subscribe((res) => {
-      expect(res).toBeUndefined();
+      expect(res).toEqual(response);
     });
   });
 });
