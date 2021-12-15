@@ -12,7 +12,6 @@ describe('CatsController', () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [CatsController],
       providers: [
-        CatsService,
         {
           provide: CatsService,
           useValue: {
