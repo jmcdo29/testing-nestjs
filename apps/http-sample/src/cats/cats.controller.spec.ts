@@ -4,7 +4,12 @@ import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 
 const testCat = { id: 1, name: 'Test cat', age: 5, breed: 'Russian Blue' };
-
+const testCatUpdate = {
+  id: 1,
+  name: 'Test cat Update',
+  age: 5,
+  breed: 'Russian Blue',
+};
 describe('CatsController', () => {
   let controller: CatsController;
   let service: CatsService;
@@ -19,7 +24,7 @@ describe('CatsController', () => {
             findAll: jest.fn(() => of([testCat])),
             findOne: jest.fn(() => of(testCat)),
             create: jest.fn(() => of(testCat)),
-            update: jest.fn(),
+            update: jest.fn(() => of(testCatUpdate)),
             remove: jest.fn(),
           },
         },
@@ -35,27 +40,40 @@ describe('CatsController', () => {
   });
 
   it('should get the cats', () => {
-    of(controller.findAll()).subscribe((data) => {
-      expect(data).toEqual([testCat]);
+    controller.findAll().subscribe((res) => {
+      expect(res).toEqual([testCat]);
     });
   });
 
   it('should get one cat', () => {
-    of(controller.findOne('a id')).subscribe((data) => {
-      expect(data).toEqual(testCat);
+    controller.findOne('a id').subscribe((res) => {
+      expect(res).toEqual(testCat);
     });
   });
 
   it('should make a new cat', () => {
-    of(
-      controller.create({
+    controller
+      .create({
         name: 'Test Cat',
         age: 5,
         breed: 'Russian Blue',
-      }),
-    ).subscribe((data) => {
-      expect(data).toEqual(testCat);
-    });
+      })
+      .subscribe((res) => {
+        expect(res).toEqual(testCat);
+      });
+  });
+
+  it('should make a cat update', () => {
+    controller
+      .update('a id', {
+        id: 5,
+        name: 'Test Cat Update',
+        age: 5,
+        breed: 'Russian Blue',
+      })
+      .subscribe((res) => {
+        expect(res).toEqual(testCatUpdate);
+      });
   });
 
   it('should remove a one cat', () => {
