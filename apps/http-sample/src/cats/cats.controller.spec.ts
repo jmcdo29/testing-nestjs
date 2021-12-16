@@ -10,6 +10,7 @@ const testCatUpdate = {
   age: 5,
   breed: 'Russian Blue',
 };
+
 describe('CatsController', () => {
   let controller: CatsController;
   let service: CatsService;
@@ -25,7 +26,7 @@ describe('CatsController', () => {
             findOne: jest.fn(() => of(testCat)),
             create: jest.fn(() => of(testCat)),
             update: jest.fn(() => of(testCatUpdate)),
-            remove: jest.fn(),
+            remove: jest.fn(() => of()),
           },
         },
       ],
@@ -77,8 +78,9 @@ describe('CatsController', () => {
   });
 
   it('should remove a one cat', () => {
-    const retVal = controller.remove('a id');
-    expect(service.remove).toHaveBeenCalled();
-    expect(retVal);
+    controller.remove('a id').subscribe((res) => {
+      expect(res).toBeUndefined();
+      expect(res).toHaveBeenCalled();
+    });
   });
 });
