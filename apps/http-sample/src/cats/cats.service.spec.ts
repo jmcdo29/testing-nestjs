@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CatsService } from './cats.service';
 import { of } from 'rxjs';
 import { AxiosResponse } from 'axios';
-import { response } from 'express';
+import { UpdateCatDto } from './dto/update-cat.dto';
 
 describe('CatsService', () => {
   let service: CatsService;
@@ -81,8 +81,8 @@ describe('CatsService', () => {
       } as any),
     );
 
-    httpService.get('http://localhost:3000/mockUrl').subscribe((res) => {
-      expect(res).toEqual(response);
+    service.findAll().subscribe((res) => {
+      expect(res).toEqual(response.data);
     });
   });
 
@@ -117,8 +117,8 @@ describe('CatsService', () => {
       }) as any,
     );
 
-    httpService.get('http://localhost:3000/mockUrl/1').subscribe((res) => {
-      expect(res).toEqual(response);
+    service.findOne(5).subscribe((res) => {
+      expect(res).toEqual(response.data);
     });
   });
 
@@ -160,9 +160,9 @@ describe('CatsService', () => {
   });
 
   it('should return a cat update', () => {
-    const data = {
+    const data: UpdateCatDto = {
       name: 'cat #1',
-      age: '10',
+      age: 10,
       breed: 'Russian',
       id: 5,
     };
@@ -180,7 +180,7 @@ describe('CatsService', () => {
         of({
           data: {
             name: 'cat #1',
-            age: '10',
+            age: 10,
             breed: 'Russian',
             id: 5,
           },
@@ -191,11 +191,9 @@ describe('CatsService', () => {
         }) as any,
     );
 
-    httpService
-      .put('http://localhost:3000/mockUrl/5', data)
-      .subscribe((res) => {
-        expect(res).toEqual(response);
-      });
+    service.update(5, data).subscribe((res) => {
+      expect(res).toEqual(response.data);
+    });
   });
 
   it('should return remove a cat', () => {
@@ -229,8 +227,8 @@ describe('CatsService', () => {
       }) as any,
     );
 
-    httpService.delete('http://localhost:3000/mockUrl/5').subscribe((res) => {
-      expect(res).toEqual(response);
+    service.remove(5).subscribe((res) => {
+      expect(res).toEqual(response.data);
     });
   });
 });
