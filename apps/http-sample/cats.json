@@ -1,0 +1,22 @@
+{
+    "cats": [
+      {
+        "id": 1,
+        "name": "Test Cat #1",
+        "age": "5",
+        "breed": "Russian Blue"
+      },
+      {
+        "name": "Test Cat #2",
+        "age": "10",
+        "breed": "Russian",
+        "id": 2
+      },
+      {
+        "id": 3,
+        "name": "Test Cat #3",
+        "age": "3",
+        "breed": "Russian"
+      }
+    ]
+  }
