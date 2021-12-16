@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { of } from 'rxjs';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 
@@ -15,9 +16,9 @@ describe('CatsController', () => {
         {
           provide: CatsService,
           useValue: {
-            findAll: jest.fn(() => [testCat]),
-            findOne: jest.fn(() => testCat),
-            create: jest.fn(() => testCat),
+            findAll: jest.fn(() => of([testCat])),
+            findOne: jest.fn(() => of(testCat)),
+            create: jest.fn(() => of(testCat)),
             update: jest.fn(),
             remove: jest.fn(),
           },
@@ -34,21 +35,27 @@ describe('CatsController', () => {
   });
 
   it('should get the cats', () => {
-    expect(controller.findAll()).toEqual([testCat]);
+    of(controller.findAll()).subscribe((data) => {
+      expect(data).toEqual([testCat]);
+    });
   });
 
   it('should get one cat', () => {
-    expect(controller.findOne('a id')).toEqual(testCat);
+    of(controller.findOne('a id')).subscribe((data) => {
+      expect(data).toEqual(testCat);
+    });
   });
 
   it('should make a new cat', () => {
-    expect(
+    of(
       controller.create({
         name: 'Test Cat',
         age: 5,
         breed: 'Russian Blue',
       }),
-    ).toEqual(testCat);
+    ).subscribe((data) => {
+      expect(data).toEqual(testCat);
+    });
   });
 
   it('should remove a one cat', () => {
