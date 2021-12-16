@@ -6,7 +6,7 @@
 
 Welcome to the example of using the Http module with Nest and running tests! I decided to use a very simple Http client application with the use of observables, while creating a fake server I used the package [json-server](https://github.com/typicode/json-server). By creating a cats.json file such as this:
 
-``
+```
 {
      "cats": [
        {
@@ -30,5 +30,5 @@ Welcome to the example of using the Http module with Nest and running tests! I d
      ]
    }
 
-``
+```
 Not much more to say except I hope this is found useful for the community!
