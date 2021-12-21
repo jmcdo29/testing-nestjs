@@ -76,6 +76,7 @@ describe('Cats (e2e)', () => {
   afterAll(async () => {
     await prisma.truncate();
     await prisma.resetSequences();
+    await prisma.$disconnect();
     await app.close();
   });
 

@@ -1,0 +1,60 @@
+name: "\U0001F6A9 Failing Test"
+description: "Create a report to help us improve"
+labels: ["bug"]
+assignees: 
+  - jmcdo29
+body:
+  - type: checkboxes
+    attributes:
+      label: "Is there an existing issue for this?"
+      description: "Please search [here](./?q=is%3Aissue) to see if an issue already exists for the bug you encountered"
+      options:
+      - label: "I have searched the existing issues"
+        required: true
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "Describe the bug"
+      description: "Tell me which project tests are failing, if it is all or just a specific one. The project is the same as the folder name."
+
+  - type: textarea
+    attributes:
+      label: "Minimum reproduction code and/or steps to reproduce"
+      description: |
+        How the issue manifests?
+        **Tip**: If you leave a [minimum reproduction repository](https://jmcdo29.github.io/wtf-is-a-minimum-reproduction) we will help you faster!
+      placeholder: |
+        1. `npm i`
+        2. `npm start:dev`
+        3. See error...
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "Expected behavior"
+      description: "A clear and concise description of what you expected to happend (or code)"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+  - type: checkboxes
+    validations:
+      required: true
+    attributes:
+      label: "In which operating systems have you tested?"
+      options:
+        - label: macOS
+        - label: Windows
+        - label: Linux
+
+  - type: textarea
+    attributes:
+      label: "Additional context"
+      description: |
+        Anything else relevant? eg: Logs, OS version, IDE, package manager, etc.
+        **Tip:** You can attach images, recordings or log files by clicking this area to highlight it and then dragging files in

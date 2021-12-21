@@ -1,9 +1,8 @@
 import { Logger } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { RxjsService } from './rxjs.service';
-import { Observable } from 'rxjs';
+import { Observer, Observable } from 'rxjs';
 import { retryWhen } from 'rxjs/operators';
-import { Observer } from 'zen-observable-ts';
 
 const createSource = (retryMax = 2): Observable<any> => {
   let retryCount = 0;

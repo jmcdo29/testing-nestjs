@@ -1,4 +1,4 @@
-import { createMock } from '@golevelup/nestjs-testing';
+import { createMock } from '@golevelup/ts-jest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 import { CatDTO } from './cat.dto';
@@ -109,7 +109,7 @@ describe('Cat Controller', () => {
         breed: testBreed1,
         age: 4,
       });
-      // using the really cool @golevelup/nestjs-testing module's utility function here
+      // using the really cool @golevelup/ts-jest module's utility function here
       // otherwise we need to pass `as any` or we need to mock all 54+ attributes of Document
       const aquaMock = createMock<Cat>({
         name: 'Aqua',

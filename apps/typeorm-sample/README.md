@@ -8,7 +8,7 @@ Welcome to the example of using TypeORM with Nest and running tests! Everyone's 
 
 ## Side Note
 
-For this application, I have added a side package called `@golevelup/nestjs-testing` (name subject to change) to help with mocking Repository objects without needing to create the entire mock on your own. You can find this [specific use here](./src/cat/cat.service.create-mock.spec.ts).
+For this application, I have added a side package called `@golevelup/ts-jest` (name subject to change) to help with mocking Repository objects without needing to create the entire mock on your own. You can find this [specific use here](./src/cat/cat.service.create-mock.spec.ts).
 
 ## Cat Integration Test Setup
 
