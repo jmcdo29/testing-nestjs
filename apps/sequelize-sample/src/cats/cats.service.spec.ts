@@ -47,7 +47,7 @@ describe('CatsService', () => {
   it('should remove a cat', async () => {
     const destroyStub = jest.fn();
     const findSpy = jest.spyOn(model, 'findOne').mockReturnValue({
-      destroy: destroyStub
+      destroy: destroyStub,
     } as any);
     const retVal = await service.removeCat('id');
     expect(findSpy).toBeCalledWith({ where: { id: 'id' } });
