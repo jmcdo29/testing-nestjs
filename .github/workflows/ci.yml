@@ -39,6 +39,9 @@ jobs:
         run: npm i -g npm@^7
       - name: npm install
         run: npm ci
+      - name: Generate Prisma Schema
+        if: ${{ matrix.test == 'prisma-sample' }}
+        run: npx prisma generate --schema apps/prisma-sample/prisma/schema.prisma
       - name: npm test
         run: npm run nx -- test ${{ matrix.test }}
 
