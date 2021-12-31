@@ -1,0 +1,20 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "declaration": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "incremental": true,
+    "rootDir": ".",
+    "paths": {}
+  },
+  "exclude": ["node_modules", "dist", "tmp"]
+}
