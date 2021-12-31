@@ -38,7 +38,7 @@ jobs:
       - name: npm install
         run: npm ci
       - name: npm test
-        run: npm run test -- ${{ matrix.test }}
+        run: npm run nx -- test ${{ matrix.test }}
 
   e2e-test:
     runs-on: ubuntu-latest

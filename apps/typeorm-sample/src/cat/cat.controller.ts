@@ -8,7 +8,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { CatDTO } from './cat.dto';
+import type { CatDTO } from './cat.dto';
 import { Cat } from './cat.entity';
 import { CatService } from './cat.service';
 

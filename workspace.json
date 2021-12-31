@@ -1,0 +1,343 @@
+{
+  "version": 2,
+  "projects": {
+    "complex-sample": {
+      "root": "apps/complex-sample",
+      "sourceRoot": "apps/complex-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/complex-sample/tsconfig.app.json",
+            "main": "apps/complex-sample/src/main.ts",
+            "outputPath": "dist/apps/complex-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/complex-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/complex-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "cqrs-sample": {
+      "root": "apps/cqrs-sample",
+      "sourceRoot": "apps/cqrs-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/cqrs-sample/tsconfig.app.json",
+            "main": "apps/cqrs-sample/src/main.ts",
+            "outputPath": "dist/apps/cqrs-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/cqrs-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/cqrs-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "graphql-sample": {
+      "root": "apps/graphql-sample",
+      "sourceRoot": "apps/graphql-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/graphql-sample/tsconfig.app.json",
+            "main": "apps/graphql-sample/src/main.ts",
+            "outputPath": "dist/apps/graphql-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/graphql-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/graphql-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "http-sample": {
+      "root": "apps/http-sample",
+      "sourceRoot": "apps/http-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/http-sample/tsconfig.app.json",
+            "main": "apps/http-sample/src/main.ts",
+            "outputPath": "dist/apps/http-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/http-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/http-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "microservice-sample": {
+      "root": "apps/microservice-sample",
+      "sourceRoot": "apps/microservice-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/microservice-sample/tsconfig.app.json",
+            "main": "apps/microservice-sample/src/main.ts",
+            "outputPath": "dist/apps/microservice-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/microservice-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/microservice-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "mongo-sample": {
+      "root": "apps/mongo-sample",
+      "sourceRoot": "apps/mongo-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/mongo-sample/tsconfig.app.json",
+            "main": "apps/mongo-sample/src/main.ts",
+            "outputPath": "dist/apps/mongo-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mongo-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mongo-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "prisma-sample": {
+      "root": "apps/prisma-sample",
+      "sourceRoot": "apps/prisma-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/prisma-sample/tsconfig.app.json",
+            "main": "apps/prisma-sample/src/main.ts",
+            "outputPath": "dist/apps/prisma-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/prisma-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/prisma-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "render-sample": {
+      "root": "apps/render-sample",
+      "sourceRoot": "apps/render-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/render-sample/tsconfig.app.json",
+            "main": "apps/render-sample/src/main.ts",
+            "outputPath": "dist/apps/render-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/render-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/render-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "rxjs-sample": {
+      "root": "apps/rxjs-sample",
+      "sourceRoot": "apps/rxjs-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/rxjs-sample/tsconfig.app.json",
+            "main": "apps/rxjs-sample/src/main.ts",
+            "outputPath": "dist/apps/rxjs-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/rxjs-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/rxjs-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "sequelize-sample": {
+      "root": "apps/sequelize-sample",
+      "sourceRoot": "apps/sequelize-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/sequelize-sample/tsconfig.app.json",
+            "main": "apps/sequelize-sample/src/main.ts",
+            "outputPath": "dist/apps/sequelize-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/sequelize-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/sequelize-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "simple-sample": {
+      "root": "apps/simple-sample",
+      "sourceRoot": "apps/simple-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/simple-sample/tsconfig.app.json",
+            "main": "apps/simple-sample/src/main.ts",
+            "outputPath": "dist/apps/simple-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/simple-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/simple-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "typeorm-sample": {
+      "root": "apps/typeorm-sample",
+      "sourceRoot": "apps/typeorm-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/typeorm-sample/tsconfig.app.json",
+            "main": "apps/typeorm-sample/src/main.ts",
+            "outputPath": "dist/apps/typeorm-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/typeorm-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/typeorm-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    },
+    "websocket-sample": {
+      "root": "apps/websocket-sample",
+      "sourceRoot": "apps/websocket-sample/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "options": {
+            "tsConfig": "apps/websocket-sample/tsconfig.app.json",
+            "main": "apps/websocket-sample/src/main.ts",
+            "outputPath": "dist/apps/websocket-sample"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/websocket-sample/jest.config.js"
+          }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/websocket-sample/test/jest-e2e.json"
+          }
+        }
+      }
+    }
+  }
+}

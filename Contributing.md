@@ -17,7 +17,9 @@ _[Use GitHub interface](https://blog.sapegin.me/all/open-source-for-everyone/) f
 
 ### General
 
-If you are creating a new test suite, first make a new application with `nest generate app <app-name>`.
+First things first, as obvious as it is, run `npm install`.
+
+If you are creating a new test suite, first make a new application with `npm run nx -- g @nrwl/nest:application <app-name>`.
 
 Git branching is optional, but encourages to keep better track of what you are working on. In the end, make sure you make a pull request to the main repository so your changes can be merged. If your changes do not pass all the tests, you will likely be asked to make refactoring changes. Please make your changes and run the following commands:
 
@@ -46,8 +48,8 @@ npm test
 Run test for a specific project:
 
 ```bash
-npm test -- <app-name>
-# e.g. npm test -- complex-sample
+npm run nx -- test <app-name>
+# e.g. npm run nx -- test complex-sample
 ```
 
 ### READMEs and Other Updates
