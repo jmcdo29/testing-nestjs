@@ -26,6 +26,15 @@
         "tsConfigPath": "apps/mongo-sample/tsconfig.app.json"
       }
     },
+    "observable-sample": {
+      "type": "application",
+      "root": "apps/observable-sample",
+      "entryFile": "main",
+      "sourceRoot": "apps/observable-sample/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/observable-sample/tsconfig.app.json"
+      }
+    },
     "simple-sample": {
       "type": "application",
       "root": "apps/simple-sample",
