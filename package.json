@@ -65,7 +65,7 @@
     "axios": "^0.24.0",
     "class-transformer": "^0.3.2",
     "class-validator": "^0.13.1",
-    "graphql": "^15.5.0",
+    "graphql": "^15.8.0",
     "graphql-tools": "^7.0.4",
     "hbs": "^4.1.1",
     "mongoose": "^6.0.13",
