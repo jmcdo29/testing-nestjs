@@ -91,7 +91,7 @@
     "@nrwl/cli": "^13.4.1",
     "@nrwl/jest": "^13.4.1",
     "@nrwl/nest": "^13.4.1",
-    "@nrwl/node": "^13.4.1",
+    "@nrwl/node": "^13.4.3",
     "@nrwl/tao": "^13.4.1",
     "@nrwl/workspace": "^13.4.1",
     "@types/express": "^4.17.11",
