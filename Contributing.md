@@ -68,7 +68,7 @@ At the very least, do your absolute best to achieve 100% test coverage for unit 
 - Don’t commit generated files, like minified JavaScript.
 - Don’t change version number and change log.
 - Make sure to add a new github workflow under the name of `<project_name>.yml`. You can use any of the others as an example
-- Make sure to update the [nightly test job](./.github/workflows/cron.yml) with your new test suite
+- Make sure to update the [nightly test job](./.github/workflows/ci.yml) with your new test suite
 
 ## Need help?
 
