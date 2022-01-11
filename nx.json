@@ -1,7 +1,7 @@
 {
   "npmScope": "testing-nestjs",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
