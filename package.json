@@ -58,7 +58,7 @@
     "@nestjs/sequelize": "^8.0.0",
     "@nestjs/serve-static": "^2.2.2",
     "@nestjs/typeorm": "^8.0.2",
-    "@nestjs/websockets": "^8.2.3",
+    "@nestjs/websockets": "^8.2.4",
     "@prisma/client": "^3.8.0",
     "apollo-server-core": "^3.6.1",
     "apollo-server-express": "^3.6.1",
