@@ -46,7 +46,7 @@
     "@nestjs/common": "^8.2.3",
     "@nestjs/config": "^1.1.6",
     "@nestjs/core": "^8.2.3",
-    "@nestjs/cqrs": "^8.0.0",
+    "@nestjs/cqrs": "^8.0.1",
     "@nestjs/graphql": "^9.1.2",
     "@nestjs/mapped-types": "^1.0.1",
     "@nestjs/microservices": "^8.2.4",
