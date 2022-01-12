@@ -93,7 +93,7 @@
     "@nrwl/nest": "^13.4.1",
     "@nrwl/node": "^13.4.1",
     "@nrwl/tao": "^13.4.1",
-    "@nrwl/workspace": "^13.4.1",
+    "@nrwl/workspace": "^13.4.4",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
     "@types/node": "^17.0.5",
