@@ -69,7 +69,7 @@
     "graphql-tools": "^7.0.4",
     "hbs": "^4.1.1",
     "mongoose": "^6.1.6",
-    "mysql2": "^2.2.5",
+    "mysql2": "^2.3.3",
     "pg": "^8.5.1",
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
