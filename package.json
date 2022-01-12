@@ -114,7 +114,7 @@
     "prettier": "^2.2.1",
     "prisma": "^3.8.0",
     "supertest": "^6.2.0",
-    "ts-jest": "^26.5.3",
+    "ts-jest": "^26.5.6",
     "ts-loader": "^9.2.6",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
