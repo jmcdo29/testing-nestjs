@@ -105,7 +105,7 @@
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.31.2",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.21.0",
+    "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^5.1.3",
