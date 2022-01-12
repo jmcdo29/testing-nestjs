@@ -54,7 +54,7 @@
     "@nestjs/platform-express": "^8.2.3",
     "@nestjs/platform-fastify": "^8.2.4",
     "@nestjs/platform-socket.io": "^8.2.4",
-    "@nestjs/platform-ws": "^8.2.3",
+    "@nestjs/platform-ws": "^8.2.5",
     "@nestjs/sequelize": "^8.0.0",
     "@nestjs/serve-static": "^2.2.2",
     "@nestjs/typeorm": "^8.0.2",
