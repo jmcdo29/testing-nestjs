@@ -53,7 +53,7 @@
     "@nestjs/mongoose": "^9.0.1",
     "@nestjs/platform-express": "^8.2.3",
     "@nestjs/platform-fastify": "^8.2.3",
-    "@nestjs/platform-socket.io": "^8.2.3",
+    "@nestjs/platform-socket.io": "^8.2.4",
     "@nestjs/platform-ws": "^8.2.3",
     "@nestjs/sequelize": "^8.0.0",
     "@nestjs/serve-static": "^2.2.2",
