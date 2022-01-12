@@ -18,8 +18,8 @@ const generateBuildScript = (packageName) => {
   const tsconfigFile = `{
   "extends": "../../tsconfig.build.json",
   "include": ["src/**/*"],
-}`
-  writeFileSync(tsconfigFileName, tsconfigFile)
+}`;
+  writeFileSync(tsconfigFileName, tsconfigFile);
   return {
     executor: '@nrwl/node:build',
     options: {
@@ -37,8 +37,10 @@ const generateTestScript = (packageName) => {
     packageName,
     'jest.config.js',
   );
-  const jestConfig = `module.exports = {
-  preset: '../../jest.config.js'
+  const jestConfig = `const baseConfig = require('../../jest.config')
+
+module.exports = {
+  ...baseConfig
 }`;
   writeFileSync(jestFilePath, jestConfig);
   return {
@@ -50,10 +52,23 @@ const generateTestScript = (packageName) => {
 };
 
 const generateE2EScript = (packageName) => {
+  const jestE2eFilePath = join(
+    process.cwd(),
+    'apps',
+    packageName,
+    'test',
+    'jest-e2e.js',
+  );
+  const e2eConfig = `const e2eBaseConfig = require('../../../jest.e2e');
+
+module.exports = {
+  ...e2eBaseConfig,
+};`;
+  writeFileSync(jestE2eFilePath, e2eConfig);
   return {
     executor: '@nrwl/jest:jest',
     options: {
-      jestConfig: `apps/${packageName}/test/jest-e2e.json`,
+      jestConfig: `apps/${packageName}/test/jest-e2e.js`,
     },
   };
 };

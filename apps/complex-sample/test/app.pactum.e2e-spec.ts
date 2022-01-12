@@ -1,6 +1,6 @@
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as request from 'supertest';
+import * as pactum from 'pactum';
 import { AppModule } from '../src/app.module';
 
 const testCatName = 'Test Cat 1';
@@ -9,16 +9,18 @@ const russianBlue = 'Russian Blue';
 const maineCoon = 'Maine Coon';
 const badRequest = 'Bad Request';
 
-describe('AppController (e2e) {Supertest}', () => {
+describe('AppController (e2e) {Pactum}', () => {
   let app: INestApplication;
-
+  let url: string;
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
-    await app.init();
+    await app.listen(0);
+    url = await app.getUrl();
+    pactum.request.setBaseUrl(url.replace('[::1]', 'localhost'));
   });
 
   afterAll(async () => {
@@ -26,18 +28,16 @@ describe('AppController (e2e) {Supertest}', () => {
   });
 
   it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+    return pactum.spec().get('/').expectStatus(200).expectBody('Hello World!');
   });
   describe('/cat/ GET', () => {
     it('should return an array of cats', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .get('/cat')
-        .set('authorization', 'auth')
-        .expect(200)
-        .expect({
+        .withHeaders('authorization', 'auth')
+        .expectStatus(200)
+        .expectBody({
           data: [
             { id: 1, name: 'Ventus', breed: russianBlue, age: 3 },
             { id: 2, name: 'Terra', breed: 'Siberian', age: 6 },
@@ -48,22 +48,24 @@ describe('AppController (e2e) {Supertest}', () => {
   });
   describe('/cat/:id GET', () => {
     it('should return a 400 for a bad id', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .get('/cat/badId')
-        .set('authorization', 'auth')
-        .expect(400)
-        .expect({
+        .withHeaders('authorization', 'auth')
+        .expectStatus(400)
+        .expectBody({
           statusCode: 400,
           error: badRequest,
           message: 'Id parameter should be a number.',
         });
     });
     it('should return an acutal cat', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .get('/cat/2')
-        .set('authorization', 'auth')
-        .expect(200)
-        .expect({
+        .withHeaders('authorization', 'auth')
+        .expectStatus(200)
+        .expectBody({
           data: {
             id: 2,
             name: 'Terra',
@@ -75,15 +77,16 @@ describe('AppController (e2e) {Supertest}', () => {
   });
   describe('cat/new POST', () => {
     it('should throw an error for a bad age', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .post('/cat/new')
-        .set('authorization', 'auth')
-        .send({
+        .withHeaders('authorization', 'auth')
+        .withJson({
           name: testCatName,
           breed: testCatBreed,
         })
-        .expect(400)
-        .expect({
+        .expectStatus(400)
+        .expectBody({
           statusCode: 400,
           error: badRequest,
           message:
@@ -91,15 +94,16 @@ describe('AppController (e2e) {Supertest}', () => {
         });
     });
     it('should throw an error for a bad name', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .post('/cat/new')
-        .set('authorization', 'auth')
-        .send({
+        .withHeaders('authorization', 'auth')
+        .withJson({
           age: 5,
           breed: testCatBreed,
         })
-        .expect(400)
-        .expect({
+        .expectStatus(400)
+        .expectBody({
           statusCode: 400,
           error: badRequest,
           message:
@@ -107,15 +111,16 @@ describe('AppController (e2e) {Supertest}', () => {
         });
     });
     it('should throw an error for a bad breed', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .post('/cat/new')
-        .set('authorization', 'auth')
-        .send({
+        .withHeaders('authorization', 'auth')
+        .withJson({
           age: 5,
           name: testCatName,
         })
-        .expect(400)
-        .expect({
+        .expectStatus(400)
+        .expectBody({
           statusCode: 400,
           error: badRequest,
           message:
@@ -123,16 +128,17 @@ describe('AppController (e2e) {Supertest}', () => {
         });
     });
     it('should return the new cat with id', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .post('/cat/new')
-        .set('authorization', 'auth')
-        .send({
+        .withHeaders('authorization', 'auth')
+        .withJson({
           age: 5,
           name: testCatName,
           breed: testCatBreed,
         })
-        .expect(201)
-        .expect({
+        .expectStatus(201)
+        .expectBody({
           data: {
             id: 4,
             age: 5,
@@ -144,18 +150,20 @@ describe('AppController (e2e) {Supertest}', () => {
   });
   describe('/cat/:id DELETE', () => {
     it('should return false for a not found id', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .delete('/cat/633')
-        .set('authorization', 'auth')
-        .expect(200)
-        .expect({ data: false });
+        .withHeaders('authorization', 'auth')
+        .expectStatus(200)
+        .expectBody({ data: false });
     });
     it('should return true for a found id', () => {
-      return request(app.getHttpServer())
+      return pactum
+        .spec()
         .delete('/cat/2')
-        .set('authorization', 'auth')
-        .expect(200)
-        .expect({ data: true });
+        .withHeaders('authorization', 'auth')
+        .expectStatus(200)
+        .expectBody({ data: true });
     });
   });
 });

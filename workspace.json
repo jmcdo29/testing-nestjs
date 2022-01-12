@@ -22,7 +22,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/complex-sample/test/jest-e2e.json"
+            "jestConfig": "apps/complex-sample/test/jest-e2e.js"
           }
         }
       }
@@ -48,7 +48,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/cqrs-sample/test/jest-e2e.json"
+            "jestConfig": "apps/cqrs-sample/test/jest-e2e.js"
           }
         }
       }
@@ -74,7 +74,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/graphql-sample/test/jest-e2e.json"
+            "jestConfig": "apps/graphql-sample/test/jest-e2e.js"
           }
         }
       }
@@ -100,7 +100,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/http-sample/test/jest-e2e.json"
+            "jestConfig": "apps/http-sample/test/jest-e2e.js"
           }
         }
       }
@@ -126,7 +126,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/microservice-sample/test/jest-e2e.json"
+            "jestConfig": "apps/microservice-sample/test/jest-e2e.js"
           }
         }
       }
@@ -152,7 +152,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/mongo-sample/test/jest-e2e.json"
+            "jestConfig": "apps/mongo-sample/test/jest-e2e.js"
           }
         }
       }
@@ -178,7 +178,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/prisma-sample/test/jest-e2e.json"
+            "jestConfig": "apps/prisma-sample/test/jest-e2e.js"
           }
         }
       }
@@ -204,7 +204,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/render-sample/test/jest-e2e.json"
+            "jestConfig": "apps/render-sample/test/jest-e2e.js"
           }
         }
       }
@@ -230,7 +230,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/rxjs-sample/test/jest-e2e.json"
+            "jestConfig": "apps/rxjs-sample/test/jest-e2e.js"
           }
         }
       }
@@ -256,7 +256,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/sequelize-sample/test/jest-e2e.json"
+            "jestConfig": "apps/sequelize-sample/test/jest-e2e.js"
           }
         }
       }
@@ -282,7 +282,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/simple-sample/test/jest-e2e.json"
+            "jestConfig": "apps/simple-sample/test/jest-e2e.js"
           }
         }
       }
@@ -308,7 +308,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/typeorm-sample/test/jest-e2e.json"
+            "jestConfig": "apps/typeorm-sample/test/jest-e2e.js"
           }
         }
       }
@@ -334,7 +334,7 @@
         "e2e": {
           "executor": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/websocket-sample/test/jest-e2e.json"
+            "jestConfig": "apps/websocket-sample/test/jest-e2e.js"
           }
         }
       }
