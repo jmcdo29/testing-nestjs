@@ -27,7 +27,7 @@ const cats: Cat[] = [
 
 const gql = '/graphql';
 
-describe('AppController (e2e)', () => {
+describe('GraphQL AppResolver (e2e) {Supertest}', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
