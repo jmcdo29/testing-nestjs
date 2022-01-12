@@ -50,7 +50,7 @@
     "@nestjs/graphql": "^9.1.2",
     "@nestjs/mapped-types": "^1.0.1",
     "@nestjs/microservices": "^8.2.4",
-    "@nestjs/mongoose": "^9.0.1",
+    "@nestjs/mongoose": "^9.0.2",
     "@nestjs/platform-express": "^8.2.3",
     "@nestjs/platform-fastify": "^8.2.3",
     "@nestjs/platform-socket.io": "^8.2.4",
