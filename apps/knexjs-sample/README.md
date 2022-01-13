@@ -1,0 +1,8 @@
+# Knexjs Sample
+
+Welcome to the example of using Knexjs with Nest and running tests! I decided to use a very simple CRUD application for a single database object.
+There isn't much more to say except I hope this is found useful for the community!
+
+## Side note
+
+For this application, I added for the use of knexjs side pack called `@nest-knexjs` for the use of knexjs with Nestjs. Meanwhile enjoy the rehearsals!
