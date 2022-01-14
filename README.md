@@ -1,12 +1,13 @@
-# testing-nestjs
-
-## Status
-
 <div align="center">
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Continuous Integration Testing](https://github.com/jmcdo29/testing-nestjs/workflows/Continuous%20Integration%20Testing/badge.svg)[![Coffee](https://badgen.net/badge/Buy%20Me/A%20Coffee/purple?icon=kofi)](https://www.buymeacoffee.com/jmcdo29)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Continuous Integration Testing](https://github.com/jmcdo29/testing-nestjs/workflows/Continuous%20Integration%20Testing/badge.svg) [![Coffee](https://badgen.net/badge/Buy%20Me/A%20Coffee/purple?icon=kofi)](https://www.buymeacoffee.com/jmcdo29)
 
+  <p align="center">
+    <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  </p>
 </div>
+
+# testing-nestjs
 
 A repository to show off to the community methods of testing NestJS including Unit Tests, Integration Tests, E2E Tests, pipes, filters, interceptors, GraphQL, Mongo, TypeORM, and more!
 
