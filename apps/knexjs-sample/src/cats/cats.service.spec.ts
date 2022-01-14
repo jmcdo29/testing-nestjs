@@ -25,9 +25,11 @@ describe('CatsService', () => {
         {
           provide: CatsService,
           useValue: {
-            findAllCat: jest.fn(() => [testCat]),
-            findOneCat: jest.fn(() => oneCat),
-            createCat: jest.fn(() => testCat),
+            knex: {
+              table: () => {
+                where: jest.fn(() => [testCat]);
+              },
+            },
           },
         },
       ],
@@ -40,19 +42,14 @@ describe('CatsService', () => {
   });
 
   it('should get one cat', async () => {
+    jest.spyOn(service as any, 'where');
     const catFound = await service.findOneCat(1);
     expect(service.findOneCat).toHaveBeenCalledWith(1);
     expect(catFound).toBe(oneCat);
   });
 
-  it('should return a exception when doesnt to find a cats by id', async () => {
-    jest
-      .spyOn(service, 'findOne')
-      .mockRejectedValueOnce(new NotFoundException());
-    await expect(service.findOne(1)).rejects.toThrow(new NotFoundException());
-  });
-
   it('should add a cat', async () => {
-    expect(await service.createCat(mockCat)).toEqual(testCat);
+    const newcat = jest.spyOn(service as any, 'insert');
+    expect(newcat).toEqual(testCat);
   });
 });
