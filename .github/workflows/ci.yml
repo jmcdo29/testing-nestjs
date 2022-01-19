@@ -19,6 +19,7 @@ jobs:
             complex-sample,
             cqrs-sample,
             graphql-sample,
+            http-sample,
             microservice-sample,
             mongo-sample,
             render-sample,
