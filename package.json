@@ -90,7 +90,7 @@
     "@nestjs/testing": "^8.2.4",
     "@nrwl/cli": "^13.4.4",
     "@nrwl/jest": "^13.4.4",
-    "@nrwl/nest": "^13.4.1",
+    "@nrwl/nest": "^13.7.2",
     "@nrwl/node": "^13.4.1",
     "@nrwl/tao": "^13.4.4",
     "@nrwl/workspace": "^13.4.4",
