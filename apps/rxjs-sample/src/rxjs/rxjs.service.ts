@@ -10,7 +10,7 @@ import {
 export class RxjsService {
   constructor(private readonly logger: Logger) {}
 
-  genericRetryStrategy<T extends any>(
+  genericRetryStrategy<T>(
     options?: RxJSRetryOptions,
   ): (obs: Observable<T>) => Observable<number> {
     options = { ...defaultRetryOptions, ...options };

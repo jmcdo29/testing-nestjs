@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { RxjsService } from './rxjs.service';
-import { Observer, Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { retryWhen } from 'rxjs/operators';
 
 const createSource = (retryMax = 2): Observable<any> => {
