@@ -36,15 +36,16 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install npm 7
-        run: npm i -g npm@^7
-      - name: npm install
-        run: npm ci
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6
+          run_install: true
       - name: Generate Prisma Schema
         if: ${{ matrix.test == 'prisma-sample' }}
-        run: npx prisma generate --schema apps/prisma-sample/prisma/schema.prisma
-      - name: npm test
-        run: npm run nx -- test ${{ matrix.test }}
+        run: pnpx prisma generate --schema apps/prisma-sample/prisma/schema.prisma
+      - name: pnpm test
+        run: pnpm nx test ${{ matrix.test }}
 
   e2e-test:
     runs-on: ubuntu-latest
@@ -58,14 +59,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install npm 7
-        run: npm i -g npm@^7
       - name: Start Docker-Compose
         run: docker-compose up -d
-      - name: npm install
-        run: npm ci
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6
+          run_install: true
       - name: Run tests
-        run: npm run test:e2e
+        run: pnpm run test:e2e
       - name: Stop Docker-Compose
         run: docker-compose down
 
