@@ -4,7 +4,7 @@
     "defaultBase": "main"
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/nest"
   },
   "implicitDependencies": {
     "package.json": {
@@ -28,5 +28,6 @@
         "projects": "dependencies"
       }
     ]
-  }
+  },
+  "defaultProject": "file-up-and-down-sample"
 }

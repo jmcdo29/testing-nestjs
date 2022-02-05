@@ -1,8 +1,8 @@
 import {
-  Injectable,
-  OnModuleInit,
-  Logger,
   INestApplication,
+  Injectable,
+  Logger,
+  OnModuleInit,
 } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
@@ -36,7 +36,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   }
 
   async truncate() {
-    let records = await this.$queryRawUnsafe<Array<any>>(`SELECT tablename
+    const records = await this.$queryRawUnsafe<Array<any>>(`SELECT tablename
                                                           FROM pg_tables
                                                           WHERE schemaname = 'public'`);
     records.forEach((record) => this.truncateTable(record['tablename']));
@@ -56,7 +56,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   }
 
   async resetSequences() {
-    let results = await this.$queryRawUnsafe<Array<any>>(
+    const results = await this.$queryRawUnsafe<Array<any>>(
       `SELECT c.relname
        FROM pg_class AS c
                 JOIN pg_namespace AS n ON c.relnamespace = n.oid

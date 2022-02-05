@@ -53,6 +53,58 @@
         }
       }
     },
+    "file-up-and-down-sample": {
+      "root": "apps/file-up-and-down-sample",
+      "sourceRoot": "apps/file-up-and-down-sample/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/file-up-and-down-sample",
+            "main": "apps/file-up-and-down-sample/src/main.ts",
+            "tsConfig": "apps/file-up-and-down-sample/tsconfig.app.json",
+            "assets": ["apps/file-up-and-down-sample/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/file-up-and-down-sample/src/environments/environment.ts",
+                  "with": "apps/file-up-and-down-sample/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "file-up-and-down-sample:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/file-up-and-down-sample/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/file-up-and-down-sample"],
+          "options": {
+            "jestConfig": "apps/file-up-and-down-sample/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "graphql-sample": {
       "root": "apps/graphql-sample",
       "sourceRoot": "apps/graphql-sample/src",
