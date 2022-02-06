@@ -15,5 +15,4 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.app.json',
     },
   },
-  projects: '<rootDir>/apps/file-up-and-down-sample',
 };

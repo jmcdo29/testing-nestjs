@@ -101,6 +101,12 @@
             "jestConfig": "apps/file-up-and-down-sample/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/file-up-and-down-sample/test/jest-e2e.js"
+          }
         }
       },
       "tags": []

@@ -36,7 +36,8 @@ specifiers:
   '@prisma/client': ^3.8.0
   '@types/express': ^4.17.11
   '@types/jest': ^26.0.20
-  '@types/node': ^17.0.5
+  '@types/multer': ^1.4.7
+  '@types/node': ^16
   '@types/sequelize': ^4.28.11
   '@types/serve-static': ^1.13.9
   '@types/supertest': ^2.0.11
@@ -61,6 +62,7 @@ specifiers:
   jest: ^26.6.3
   lint-staged: ^10.5.4
   mongoose: ^6.1.6
+  multer: ^1.4.4
   mysql2: ^2.2.5
   pactum: ^3.1.1
   pg: ^8.5.1
@@ -111,9 +113,10 @@ dependencies:
   class-validator: 0.13.2
   express: 4.17.2
   graphql: 15.8.0
-  graphql-tools: 7.0.5_4c06796aabf90296b05c6694e864e8bb
+  graphql-tools: 7.0.5_8cc8708d54056c10ffe63ea98f990c42
   hbs: 4.2.0
   mongoose: 6.2.0
+  multer: 1.4.4
   mysql2: 2.3.3
   pg: 8.7.3
   redis: 3.1.2
@@ -121,7 +124,7 @@ dependencies:
   rimraf: 3.0.2
   rxjs: 7.5.2
   sequelize: 6.15.0_mysql2@2.3.3+pg@8.7.3
-  sequelize-typescript: 2.1.2_6552efde785e47af630116fb59537035
+  sequelize-typescript: 2.1.2_49bad764f18ad7994c882aeb82eb95c7
   socket.io-client: 4.4.1
   tslib: 2.3.1
   typeorm: 0.2.41_42f1240cc5ad0533048c4bd7ad74fafa
@@ -145,14 +148,15 @@ devDependencies:
   '@nrwl/workspace': 13.7.3_246039ad5aa643c3f2c2394e286b092e
   '@types/express': 4.17.13
   '@types/jest': 26.0.24
-  '@types/node': 17.0.15
+  '@types/multer': 1.4.7
+  '@types/node': 16.11.22
   '@types/sequelize': 4.28.11
   '@types/serve-static': 1.13.10
   '@types/supertest': 2.0.11
   '@types/uuid': 8.3.4
   '@typescript-eslint/eslint-plugin': 5.10.2_2595c2126aec4d4b6e944b931dabb4c2
   '@typescript-eslint/parser': 5.10.2_eslint@8.8.0+typescript@4.5.5
-  cz-conventional-changelog: 3.3.0_@types+node@17.0.15
+  cz-conventional-changelog: 3.3.0_@types+node@16.11.22
   eslint: 8.8.0
   eslint-config-prettier: 8.3.0_eslint@8.8.0
   eslint-plugin-prettier: 4.0.0_43197c8d12d1d439034cfcf65e1c48c2
@@ -1123,7 +1127,7 @@ packages:
       resolve-from: 5.0.0
     dev: true
 
-  /@commitlint/load/16.1.0_@types+node@17.0.15:
+  /@commitlint/load/16.1.0_@types+node@16.11.22:
     resolution: {integrity: sha512-MtlEhKjP8jAF85jjX4mw8DUUwCxKsCgAc865hhpnwxjrfBcmGP7Up2AFE/M3ZMGDmSl1X1TMybQk/zohj8Cqdg==}
     engines: {node: '>=v12'}
     requiresBuild: true
@@ -1134,7 +1138,7 @@ packages:
       '@commitlint/types': 16.0.0
       chalk: 4.1.2
       cosmiconfig: 7.0.1
-      cosmiconfig-typescript-loader: 1.0.4_2659dc6620f2255efe6a8f122d014e4b
+      cosmiconfig-typescript-loader: 1.0.4_247b6ed5e900a7cb1f087e65be0c3da9
       lodash: 4.17.21
       resolve-from: 5.0.0
       typescript: 4.5.5
@@ -1589,7 +1593,7 @@ packages:
       tslib: 2.2.0
     dev: false
 
-  /@graphql-tools/url-loader/6.10.1_4c06796aabf90296b05c6694e864e8bb:
+  /@graphql-tools/url-loader/6.10.1_8cc8708d54056c10ffe63ea98f990c42:
     resolution: {integrity: sha512-DSDrbhQIv7fheQ60pfDpGD256ixUQIR6Hhf9Z5bRjVkXOCvO5XrkwoWLiU7iHL81GB1r0Ba31bf+sl+D4nyyfw==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0
@@ -1608,7 +1612,7 @@ packages:
       is-promise: 4.0.0
       isomorphic-ws: 4.0.1_ws@7.4.5
       lodash: 4.17.21
-      meros: 1.1.4_@types+node@17.0.15
+      meros: 1.1.4_@types+node@16.11.22
       subscriptions-transport-ws: 0.9.19_graphql@15.8.0
       sync-fetch: 0.3.0
       tslib: 2.2.0
@@ -2477,7 +2481,7 @@ packages:
       reflect-metadata: 0.1.13
       rxjs: 7.5.2
       sequelize: 6.15.0_mysql2@2.3.3+pg@8.7.3
-      sequelize-typescript: 2.1.2_6552efde785e47af630116fb59537035
+      sequelize-typescript: 2.1.2_49bad764f18ad7994c882aeb82eb95c7
       uuid: 8.3.2
     dev: false
 
@@ -3289,9 +3293,19 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: false
 
+  /@types/multer/1.4.7:
+    resolution: {integrity: sha512-/SNsDidUFCvqqcWDwxv2feww/yqhNeTRL5CVoL3jU4Goc4kKEL10T7Eye65ZqPNi4HRx8sAEX59pV1aEH7drNA==}
+    dependencies:
+      '@types/express': 4.17.13
+    dev: true
+
   /@types/node/10.17.60:
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
     dev: false
+
+  /@types/node/16.11.22:
+    resolution: {integrity: sha512-DYNtJWauMQ9RNpesl4aVothr97/tIJM8HbyOXJ0AYT1Z2bEjLHyfjOBPAQQVMLf8h3kSShYfNk8Wnto8B2zHUA==}
+    dev: true
 
   /@types/node/17.0.15:
     resolution: {integrity: sha512-zWt4SDDv1S9WRBNxLFxFRHxdD9tvH8f5/kg5/IaLFdnSNXsDY4eL3Q3XXN+VxUnWIhyVFDwcsmAprvwXoM/ClA==}
@@ -4771,13 +4785,13 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /commitizen/4.2.4_@types+node@17.0.15:
+  /commitizen/4.2.4_@types+node@16.11.22:
     resolution: {integrity: sha512-LlZChbDzg3Ir3O2S7jSo/cgWp5/QwylQVr59K4xayVq8S4/RdKzSyJkghAiZZHfhh5t4pxunUoyeg0ml1q/7aw==}
     engines: {node: '>= 10'}
     hasBin: true
     dependencies:
       cachedir: 2.2.0
-      cz-conventional-changelog: 3.2.0_@types+node@17.0.15
+      cz-conventional-changelog: 3.2.0_@types+node@16.11.22
       dedent: 0.7.0
       detect-indent: 6.0.0
       find-node-modules: 2.1.2
@@ -4928,16 +4942,16 @@ packages:
       vary: 1.1.2
     dev: false
 
-  /cosmiconfig-typescript-loader/1.0.4_2659dc6620f2255efe6a8f122d014e4b:
+  /cosmiconfig-typescript-loader/1.0.4_247b6ed5e900a7cb1f087e65be0c3da9:
     resolution: {integrity: sha512-ulv2dvwurP/MZAIthXm69bO7EzzIUThZ6RJ1qXhdlXM6to3F+IKBL/17EnhYSG52A5N1KcAUu66vSG/3/77KrA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@types/node': '*'
       typescript: '>=3'
     dependencies:
-      '@types/node': 17.0.15
+      '@types/node': 16.11.22
       cosmiconfig: 7.0.1
-      ts-node: 10.4.0_2659dc6620f2255efe6a8f122d014e4b
+      ts-node: 10.4.0_247b6ed5e900a7cb1f087e65be0c3da9
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@swc/core'
@@ -5036,36 +5050,36 @@ packages:
       cssom: 0.3.8
     dev: true
 
-  /cz-conventional-changelog/3.2.0_@types+node@17.0.15:
+  /cz-conventional-changelog/3.2.0_@types+node@16.11.22:
     resolution: {integrity: sha512-yAYxeGpVi27hqIilG1nh4A9Bnx4J3Ov+eXy4koL3drrR+IO9GaWPsKjik20ht608Asqi8TQPf0mczhEeyAtMzg==}
     engines: {node: '>= 10'}
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.2.4_@types+node@17.0.15
+      commitizen: 4.2.4_@types+node@16.11.22
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
       word-wrap: 1.2.3
     optionalDependencies:
-      '@commitlint/load': 16.1.0_@types+node@17.0.15
+      '@commitlint/load': 16.1.0_@types+node@16.11.22
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
       - '@types/node'
     dev: true
 
-  /cz-conventional-changelog/3.3.0_@types+node@17.0.15:
+  /cz-conventional-changelog/3.3.0_@types+node@16.11.22:
     resolution: {integrity: sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==}
     engines: {node: '>= 10'}
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.2.4_@types+node@17.0.15
+      commitizen: 4.2.4_@types+node@16.11.22
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
       word-wrap: 1.2.3
     optionalDependencies:
-      '@commitlint/load': 16.1.0_@types+node@17.0.15
+      '@commitlint/load': 16.1.0_@types+node@16.11.22
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -6388,7 +6402,7 @@ packages:
       tslib: 2.3.1
     dev: false
 
-  /graphql-tools/7.0.5_4c06796aabf90296b05c6694e864e8bb:
+  /graphql-tools/7.0.5_8cc8708d54056c10ffe63ea98f990c42:
     resolution: {integrity: sha512-pJ/ZVfuPEZfGO2Jlk/4mZnqa6blSiUDejTAX+q/ndAbZNUH9Xxdq+6XZy4GDjC1MivC6OnAtLbICWZ6GAvuUhQ==}
     deprecated: This package has been deprecated and now it only exports makeExecutableSchema.\nAnd it will no longer receive updates.\nWe recommend you to migrate to scoped packages such as @graphql-tools/schema, @graphql-tools/utils and etc.\nCheck out https://www.graphql-tools.com to learn what package you should use instead
     peerDependencies:
@@ -6415,7 +6429,7 @@ packages:
       '@graphql-tools/resolvers-composition': 6.4.1_graphql@15.8.0
       '@graphql-tools/schema': 7.1.5_graphql@15.8.0
       '@graphql-tools/stitch': 7.5.3_graphql@15.8.0
-      '@graphql-tools/url-loader': 6.10.1_4c06796aabf90296b05c6694e864e8bb
+      '@graphql-tools/url-loader': 6.10.1_8cc8708d54056c10ffe63ea98f990c42
       '@graphql-tools/utils': 7.10.0_graphql@15.8.0
       '@graphql-tools/wrap': 7.0.8_graphql@15.8.0
       graphql: 15.8.0
@@ -8443,7 +8457,7 @@ packages:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
 
-  /meros/1.1.4_@types+node@17.0.15:
+  /meros/1.1.4_@types+node@16.11.22:
     resolution: {integrity: sha512-E9ZXfK9iQfG9s73ars9qvvvbSIkJZF5yOo9j4tcwM5tN8mUKfj/EKN5PzOr3ZH0y5wL7dLAHw3RVEfpQV9Q7VQ==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -8452,7 +8466,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 17.0.15
+      '@types/node': 16.11.22
     dev: false
 
   /methods/1.1.2:
@@ -9940,7 +9954,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: false
 
-  /sequelize-typescript/2.1.2_6552efde785e47af630116fb59537035:
+  /sequelize-typescript/2.1.2_49bad764f18ad7994c882aeb82eb95c7:
     resolution: {integrity: sha512-+vhugJk1LLq5EVeLWi/UrkpGLrJGVD0R3UpEGHYouf6qeLRBL1V7QCIZr0pHZA57+nJPoK4PPTD+sGHS11uvvw==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -9949,7 +9963,7 @@ packages:
       reflect-metadata: '*'
       sequelize: '>=6.8.0'
     dependencies:
-      '@types/node': 17.0.15
+      '@types/node': 16.11.22
       '@types/validator': 13.7.1
       glob: 7.2.0
       reflect-metadata: 0.1.13
@@ -10938,7 +10952,7 @@ packages:
       webpack: 5.68.0
     dev: true
 
-  /ts-node/10.4.0_2659dc6620f2255efe6a8f122d014e4b:
+  /ts-node/10.4.0_247b6ed5e900a7cb1f087e65be0c3da9:
     resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==}
     hasBin: true
     peerDependencies:
@@ -10957,7 +10971,7 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
-      '@types/node': 17.0.15
+      '@types/node': 16.11.22
       acorn: 8.7.0
       acorn-walk: 8.2.0
       arg: 4.1.3

@@ -21,7 +21,3 @@ We created our own ParseIntPipe even though Nest provides one just to show how t
 ## Future Additions
 
 Filters can be added in the future to make for even better example of tests.
-
-## Closing Remarks
-
-Do note that while the non-mocked E2E test looks cleaner and easier to deal with, it is also a lot more prone to breaking as it very closely depends on the logic implemented in the CatsService. If that logic changes, the test will fail, while for the most part, the mocked variant will pass. Just as in the unit tests, it is possible to get each provider individually so that you can mock in each function as your heart desires. _(Note to self: I should add that in)_
