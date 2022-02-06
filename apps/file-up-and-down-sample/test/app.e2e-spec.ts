@@ -2,7 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { readFile } from 'fs/promises';
 import { request, spec } from 'pactum';
-import { join } from 'path/posix';
+import { join } from 'path';
 
 import { AppModule } from '../src/app/app.module';
 
