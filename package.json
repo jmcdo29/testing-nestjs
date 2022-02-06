@@ -33,11 +33,11 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"apps/**/*.ts\" --fix",
-    "test": "npx prisma generate --schema apps/prisma-sample/prisma/schema.prisma && npm run nx affected:test",
+    "test": "pnpx prisma generate --schema apps/prisma-sample/prisma/schema.prisma && pnpm nx affected:test",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "./setupPrismaDatabase.sh && pnpx prisma generate --schema apps/prisma-sample/prisma/schema.prisma && DATABASE_URL=postgres://postgres:postgres@localhost:5433/prisma nx run-many --target=e2e --all",
+    "test:e2e": "./setupPrismaDatabase.sh && pnpx prisma generate --schema apps/prisma-sample/prisma/schema.prisma && DATABASE_URL=postgres://postgres:postgres@localhost:5433/prisma nx run-many --target=e2e --all --exclude=prisma-sample",
     "test:cov:total": "DATABASE_URL=postgres://postgres:postgres@localhost:5433/prisma jest -c jest.cov.js",
     "nx": "nx"
   },
