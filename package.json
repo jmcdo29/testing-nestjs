@@ -95,7 +95,7 @@
     "@nestjs/schematics": "^8.0.5",
     "@nestjs/testing": "^8.2.4",
     "@nrwl/cli": "^13.4.4",
-    "@nrwl/eslint-plugin-nx": "13.7.3",
+    "@nrwl/eslint-plugin-nx": "13.10.3",
     "@nrwl/jest": "^13.4.4",
     "@nrwl/linter": "13.7.3",
     "@nrwl/nest": "^13.4.1",
