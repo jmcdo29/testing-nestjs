@@ -64,7 +64,7 @@
     "@types/validator": "^13.7.1",
     "apollo-server-core": "^3.6.1",
     "apollo-server-express": "3.6.3",
-    "axios": "^0.24.0",
+    "axios": "^0.27.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.1",
     "express": "^4.17.2",
