@@ -87,7 +87,7 @@
     "webpack": "^5.68.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.0.1",
+    "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^12.0.1",
     "@golevelup/nestjs-testing": "^0.1.2",
     "@golevelup/ts-jest": "^0.3.2",
