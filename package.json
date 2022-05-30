@@ -118,7 +118,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^5.1.3",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.4",
+    "lint-staged": "^12.4.3",
     "pactum": "^3.1.1",
     "prettier": "^2.2.1",
     "prisma": "^3.8.0",
