@@ -15,11 +15,11 @@ export class CatService {
   }
 
   async getOne(id: string): Promise<Cat> {
-    return this.catRepo.findOneOrFail({ id });
+    return this.catRepo.findOneOrFail({ where: { id } });
   }
 
   async getOneByName(name: string): Promise<Cat> {
-    return this.catRepo.findOneOrFail({ name });
+    return this.catRepo.findOneOrFail({ where: { name } });
   }
 
   async insertOne(cat: CatDTO): Promise<Cat> {

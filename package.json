@@ -58,7 +58,7 @@
     "@nestjs/platform-ws": "^8.2.3",
     "@nestjs/sequelize": "^8.0.0",
     "@nestjs/serve-static": "^2.2.2",
-    "@nestjs/typeorm": "^8.0.2",
+    "@nestjs/typeorm": "^8.1.0",
     "@nestjs/websockets": "^8.2.4",
     "@prisma/client": "^3.8.0",
     "@types/validator": "^13.7.1",
@@ -83,7 +83,7 @@
     "sequelize-typescript": "^2.1.1",
     "socket.io-client": "^4.4.0",
     "tslib": "^2.0.0",
-    "typeorm": "^0.2.31",
+    "typeorm": "^0.3.0",
     "webpack": "^5.68.0"
   },
   "devDependencies": {
