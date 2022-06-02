@@ -60,14 +60,14 @@ describe('CatService', () => {
     it('should get a single cat', () => {
       const repoSpy = jest.spyOn(repo, 'findOneOrFail');
       expect(service.getOne('a uuid')).resolves.toEqual(oneCat);
-      expect(repoSpy).toBeCalledWith({ id: 'a uuid' });
+      expect(repoSpy).toBeCalledWith({ where: { id: 'a uuid' } });
     });
   });
   describe('getOneByName', () => {
     it('should get one cat', () => {
       const repoSpy = jest.spyOn(repo, 'findOneOrFail');
       expect(service.getOneByName(testCat1)).resolves.toEqual(oneCat);
-      expect(repoSpy).toBeCalledWith({ name: testCat1 });
+      expect(repoSpy).toBeCalledWith({ where: { name: testCat1 } });
     });
   });
   describe('insertOne', () => {
