@@ -6,7 +6,7 @@
       "sourceRoot": "apps/complex-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/complex-sample/tsconfig.app.json",
             "main": "apps/complex-sample/src/main.ts",
@@ -32,7 +32,7 @@
       "sourceRoot": "apps/cqrs-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/cqrs-sample/tsconfig.app.json",
             "main": "apps/cqrs-sample/src/main.ts",
@@ -59,7 +59,7 @@
       "projectType": "application",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/file-up-and-down-sample",
@@ -116,7 +116,7 @@
       "sourceRoot": "apps/graphql-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/graphql-sample/tsconfig.app.json",
             "main": "apps/graphql-sample/src/main.ts",
@@ -142,7 +142,7 @@
       "sourceRoot": "apps/http-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/http-sample/tsconfig.app.json",
             "main": "apps/http-sample/src/main.ts",
@@ -168,7 +168,7 @@
       "sourceRoot": "apps/microservice-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/microservice-sample/tsconfig.app.json",
             "main": "apps/microservice-sample/src/main.ts",
@@ -194,7 +194,7 @@
       "sourceRoot": "apps/mongo-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/mongo-sample/tsconfig.app.json",
             "main": "apps/mongo-sample/src/main.ts",
@@ -220,7 +220,7 @@
       "sourceRoot": "apps/prisma-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/prisma-sample/tsconfig.app.json",
             "main": "apps/prisma-sample/src/main.ts",
@@ -246,7 +246,7 @@
       "sourceRoot": "apps/render-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/render-sample/tsconfig.app.json",
             "main": "apps/render-sample/src/main.ts",
@@ -272,7 +272,7 @@
       "sourceRoot": "apps/rxjs-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/rxjs-sample/tsconfig.app.json",
             "main": "apps/rxjs-sample/src/main.ts",
@@ -298,7 +298,7 @@
       "sourceRoot": "apps/sequelize-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/sequelize-sample/tsconfig.app.json",
             "main": "apps/sequelize-sample/src/main.ts",
@@ -324,7 +324,7 @@
       "sourceRoot": "apps/simple-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/simple-sample/tsconfig.app.json",
             "main": "apps/simple-sample/src/main.ts",
@@ -350,7 +350,7 @@
       "sourceRoot": "apps/typeorm-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/typeorm-sample/tsconfig.app.json",
             "main": "apps/typeorm-sample/src/main.ts",
@@ -376,7 +376,7 @@
       "sourceRoot": "apps/websocket-sample/src",
       "targets": {
         "build": {
-          "executor": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "options": {
             "tsConfig": "apps/websocket-sample/tsconfig.app.json",
             "main": "apps/websocket-sample/src/main.ts",
