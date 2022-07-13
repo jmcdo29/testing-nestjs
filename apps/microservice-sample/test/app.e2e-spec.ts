@@ -12,9 +12,9 @@ async function createPublisherApp() {
 
   const app = fixture.createNestApplication();
 
-  await app.init();
+  await app.startAllMicroservices();
 
-  await app.startAllMicroservicesAsync();
+  await app.init();
 
   return app;
 }
@@ -28,7 +28,7 @@ async function createSubscriberApp() {
     transport: Transport.TCP,
   });
 
-  await app.listenAsync();
+  await app.listen();
 
   return app;
 }
