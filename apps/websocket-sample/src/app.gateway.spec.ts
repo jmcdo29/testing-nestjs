@@ -16,8 +16,12 @@ describe('AppGateway', () => {
     expect(gateway).toBeDefined();
   });
 
-  it('should be able to run gateway.handleMessage', () => {
-    expect(gateway.handleMessage({}, { name: 'Test' })).toBe('Hello, Test!');
-    expect(gateway.handleMessage({}, {})).toBe('Hello, World!');
+  it('should be able to run gateway.handleMessage with default value', () => {
+    let response = gateway.handleMessage();
+    expect(response).toBe('Hello, World!');
+  });
+  it('should be able to run gateway.handleMessage with input value', () => {
+    let response = gateway.handleMessage({ name: 'Test' });
+    expect(response).toBe('Hello, Test!');
   });
 });
