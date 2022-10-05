@@ -19,12 +19,11 @@ describe('AppController (e2e)', () => {
     await app.close();
   });
 
-  it('should call message', async (done) => {
+  it('should call message', async () => {
     const socket = io.connect(await app.getUrl());
-    socket.emit('message', { name: 'Test' }, (data) => {
+    socket.emit('message', { name: 'Test' }, async (data) => {
       expect(data).toBe('Hello, Test!');
       socket.disconnect();
-      done();
     });
   });
 });
