@@ -27,8 +27,8 @@ This is not necessarily the Nest canonical way to test an application, nor is it
 
 1. `git clone https://github.com/jmcdo29/testing-nestjs.git`
 2. `cd testing-nestjs/<folderName>`
-3. `npm install` OR `yarn add`
-4. `npm run test` OR `yarn test`
+3. `npm install` OR `yarn add` OR `pnpm install`
+4. `npm run test` OR `yarn test` OR `pnpm test`
 
 ## Contributing
 
