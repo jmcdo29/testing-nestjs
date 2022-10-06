@@ -5,6 +5,7 @@ import { AppModule } from '../src/app.module';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
+  let url: string;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -13,17 +14,19 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     await app.listen(0, '0.0.0.0');
+    url = await app.getUrl();
   });
 
   afterAll(async () => {
     await app.close();
   });
 
-  it('should call message', async () => {
-    const socket = io.connect(await app.getUrl());
-    socket.emit('message', { name: 'Test' }, async (data) => {
+  it('should call message', (done) => {
+    const socket = io.connect(url);
+    socket.emit('message', { name: 'Test' }, (data) => {
       expect(data).toBe('Hello, Test!');
       socket.disconnect();
+      done();
     });
   });
 });
