@@ -10,6 +10,7 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "target": "es2017",
+    "esModuleInterop": true,
     "sourceMap": true,
     "baseUrl": ".",
     "incremental": true,
