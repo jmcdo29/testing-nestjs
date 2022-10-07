@@ -122,7 +122,7 @@
     "ts-jest": "^27.1.5",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.7.0",
-    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths": "^4.1.0",
     "typescript": "^4.7.4",
     "uuid": "^8.3.2"
   },
