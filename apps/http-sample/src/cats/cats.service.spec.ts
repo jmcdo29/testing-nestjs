@@ -136,7 +136,7 @@ describe('CatsService', () => {
       breed: 'Russian',
     };
 
-    const response: AxiosResponse<any> = {
+    const response: AxiosResponse<any, any> | any = {
       data,
       headers: {},
       config: { url: 'http://localhost:3000/mockUrl' },
