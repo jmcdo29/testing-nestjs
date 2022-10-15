@@ -80,7 +80,7 @@ specifiers:
   ts-node: ^10.9.1
   tsconfig-paths: ^4.1.0
   typeorm: ^0.3.10
-  typescript: ^4.7.4
+  typescript: ^4.8.4
   uuid: ^9.0.0
 
 dependencies:
