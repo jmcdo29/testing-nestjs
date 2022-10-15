@@ -70,3 +70,4 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 yarn.lock
+tags
