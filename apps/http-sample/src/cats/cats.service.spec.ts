@@ -136,7 +136,7 @@ describe('CatsService', () => {
       breed: 'Russian',
     };
 
-    const response: AxiosResponse<any> | any = {
+    const response: AxiosResponse<any> = {
       data,
       headers: {},
       config: { url: 'http://localhost:3000/mockUrl' },
@@ -144,7 +144,9 @@ describe('CatsService', () => {
       statusText: 'OK',
     };
 
-    jest.spyOn(httpService, 'post').mockImplementation(() => of(response));
+    jest
+      .spyOn(httpService, 'post')
+      .mockImplementation(() => of(response as any));
 
     service.create(createCatDto).subscribe({
       next: (val) => {
