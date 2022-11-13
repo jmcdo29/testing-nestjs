@@ -15,6 +15,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/complex-sample"],
           "options": {
             "jestConfig": "apps/complex-sample/jest.config.js"
           }
@@ -41,6 +42,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/cqrs-sample"],
           "options": {
             "jestConfig": "apps/cqrs-sample/jest.config.js"
           }
@@ -64,34 +66,13 @@
           "options": {
             "outputPath": "dist/apps/file-up-and-down-sample",
             "main": "apps/file-up-and-down-sample/src/main.ts",
-            "tsConfig": "apps/file-up-and-down-sample/tsconfig.app.json",
-            "assets": ["apps/file-up-and-down-sample/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/file-up-and-down-sample/src/environments/environment.ts",
-                  "with": "apps/file-up-and-down-sample/src/environments/environment.prod.ts"
-                }
-              ]
-            }
+            "tsConfig": "apps/file-up-and-down-sample/tsconfig.app.json"
           }
         },
         "serve": {
           "executor": "@nrwl/node:execute",
           "options": {
             "buildTarget": "file-up-and-down-sample:build"
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/file-up-and-down-sample/**/*.ts"]
           }
         },
         "test": {
@@ -108,8 +89,7 @@
             "jestConfig": "apps/file-up-and-down-sample/test/jest-e2e.js"
           }
         }
-      },
-      "tags": []
+      }
     },
     "graphql-sample": {
       "root": "apps/graphql-sample",
@@ -125,6 +105,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/graphql-sample"],
           "options": {
             "jestConfig": "apps/graphql-sample/jest.config.js"
           }
@@ -151,6 +132,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/http-sample"],
           "options": {
             "jestConfig": "apps/http-sample/jest.config.js"
           }
@@ -177,6 +159,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/microservice-sample"],
           "options": {
             "jestConfig": "apps/microservice-sample/jest.config.js"
           }
@@ -203,6 +186,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/mongo-sample"],
           "options": {
             "jestConfig": "apps/mongo-sample/jest.config.js"
           }
@@ -229,6 +213,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/prisma-sample"],
           "options": {
             "jestConfig": "apps/prisma-sample/jest.config.js"
           }
@@ -255,6 +240,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/render-sample"],
           "options": {
             "jestConfig": "apps/render-sample/jest.config.js"
           }
@@ -281,6 +267,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/rxjs-sample"],
           "options": {
             "jestConfig": "apps/rxjs-sample/jest.config.js"
           }
@@ -307,6 +294,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/sequelize-sample"],
           "options": {
             "jestConfig": "apps/sequelize-sample/jest.config.js"
           }
@@ -333,6 +321,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/simple-sample"],
           "options": {
             "jestConfig": "apps/simple-sample/jest.config.js"
           }
@@ -359,6 +348,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/typeorm-sample"],
           "options": {
             "jestConfig": "apps/typeorm-sample/jest.config.js"
           }
@@ -385,6 +375,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/websocket-sample"],
           "options": {
             "jestConfig": "apps/websocket-sample/jest.config.js"
           }
