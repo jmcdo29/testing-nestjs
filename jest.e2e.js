@@ -7,4 +7,5 @@ module.exports = {
   ...baseConfig,
   rootDir: '..',
   testMatch: ['<rootDir>/test/**/*.e2e-spec.ts'],
+  transformIgnorePatterns: ['node_modules/(?!axios)'],
 };

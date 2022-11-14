@@ -4,9 +4,11 @@
     "complex-sample": {
       "root": "apps/complex-sample",
       "sourceRoot": "apps/complex-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/complex-sample/tsconfig.app.json",
             "main": "apps/complex-sample/src/main.ts",
@@ -15,6 +17,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/complex-sample"],
           "options": {
             "jestConfig": "apps/complex-sample/jest.config.js"
           }
@@ -30,9 +33,11 @@
     "cqrs-sample": {
       "root": "apps/cqrs-sample",
       "sourceRoot": "apps/cqrs-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/cqrs-sample/tsconfig.app.json",
             "main": "apps/cqrs-sample/src/main.ts",
@@ -41,6 +46,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/cqrs-sample"],
           "options": {
             "jestConfig": "apps/cqrs-sample/jest.config.js"
           }
@@ -64,39 +70,12 @@
           "options": {
             "outputPath": "dist/apps/file-up-and-down-sample",
             "main": "apps/file-up-and-down-sample/src/main.ts",
-            "tsConfig": "apps/file-up-and-down-sample/tsconfig.app.json",
-            "assets": ["apps/file-up-and-down-sample/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/file-up-and-down-sample/src/environments/environment.ts",
-                  "with": "apps/file-up-and-down-sample/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "file-up-and-down-sample:build"
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/file-up-and-down-sample/**/*.ts"]
+            "tsConfig": "apps/file-up-and-down-sample/tsconfig.app.json"
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/file-up-and-down-sample"],
+          "outputs": ["{workspaceRoot}/coverage/apps/file-up-and-down-sample"],
           "options": {
             "jestConfig": "apps/file-up-and-down-sample/jest.config.js",
             "passWithNoTests": true
@@ -108,15 +87,16 @@
             "jestConfig": "apps/file-up-and-down-sample/test/jest-e2e.js"
           }
         }
-      },
-      "tags": []
+      }
     },
     "graphql-sample": {
       "root": "apps/graphql-sample",
       "sourceRoot": "apps/graphql-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/graphql-sample/tsconfig.app.json",
             "main": "apps/graphql-sample/src/main.ts",
@@ -125,6 +105,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/graphql-sample"],
           "options": {
             "jestConfig": "apps/graphql-sample/jest.config.js"
           }
@@ -140,9 +121,11 @@
     "http-sample": {
       "root": "apps/http-sample",
       "sourceRoot": "apps/http-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/http-sample/tsconfig.app.json",
             "main": "apps/http-sample/src/main.ts",
@@ -151,6 +134,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/http-sample"],
           "options": {
             "jestConfig": "apps/http-sample/jest.config.js"
           }
@@ -166,9 +150,11 @@
     "microservice-sample": {
       "root": "apps/microservice-sample",
       "sourceRoot": "apps/microservice-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/microservice-sample/tsconfig.app.json",
             "main": "apps/microservice-sample/src/main.ts",
@@ -177,6 +163,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/microservice-sample"],
           "options": {
             "jestConfig": "apps/microservice-sample/jest.config.js"
           }
@@ -192,9 +179,11 @@
     "mongo-sample": {
       "root": "apps/mongo-sample",
       "sourceRoot": "apps/mongo-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/mongo-sample/tsconfig.app.json",
             "main": "apps/mongo-sample/src/main.ts",
@@ -203,6 +192,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/mongo-sample"],
           "options": {
             "jestConfig": "apps/mongo-sample/jest.config.js"
           }
@@ -218,9 +208,11 @@
     "prisma-sample": {
       "root": "apps/prisma-sample",
       "sourceRoot": "apps/prisma-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/prisma-sample/tsconfig.app.json",
             "main": "apps/prisma-sample/src/main.ts",
@@ -229,6 +221,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/prisma-sample"],
           "options": {
             "jestConfig": "apps/prisma-sample/jest.config.js"
           }
@@ -244,9 +237,11 @@
     "render-sample": {
       "root": "apps/render-sample",
       "sourceRoot": "apps/render-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/render-sample/tsconfig.app.json",
             "main": "apps/render-sample/src/main.ts",
@@ -255,6 +250,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/render-sample"],
           "options": {
             "jestConfig": "apps/render-sample/jest.config.js"
           }
@@ -270,9 +266,11 @@
     "rxjs-sample": {
       "root": "apps/rxjs-sample",
       "sourceRoot": "apps/rxjs-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/rxjs-sample/tsconfig.app.json",
             "main": "apps/rxjs-sample/src/main.ts",
@@ -281,6 +279,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/rxjs-sample"],
           "options": {
             "jestConfig": "apps/rxjs-sample/jest.config.js"
           }
@@ -296,9 +295,11 @@
     "sequelize-sample": {
       "root": "apps/sequelize-sample",
       "sourceRoot": "apps/sequelize-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/sequelize-sample/tsconfig.app.json",
             "main": "apps/sequelize-sample/src/main.ts",
@@ -307,6 +308,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/sequelize-sample"],
           "options": {
             "jestConfig": "apps/sequelize-sample/jest.config.js"
           }
@@ -322,9 +324,11 @@
     "simple-sample": {
       "root": "apps/simple-sample",
       "sourceRoot": "apps/simple-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/simple-sample/tsconfig.app.json",
             "main": "apps/simple-sample/src/main.ts",
@@ -333,6 +337,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/simple-sample"],
           "options": {
             "jestConfig": "apps/simple-sample/jest.config.js"
           }
@@ -348,9 +353,11 @@
     "typeorm-sample": {
       "root": "apps/typeorm-sample",
       "sourceRoot": "apps/typeorm-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/typeorm-sample/tsconfig.app.json",
             "main": "apps/typeorm-sample/src/main.ts",
@@ -359,6 +366,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/typeorm-sample"],
           "options": {
             "jestConfig": "apps/typeorm-sample/jest.config.js"
           }
@@ -374,9 +382,11 @@
     "websocket-sample": {
       "root": "apps/websocket-sample",
       "sourceRoot": "apps/websocket-sample/src",
+      "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "tsConfig": "apps/websocket-sample/tsconfig.app.json",
             "main": "apps/websocket-sample/src/main.ts",
@@ -385,6 +395,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
+          "outputs": ["{workspaceRoot}/coverage/apps/websocket-sample"],
           "options": {
             "jestConfig": "apps/websocket-sample/jest.config.js"
           }
