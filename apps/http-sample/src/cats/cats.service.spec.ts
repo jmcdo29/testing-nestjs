@@ -144,9 +144,7 @@ describe('CatsService', () => {
       statusText: 'OK',
     };
 
-    jest
-      .spyOn(httpService, 'post')
-      .mockImplementation(() => of(response as any));
+    jest.spyOn(httpService, 'post').mockImplementation(() => of(response));
 
     service.create(createCatDto).subscribe({
       next: (val) => {
