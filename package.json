@@ -156,5 +156,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "pnpm": {
+    "overrides": {
+      "axios": "^1.0.0"
+    }
   }
 }
