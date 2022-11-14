@@ -64,7 +64,7 @@
     "@prisma/client": "^3.1.1",
     "apollo-server-core": "^3.10.2",
     "apollo-server-express": "^3.10.2",
-    "axios": "^1.0.0",
+    "axios": "1.2.0-alpha.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "graphql": "15.5.0",
@@ -159,7 +159,7 @@
   },
   "pnpm": {
     "overrides": {
-      "axios": "^1.0.0"
+      "axios": "next"
     }
   }
 }

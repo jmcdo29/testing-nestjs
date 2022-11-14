@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 overrides:
-  axios: ^1.0.0
+  axios: next
 
 specifiers:
   '@commitlint/cli': ^17.1.2
@@ -49,7 +49,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.39.0
   apollo-server-core: ^3.10.2
   apollo-server-express: ^3.10.2
-  axios: ^1.0.0
+  axios: next
   class-transformer: ^0.5.1
   class-validator: ^0.13.2
   cz-conventional-changelog: ^3.3.0
@@ -108,7 +108,7 @@ dependencies:
   '@prisma/client': 3.15.2_prisma@3.15.2
   apollo-server-core: 3.10.2_graphql@15.5.0
   apollo-server-express: 3.10.2_sx2jc4swydbpbxrlpgm6lnsn4u
-  axios: 1.0.0
+  axios: 1.2.0-alpha.1
   class-transformer: 0.5.1
   class-validator: 0.13.2
   graphql: 15.5.0
@@ -2299,7 +2299,7 @@ packages:
       rxjs: ^6.0.0 || ^7.0.0
     dependencies:
       '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
-      axios: 1.1.2
+      axios: 1.2.0-alpha.1
       reflect-metadata: 0.1.13
       rxjs: 7.5.7
     transitivePeerDependencies:
@@ -4270,18 +4270,8 @@ packages:
       - supports-color
     dev: false
 
-  /axios/1.0.0:
-    resolution: {integrity: sha512-SsHsGFN1qNPFT5QhSoSD37SHDfGyLSW5AESmyLk2JeCMHv5g0I9g0Hz/zQHx2KNe0jGXh2q2hAm7OdkXm360CA==}
-    dependencies:
-      follow-redirects: 1.15.2
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
-  /axios/1.1.2:
-    resolution: {integrity: sha512-bznQyETwElsXl2RK7HLLwb5GPpOLlycxHCtrpDR/4RqqBzjARaOTo3jz4IgtntWUYee7Ne4S8UHd92VCuzPaWA==}
+  /axios/1.2.0-alpha.1:
+    resolution: {integrity: sha512-qt/7xkSQNBRKP26mt28cmSI1Y3jVtrQzu7oLjIyUHEdjpVeg100luMJrRpBlKlCmMd233Peu00mOkNC1OwXOrw==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
@@ -9056,7 +9046,7 @@ packages:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.22
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.1.2
+      axios: 1.2.0-alpha.1
       chalk: 4.1.0
       chokidar: 3.5.3
       cli-cursor: 3.1.0
