@@ -90,7 +90,7 @@
     "@nestjs/cli": "^9.1.4",
     "@nestjs/schematics": "^9.0.3",
     "@nestjs/testing": "^9.1.2",
-    "@nrwl/cli": "15.0.4",
+    "@nrwl/cli": "15.5.2",
     "@nrwl/jest": "15.0.4",
     "@nrwl/nest": "15.0.4",
     "@nrwl/node": "15.0.4",
