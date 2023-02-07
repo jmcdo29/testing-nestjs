@@ -113,7 +113,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "8.0.1",
     "jest": "^27.5.1",
-    "lint-staged": "^10.5.4",
+    "lint-staged": "^13.1.1",
     "multer": "1.4.5-lts.1",
     "nx": "15.0.4",
     "pactum": "^3.2.2",
