@@ -8,7 +8,6 @@ module.exports = {
       'ts-jest',
       {
         tsconfig: '<rootDir>/tsconfig.app.json',
-        isolatedModules: true,
         ignoreCodes: ['TS151001'],
       },
     ],
