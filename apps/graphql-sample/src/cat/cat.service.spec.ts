@@ -74,4 +74,33 @@ describe('CatService', () => {
       });
     });
   });
+
+  describe('updateCat', () => {
+    it('should update the cat exists in the cat array', () => {
+      expect(
+        service.updateCat({
+          id: '1',
+          name: 'Ventus Updated',
+          age: 4,
+        }),
+      ).toEqual({
+        id: '1',
+        name: 'Ventus Updated',
+        age: 4,
+        breed: 'Russian Blue',
+      });
+    });
+
+    it('should throw error when id is not valid', () => {
+      const cat = () =>
+        service.updateCat({
+          id: 'Invalid Id',
+          name: 'Ventus Updated',
+          age: 4,
+        });
+
+      expect(cat).toThrowError(BadRequestException);
+      expect(cat).toThrowError('No cat with id Invalid Id found');
+    });
+  });
 });
