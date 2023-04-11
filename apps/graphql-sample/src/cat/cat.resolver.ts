@@ -4,6 +4,7 @@ import { CatService } from './cat.service';
 import { CatInput } from './models/cat-input.dto';
 import { CatInsert } from './models/cat-mutation.dto';
 import { Cat } from './models/cat-query.dto';
+import { CatUpdateDTO } from './models/cat-update.dto';
 
 @Resolver(() => Cat)
 export class CatResolver {
@@ -22,5 +23,10 @@ export class CatResolver {
   @Mutation(() => Cat)
   insertCat(@Args('newCat') newCat: CatInsert): Cat {
     return this.catService.newCat(newCat);
+  }
+
+  @Mutation(() => Cat)
+  updateCat(@Args('updateArgs') cat: CatUpdateDTO): Cat {
+    return this.catService.updateCat(cat);
   }
 }

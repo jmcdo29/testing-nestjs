@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { Cat } from './models/cat-query.dto';
 import { CatInsert } from './models/cat-mutation.dto';
 import { CatInput } from './models/cat-input.dto';
+import { CatUpdateDTO } from './models/cat-update.dto';
 
 @Injectable()
 export class CatService {
@@ -41,5 +42,16 @@ export class CatService {
   newCat(cat: CatInsert): Cat {
     this.cats.push({ id: (this.cats.length + 1).toString(), ...cat });
     return this.cats[this.cats.length - 1];
+  }
+
+  updateCat(cat: CatUpdateDTO): Cat {
+    const idx = this.cats.findIndex((el) => el.id === cat.id);
+    if (idx < 0) {
+      throw new BadRequestException(`No cat with id ${cat.id} found`);
+    }
+    const currentCat = this.cats[idx];
+
+    this.cats[idx] = { ...currentCat, ...cat };
+    return this.cats[idx];
   }
 }
