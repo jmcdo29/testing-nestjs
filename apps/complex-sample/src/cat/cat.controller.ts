@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Put,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
@@ -40,5 +41,13 @@ export class CatController {
   @Delete('/:id')
   deleteCat(@Param('id', ParseIntPipe) id: number): boolean {
     return this.catService.deleteCat(id);
+  }
+
+  @Put('/:id')
+  updateCat(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(CatPipe) updateCat: Partial<CatDTO>,
+  ): Cat {
+    return this.catService.updateCat(id, updateCat);
   }
 }
