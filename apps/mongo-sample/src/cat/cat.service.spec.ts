@@ -46,7 +46,7 @@ const catArray = [
   mockCat('Simba', 'the king', 14, 'Lion'),
 ];
 
-const catDocArray = [
+const catDocArray: Partial<CatDoc>[] = [
   mockCatDoc(),
   mockCatDoc({ name: 'Vitani', id: 'a new uuid', age: 2, breed: 'Tabby' }),
   mockCatDoc({ name: 'Simba', age: 14, id: 'the king', breed: 'Lion' }),
@@ -96,7 +96,7 @@ describe('CatService', () => {
   it('should return all cats', async () => {
     jest.spyOn(model, 'find').mockReturnValue({
       exec: jest.fn().mockResolvedValueOnce(catDocArray),
-    } as any);
+    } as unknown as Query<CatDoc[], CatDoc>);
     const cats = await service.getAll();
     expect(cats).toEqual(catArray);
   });
@@ -106,7 +106,7 @@ describe('CatService', () => {
         exec: jest
           .fn()
           .mockResolvedValueOnce(mockCatDoc({ name: 'Ventus', id: 'an id' })),
-      }) as any,
+      }),
     );
     const findMockCat = mockCat('Ventus', 'an id');
     const foundCat = await service.getOne('an id');
@@ -120,7 +120,7 @@ describe('CatService', () => {
           .mockResolvedValueOnce(
             mockCatDoc({ name: 'Mufasa', id: 'the dead king' }),
           ),
-      }) as any,
+      }),
     );
     const findMockCat = mockCat('Mufasa', 'the dead king');
     const foundCat = await service.getOneByName('Mufasa');
@@ -152,7 +152,7 @@ describe('CatService', () => {
           breed: 'Tabby',
           age: 42,
         }),
-      }) as any,
+      }),
     );
     const updatedCat = await service.updateOne({
       _id: lasagna,
