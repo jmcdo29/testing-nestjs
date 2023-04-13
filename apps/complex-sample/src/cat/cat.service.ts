@@ -41,4 +41,14 @@ export class CatService {
     this.cats = this.cats.filter((cat, catIndex) => catIndex !== index);
     return true;
   }
+
+  updateCat(id: number, updateCat: Partial<CatDTO>): Cat {
+    const idx = this.cats.findIndex((cat) => cat.id === id);
+    if (idx < 0) {
+      throw new BadRequestException(`No cat found with id ${id}.`);
+    }
+
+    this.cats[idx] = { ...this.cats[idx], ...updateCat };
+    return this.cats[idx];
+  }
 }

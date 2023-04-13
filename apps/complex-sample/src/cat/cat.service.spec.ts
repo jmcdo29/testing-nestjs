@@ -69,6 +69,36 @@ describe('CatService', () => {
       expect(!service.deleteCat(5874533));
     });
   });
+  describe('updateCat', () => {
+    it('should update the cat', () => {
+      const newCat = service.addCat({
+        name: testCat1,
+        breed: testBreed1,
+        age: 8,
+      });
+
+      const updatedCat = service.updateCat(newCat.id, {
+        breed: 'Updated Breed 1',
+        age: 5,
+      });
+
+      expect({
+        id: newCat.id,
+        name: testCat1,
+        breed: 'Updated Breed 1',
+        age: 5,
+      }).toEqual(updatedCat);
+    });
+    it('should throw error when id is not valid', () => {
+      const cat = () =>
+        service.updateCat(98, {
+          name: 'Updated Breed 1',
+        });
+
+      expect(cat).toThrowError(BadRequestException);
+      expect(cat).toThrowError('No cat found with id 98.');
+    });
+  });
   // a bit of an in depth test to make sure the cats are staying in memory
   describe('getAll, addCat, getAll, deleteCat, getAll, findCat', () => {
     /**
@@ -76,10 +106,11 @@ describe('CatService', () => {
      * it is imperative to run each test right after the function runs.
      * Also a good idea to get the length immediately as that will not change but the array will
      */
-    it('should get all cats, create new cat, get all cats again, delete a cat, get all cats and find a specified cat', () => {
+    it('should get all cats, create new cat, get all cats again, delete a cat, get all cats and find a specified cat and update a cat and getAll cat again', () => {
       const firstCatSet = service.getAll();
       const firstCatSetLength = firstCatSet.length;
       expect(firstCatSet.length).toBe(3);
+
       const newCat = service.addCat({
         name: testCat1,
         breed: testBreed1,
@@ -94,10 +125,12 @@ describe('CatService', () => {
       const secondCatSet = service.getAll();
       expect(secondCatSet.length).toBe(firstCatSetLength + 1);
       expect(secondCatSet).toContainEqual(newCat);
+
       const deleted = service.deleteCat(2);
       expect(deleted);
       const thirdCatSet = service.getAll();
       expect(thirdCatSet.length).toBe(firstCatSetLength);
+
       const foundCat = service.getById(3);
       expect(foundCat).toEqual({
         id: 3,
@@ -105,6 +138,10 @@ describe('CatService', () => {
         breed: 'Maine Coon',
         age: 5,
       });
+
+      service.updateCat(newCat.id, { name: 'Update Breed 1' });
+      const fourthCatSet = service.getAll();
+      expect(fourthCatSet.length).toBe(firstCatSetLength);
     });
   });
 });
