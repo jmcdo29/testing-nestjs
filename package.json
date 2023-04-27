@@ -95,7 +95,7 @@
     "@nrwl/nest": "15.6.3",
     "@nrwl/node": "15.6.3",
     "@nrwl/tao": "15.6.3",
-    "@nrwl/workspace": "15.6.3",
+    "@nrwl/workspace": "15.8.5",
     "@types/express": "^4.17.1",
     "@types/jest": "^29.1.2",
     "@types/multer": "^1.4.7",
