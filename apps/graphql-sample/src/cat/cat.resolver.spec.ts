@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CatResolver } from './cat.resolver';
 import { CatService } from './cat.service';
 import { CatInsert } from './models/cat-mutation.dto';
+import { CatUpdateDTO } from './models/cat-update.dto';
 
 describe('CatResolver', () => {
   let resolver: CatResolver;
@@ -30,6 +31,13 @@ describe('CatResolver', () => {
             })),
             newCat: jest.fn((cat: CatInsert) => ({
               id: '10',
+              ...cat,
+            })),
+            updateCat: jest.fn((cat: CatUpdateDTO) => ({
+              id: '1',
+              name: 'Ventus',
+              breed: 'Russian Blue',
+              age: 4,
               ...cat,
             })),
           }),
@@ -79,6 +87,22 @@ describe('CatResolver', () => {
         breed: 'Sphinx',
         age: 1390,
         id: '10',
+      });
+    });
+  });
+  describe('updateCat', () => {
+    it('should update a cat', () => {
+      expect(
+        resolver.updateCat({
+          id: '1',
+          name: 'Toms',
+          breed: 'Siberian Husky',
+        }),
+      ).toEqual({
+        id: '1',
+        name: 'Toms',
+        breed: 'Siberian Husky',
+        age: 4,
       });
     });
   });
