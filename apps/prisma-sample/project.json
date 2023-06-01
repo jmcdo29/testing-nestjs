@@ -1,0 +1,32 @@
+{
+  "name": "prisma-sample",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/prisma-sample/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "tsConfig": "apps/prisma-sample/tsconfig.app.json",
+        "main": "apps/prisma-sample/src/main.ts",
+        "outputPath": "dist/apps/prisma-sample",
+        "compiler": "tsc",
+        "target": "node"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/prisma-sample"],
+      "options": {
+        "jestConfig": "apps/prisma-sample/jest.config.js"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/prisma-sample/test/jest-e2e.js"
+      }
+    }
+  }
+}

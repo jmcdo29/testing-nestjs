@@ -1,0 +1,32 @@
+{
+  "name": "render-sample",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/render-sample/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "tsConfig": "apps/render-sample/tsconfig.app.json",
+        "main": "apps/render-sample/src/main.ts",
+        "outputPath": "dist/apps/render-sample",
+        "compiler": "tsc",
+        "target": "node"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/render-sample"],
+      "options": {
+        "jestConfig": "apps/render-sample/jest.config.js"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/render-sample/test/jest-e2e.js"
+      }
+    }
+  }
+}

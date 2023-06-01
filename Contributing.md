@@ -19,7 +19,7 @@ _[Use GitHub interface](https://blog.sapegin.me/all/open-source-for-everyone/) f
 
 First things first, as obvious as it is, run `npm install`.
 
-If you are creating a new test suite, first make a new application with `npm run nx -- g @nrwl/nest:application <app-name>`.
+If you are creating a new test suite, first make a new application with `npm run nx -- g @nx/nest:application <app-name>`.
 
 Git branching is optional, but encourages to keep better track of what you are working on. In the end, make sure you make a pull request to the main repository so your changes can be merged. If your changes do not pass all the tests, you will likely be asked to make refactoring changes. Please make your changes and run the following commands:
 

@@ -58,8 +58,8 @@ describe('Microservices (e2e)', () => {
       .then((res) => res.body);
 
     expect(response).toMatchInlineSnapshot(`
-      {
-        "result": {
+      Object {
+        "result": Object {
           "success": true,
         },
       }

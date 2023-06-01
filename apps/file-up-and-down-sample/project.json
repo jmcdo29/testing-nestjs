@@ -1,0 +1,33 @@
+{
+  "name": "file-up-and-down-sample",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/file-up-and-down-sample/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/file-up-and-down-sample",
+        "main": "apps/file-up-and-down-sample/src/main.ts",
+        "tsConfig": "apps/file-up-and-down-sample/tsconfig.app.json",
+        "compiler": "tsc",
+        "target": "node"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/file-up-and-down-sample"],
+      "options": {
+        "jestConfig": "apps/file-up-and-down-sample/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/file-up-and-down-sample/test/jest-e2e.js"
+      }
+    }
+  }
+}

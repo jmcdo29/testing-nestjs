@@ -1,0 +1,32 @@
+{
+  "name": "websocket-sample",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/websocket-sample/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "tsConfig": "apps/websocket-sample/tsconfig.app.json",
+        "main": "apps/websocket-sample/src/main.ts",
+        "outputPath": "dist/apps/websocket-sample",
+        "compiler": "tsc",
+        "target": "node"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/websocket-sample"],
+      "options": {
+        "jestConfig": "apps/websocket-sample/jest.config.js"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/websocket-sample/test/jest-e2e.js"
+      }
+    }
+  }
+}
