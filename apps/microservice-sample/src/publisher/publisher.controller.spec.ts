@@ -29,8 +29,8 @@ describe('PublisherController', () => {
   describe('root', () => {
     it('should publish an event to microservice"', () => {
       expect(publisherController.publishEvent()).toMatchInlineSnapshot(`
-        {
-          "result": {
+        Object {
+          "result": Object {
             "success": true,
           },
         }

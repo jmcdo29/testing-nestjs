@@ -21,7 +21,7 @@ const generateBuildScript = (packageName) => {
 }`;
   writeFileSync(tsconfigFileName, tsconfigFile);
   return {
-    executor: '@nrwl/node:build',
+    executor: '@nx/node:build',
     options: {
       tsConfig: `apps/${packageName}/tsconfig.app.json`,
       main: `apps/${packageName}/src/main.ts`,
@@ -44,7 +44,7 @@ module.exports = {
 }`;
   writeFileSync(jestFilePath, jestConfig);
   return {
-    executor: '@nrwl/jest:jest',
+    executor: '@nx/jest:jest',
     options: {
       jestConfig: `apps/${packageName}/jest.config.js`,
     },
@@ -66,7 +66,7 @@ module.exports = {
 };`;
   writeFileSync(jestE2eFilePath, e2eConfig);
   return {
-    executor: '@nrwl/jest:jest',
+    executor: '@nx/jest:jest',
     options: {
       jestConfig: `apps/${packageName}/test/jest-e2e.js`,
     },

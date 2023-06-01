@@ -1,0 +1,32 @@
+{
+  "name": "cqrs-sample",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cqrs-sample/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "tsConfig": "apps/cqrs-sample/tsconfig.app.json",
+        "main": "apps/cqrs-sample/src/main.ts",
+        "outputPath": "dist/apps/cqrs-sample",
+        "compiler": "tsc",
+        "target": "node"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/cqrs-sample"],
+      "options": {
+        "jestConfig": "apps/cqrs-sample/jest.config.js"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/cqrs-sample/test/jest-e2e.js"
+      }
+    }
+  }
+}

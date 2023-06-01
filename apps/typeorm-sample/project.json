@@ -1,0 +1,32 @@
+{
+  "name": "typeorm-sample",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/typeorm-sample/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "tsConfig": "apps/typeorm-sample/tsconfig.app.json",
+        "main": "apps/typeorm-sample/src/main.ts",
+        "outputPath": "dist/apps/typeorm-sample",
+        "compiler": "tsc",
+        "target": "node"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/typeorm-sample"],
+      "options": {
+        "jestConfig": "apps/typeorm-sample/jest.config.js"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/typeorm-sample/test/jest-e2e.js"
+      }
+    }
+  }
+}
