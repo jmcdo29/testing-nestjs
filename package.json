@@ -90,7 +90,12 @@
     "@nestjs/cli": "^9.1.4",
     "@nestjs/schematics": "9.2.0",
     "@nestjs/testing": "9.4.2",
+    "@nrwl/eslint-plugin-nx": "^16.3.1",
     "@nrwl/tao": "16.3.1",
+    "@nx/jest": "16.3.1",
+    "@nx/nest": "16.3.1",
+    "@nx/node": "16.3.1",
+    "@nx/workspace": "16.3.1",
     "@types/express": "^4.17.1",
     "@types/jest": "29.4.4",
     "@types/multer": "^1.4.7",
@@ -120,11 +125,7 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
     "typescript": "5.0.4",
-    "uuid": "^9.0.0",
-    "@nx/workspace": "16.3.1",
-    "@nx/jest": "16.3.1",
-    "@nx/node": "16.3.1",
-    "@nx/nest": "16.3.1"
+    "uuid": "^9.0.0"
   },
   "lint-staged": {
     "*.ts": [
