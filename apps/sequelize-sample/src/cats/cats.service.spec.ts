@@ -1,5 +1,5 @@
-import { Test } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/sequelize';
+import { Test } from '@nestjs/testing';
 import { Cat } from './cat.model';
 import { CatsService } from './cats.service';
 
@@ -20,6 +20,7 @@ describe('CatsService', () => {
             findOne: jest.fn(),
             create: jest.fn(() => testCat),
             remove: jest.fn(),
+            update: jest.fn(() => testCat),
           },
         },
       ],
@@ -53,5 +54,16 @@ describe('CatsService', () => {
     expect(findSpy).toBeCalledWith({ where: { id: 'id' } });
     expect(destroyStub).toBeCalledTimes(1);
     expect(retVal).toBeUndefined();
+  });
+
+  it('should update a cat', async () => {
+    const updateStub = jest.fn();
+
+    const findSpy = jest.spyOn(model, 'findOne').mockReturnValueOnce({
+      update: updateStub,
+    } as any);
+
+    expect(service.updateCat('id', {}));
+    expect(findSpy).toBeCalledWith({ where: { id: 'id' } });
   });
 });

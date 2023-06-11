@@ -20,11 +20,16 @@ export class CatsService {
   }
 
   async addCat(cat: CatDTO): Promise<Cat> {
-    return this.catsRepo.create(cat as any);
+    return this.catsRepo.create(cat);
   }
 
   async removeCat(id: string): Promise<void> {
     const cat = await this.getCat(id);
     await cat.destroy();
+  }
+
+  async updateCat(id: string, updateCat: Partial<Cat>): Promise<Cat> {
+    const cat = await this.getCat(id);
+    return cat.update(updateCat);
   }
 }

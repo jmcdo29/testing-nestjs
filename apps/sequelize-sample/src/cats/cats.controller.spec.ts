@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { Cat } from './cat.model';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 
@@ -26,6 +27,17 @@ describe('CatsController', () => {
               }),
             ),
             removeCat: jest.fn(),
+            updateCat: jest
+              .fn()
+              .mockImplementation((id: string, cat: Partial<Cat>) =>
+                Promise.resolve({
+                  name: 'Test Cat',
+                  age: 5,
+                  breed: 'Russian Blue',
+                  id,
+                  ...cat,
+                }),
+              ),
           },
         },
       ],
@@ -62,5 +74,16 @@ describe('CatsController', () => {
   it('should remove the cat', async () => {
     await controller.remove('anyid');
     expect(service.removeCat).toHaveBeenCalled();
+  });
+
+  it('should update the cat', async () => {
+    const cat = await controller.update('1', { name: 'Siemans', age: 23 });
+    expect(cat).toEqual({
+      id: '1',
+      name: 'Siemans',
+      age: 23,
+      breed: 'Russian Blue',
+    });
+    expect(service.updateCat).toHaveBeenCalled();
   });
 });
