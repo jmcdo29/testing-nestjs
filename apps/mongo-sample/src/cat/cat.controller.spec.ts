@@ -23,42 +23,46 @@ describe('Cat Controller', () => {
         {
           provide: CatService,
           useValue: {
-            getAll: jest.fn().mockResolvedValue([
+            getAll: jest.fn<CatDTO[], unknown[]>().mockImplementation(() => [
               { name: testCat1, breed: testBreed1, age: 4 },
               { name: 'Test Cat 2', breed: 'Test Breed 2', age: 3 },
               { name: 'Test Cat 3', breed: 'Test Breed 3', age: 2 },
             ]),
-            getOne: jest.fn().mockImplementation((id: string) =>
-              Promise.resolve({
-                name: testCat1,
-                breed: testBreed1,
-                age: 4,
-                _id: id,
-              }),
-            ),
-            getOneByName: jest
-              .fn()
-              .mockImplementation((name: string) =>
-                Promise.resolve({ name, breed: testBreed1, age: 4 }),
+            getOne: jest
+              .fn<Promise<CatDTO>, string[]>()
+              .mockImplementation((id) =>
+                Promise.resolve({
+                  name: testCat1,
+                  breed: testBreed1,
+                  age: 4,
+                  _id: id,
+                }),
               ),
+            getOneByName: jest
+              .fn<Promise<CatDTO>, string[]>()
+              .mockImplementation((name) => {
+                return Promise.resolve({ name, breed: testBreed1, age: 4 });
+              }),
             insertOne: jest
-              .fn()
-              .mockImplementation((cat: CatDTO) =>
+              .fn<Promise<CatDTO>, CatDTO[]>()
+              .mockImplementation((cat) =>
                 Promise.resolve({ _id: 'a uuid', ...cat }),
               ),
             updateOne: jest
-              .fn()
-              .mockImplementation((cat: CatDTO) =>
+              .fn<Promise<CatDTO>, CatDTO[]>()
+              .mockImplementation((cat) =>
                 Promise.resolve({ _id: 'a uuid', ...cat }),
               ),
-            deleteOne: jest.fn().mockResolvedValue({ deleted: true }),
+            deleteOne: jest
+              .fn<{ deleted: boolean }, unknown[]>()
+              .mockImplementation(() => ({ deleted: true })),
           },
         },
       ],
     }).compile();
 
-    controller = module.get<CatController>(CatController);
-    service = module.get<CatService>(CatService);
+    controller = module.get(CatController);
+    service = module.get(CatService);
   });
 
   it('should be defined', () => {
