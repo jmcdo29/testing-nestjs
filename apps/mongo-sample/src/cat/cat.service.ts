@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CatDTO } from './cat.dto';
-import { Cat } from './interfaces/cat.interface';
 import { CatDoc } from './interfaces/cat-document.interface';
+import { Cat } from './interfaces/cat.interface';
 
 @Injectable()
 export class CatService {
@@ -46,7 +46,7 @@ export class CatService {
    * the same effect.
    */
   async insertOne(cat: CatDTO): Promise<Cat> {
-    const retCat = await this.catModel.create(cat as any);
+    const retCat = await this.catModel.create(cat);
     return {
       id: retCat._id,
       age: retCat.age,
