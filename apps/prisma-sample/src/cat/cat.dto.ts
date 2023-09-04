@@ -19,3 +19,5 @@ export class CatDTO {
   @Validate(OwnerExistsRule)
   ownerId: string;
 }
+
+export type TCat = CatDTO & { id: string };
