@@ -57,7 +57,6 @@ export class CatService {
 
   deleteCat(catId: string): Cat {
     const catIdx = this.cats.findIndex((el) => el.id === catId);
-    console.log('CatIdx', catIdx, this.cats);
     if (catIdx < 0) {
       throw new BadRequestException(`No cat with id ${catId} found`);
     }
