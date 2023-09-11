@@ -39,7 +39,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6
+          version: 8
           run_install: true
       - name: Generate Prisma Schema
         if: ${{ matrix.test == 'prisma-sample' }}
@@ -64,7 +64,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6
+          version: 8
           run_install: true
       - name: Run tests
         run: pnpm run test:e2e
