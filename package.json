@@ -61,7 +61,7 @@
     "@nestjs/serve-static": "^3.0.0",
     "@nestjs/typeorm": "^9.0.1",
     "@nestjs/websockets": "^9.1.2",
-    "@prisma/client": "^3.1.1",
+    "@prisma/client": "^4.11.0",
     "apollo-server-core": "^3.10.2",
     "apollo-server-express": "^3.10.2",
     "axios": "1.2.0-alpha.1",
