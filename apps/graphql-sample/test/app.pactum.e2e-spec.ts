@@ -25,7 +25,7 @@ const cats: Cat[] = [
   },
 ];
 
-describe('GraphQL ApPResolver (e2e) {Pactum}', () => {
+describe('GraphQL AppResolver (e2e) {Pactum}', () => {
   let app: INestApplication;
   let url: string;
 
@@ -125,7 +125,7 @@ describe('GraphQL ApPResolver (e2e) {Pactum}', () => {
             .expectJsonLike({
               errors: [
                 {
-                  message: 'No cat with id 500 found',
+                  message: 'Internal server error',
                 },
               ],
             })
