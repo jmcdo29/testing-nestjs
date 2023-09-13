@@ -76,9 +76,7 @@ describe('GraphQL AppResolver (e2e) {Supertest}', () => {
             .expect(200)
             .expect((res) => {
               expect(res.body.data).toBe(null);
-              expect(res.body.errors[0].message).toBe(
-                'No cat with id 500 found',
-              );
+              expect(res.body.errors[0].message).toBe('Internal server error');
             });
         });
       });
