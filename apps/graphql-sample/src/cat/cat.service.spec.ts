@@ -1,16 +1,16 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { CatService } from './cat.service';
 import { BadRequestException } from '@nestjs/common';
+import { Test } from '@nestjs/testing';
+import { CatService } from './cat.service';
 
 describe('CatService', () => {
   let service: CatService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [CatService],
     }).compile();
 
-    service = module.get<CatService>(CatService);
+    service = module.get(CatService);
   });
 
   it('should be defined', () => {
@@ -101,6 +101,29 @@ describe('CatService', () => {
 
       expect(cat).toThrowError(BadRequestException);
       expect(cat).toThrowError('No cat with id Invalid Id found');
+    });
+  });
+
+  describe('deleteCat', () => {
+    it('should delete the cat exists in the cat array', () => {
+      const totalCats = service.getCats().length;
+
+      expect(service.deleteCat('1')).toEqual({
+        id: '1',
+        name: 'Ventus',
+        age: 4,
+        breed: 'Russian Blue',
+      });
+
+      expect(service.getCats().length).toStrictEqual(totalCats - 1);
+    });
+
+    it('should throw error when id is not valid', () => {
+      const catId = 'Invalid Id';
+      const cat = () => service.deleteCat(catId);
+
+      expect(cat).toThrowError(BadRequestException);
+      expect(cat).toThrowError(`No cat with id ${catId} found`);
     });
   });
 });

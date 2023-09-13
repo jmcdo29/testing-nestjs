@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { Cat } from './models/cat-query.dto';
-import { CatInsert } from './models/cat-mutation.dto';
 import { CatInput } from './models/cat-input.dto';
+import { CatInsert } from './models/cat-mutation.dto';
+import { Cat } from './models/cat-query.dto';
 import { CatUpdateDTO } from './models/cat-update.dto';
 
 @Injectable()
@@ -53,5 +53,15 @@ export class CatService {
 
     this.cats[idx] = { ...currentCat, ...cat };
     return this.cats[idx];
+  }
+
+  deleteCat(catId: string): Cat {
+    const catIdx = this.cats.findIndex((el) => el.id === catId);
+    if (catIdx < 0) {
+      throw new BadRequestException(`No cat with id ${catId} found`);
+    }
+    const deletedCat = this.cats[catIdx];
+    this.cats.splice(catIdx, 1);
+    return deletedCat;
   }
 }

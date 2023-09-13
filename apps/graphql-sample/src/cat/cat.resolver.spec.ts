@@ -1,21 +1,23 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { CatResolver } from './cat.resolver';
 import { CatService } from './cat.service';
+import { CatInput } from './models/cat-input.dto';
 import { CatInsert } from './models/cat-mutation.dto';
+import { Cat } from './models/cat-query.dto';
 import { CatUpdateDTO } from './models/cat-update.dto';
 
 describe('CatResolver', () => {
   let resolver: CatResolver;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [
         CatResolver,
         {
           provide: CatService,
           // using a factory just because
           useFactory: () => ({
-            getCats: jest.fn(() => [
+            getCats: jest.fn<Cat[], []>(() => [
               {
                 age: 3,
                 name: 'Ventus',
@@ -23,29 +25,35 @@ describe('CatResolver', () => {
                 id: '1',
               },
             ]),
-            getOneCat: jest.fn((id: { id: string }) => ({
+            getOneCat: jest.fn<Cat, [CatInput]>((id) => ({
               age: 3,
               name: 'Test Cat',
               breed: 'Test Breed',
               ...id,
             })),
-            newCat: jest.fn((cat: CatInsert) => ({
+            newCat: jest.fn<Cat, [CatInsert]>((cat) => ({
               id: '10',
               ...cat,
             })),
-            updateCat: jest.fn((cat: CatUpdateDTO) => ({
+            updateCat: jest.fn<Cat, [CatUpdateDTO]>((cat) => ({
               id: '1',
               name: 'Ventus',
               breed: 'Russian Blue',
               age: 4,
               ...cat,
             })),
+            deleteCat: jest.fn<Cat, [string]>().mockImplementation((catId) => ({
+              id: catId,
+              name: 'Ventus',
+              breed: 'Russian Blue',
+              age: 5,
+            })),
           }),
         },
       ],
     }).compile();
 
-    resolver = module.get<CatResolver>(CatResolver);
+    resolver = module.get(CatResolver);
   });
 
   it('should be defined', () => {
@@ -103,6 +111,18 @@ describe('CatResolver', () => {
         name: 'Toms',
         breed: 'Siberian Husky',
         age: 4,
+      });
+    });
+  });
+
+  describe('deleteCat', () => {
+    it('should delete a cat', () => {
+      const catId = '1';
+      expect(resolver.deleteCat(catId)).toEqual({
+        id: catId,
+        name: 'Ventus',
+        breed: 'Russian Blue',
+        age: 5,
       });
     });
   });

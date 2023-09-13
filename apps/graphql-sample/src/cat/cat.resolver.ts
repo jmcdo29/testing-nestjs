@@ -1,5 +1,4 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { Query } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CatService } from './cat.service';
 import { CatInput } from './models/cat-input.dto';
 import { CatInsert } from './models/cat-mutation.dto';
@@ -28,5 +27,10 @@ export class CatResolver {
   @Mutation(() => Cat)
   updateCat(@Args('updateArgs') cat: CatUpdateDTO): Cat {
     return this.catService.updateCat(cat);
+  }
+
+  @Mutation(() => Cat)
+  deleteCat(@Args('deleteArgs') catId: string): Cat {
+    return this.catService.deleteCat(catId);
   }
 }
