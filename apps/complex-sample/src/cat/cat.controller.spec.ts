@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 import { CatService } from './cat.service';
+import { CatDTO } from './dto/cats.dto';
 import { Cat } from './models/cats';
 
 const testCat1 = 'Test Cat 1';
@@ -37,6 +38,12 @@ describe('Cat Controller', () => {
               .fn()
               .mockReturnValue(new Cat(3, testCat3, 'Test Breed 3', 5)),
             deleteCat: jest.fn().mockReturnValue(true),
+            updateCat: jest
+              .fn<CatDTO, [number, Partial<CatDTO>]>()
+              .mockImplementation((id, updateCat) => ({
+                ...new Cat(id, testCat1, 'Test Breed 1', 2),
+                ...updateCat,
+              })),
           },
         },
       ],
@@ -86,6 +93,24 @@ describe('Cat Controller', () => {
       const delReturn = controller.deleteCat(2);
       expect(typeof delReturn).toBe('boolean');
       expect(delReturn);
+    });
+  });
+
+  describe('updateCat', () => {
+    const cat: Cat = { id: 1, name: testCat1, breed: 'Test Breed 1', age: 2 };
+
+    it('should return cat when cat is updated', () => {
+      const updatedCat = controller.updateCat(cat.id, {
+        breed: 'Updated Breed',
+        age: 4,
+      });
+
+      expect(updatedCat).toStrictEqual<Cat>({
+        id: cat.id,
+        name: cat.name,
+        breed: 'Updated Breed',
+        age: 4,
+      });
     });
   });
 });

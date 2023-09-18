@@ -1,3 +1,4 @@
+import { ExecutionContext } from '@nestjs/common';
 import { of } from 'rxjs';
 import { CatInterceptor } from './cat.interceptor';
 
@@ -26,7 +27,7 @@ describe('CatInterceptor', () => {
       // you can always pass in a mock value instead of an empty object
       // just make sure to mock the expected alls like switchToHttp
       // and getRequest
-      interceptor.intercept({} as any, next).subscribe({
+      interceptor.intercept({} as ExecutionContext, next).subscribe({
         next: (value) => {
           expect(value).toEqual({ data: returnCat });
         },

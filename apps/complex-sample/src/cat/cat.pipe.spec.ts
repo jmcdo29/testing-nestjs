@@ -1,6 +1,6 @@
+import { BadRequestException } from '@nestjs/common';
 import { CatPipe } from './cat.pipe';
 import { CatDTO } from './dto/cats.dto';
-import { BadRequestException } from '@nestjs/common';
 
 const testBreed = 'Test Breed';
 const failString = 'should throw an error for incorrect type';
@@ -21,26 +21,20 @@ describe('CatPipe', () => {
     });
   });
   /**
-   * You'll notice a ton of any types in here. That's because TypeScript
-   * tries to keep you from setting the wrong value, but in these tests
-   * we are wanting to test against the wrong value, hence overriding
-   * the linter and compiler :)
+   * Assertions now made on wrong data types to satisfy TypeScript compiler, in order to pass test cases
    */
   describe('unsuccessful calls', () => {
     describe('age errors', () => {
-      const badAgeCat: CatDTO = {
-        name: 'Test Name',
-        breed: testBreed,
-      } as any;
+      const badAgeCat = { name: 'Test Name', breed: testBreed } as CatDTO;
       it('should throw an error for missing age', () => {
-        const errorPipe = () => pipe.transform(badAgeCat as any);
+        const errorPipe = () => pipe.transform(badAgeCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Age must be a number.',
         );
       });
       it(failString, () => {
-        badAgeCat.age = '5' as any;
+        badAgeCat.age = '5' as unknown as number;
         const errorPipe = () => pipe.transform(badAgeCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
@@ -49,19 +43,17 @@ describe('CatPipe', () => {
       });
     });
     describe('name errors', () => {
-      const badNameCat: CatDTO = {
-        age: 5,
-        breed: testBreed,
-      } as any;
+      const badNameCat = { age: 5, breed: testBreed } as CatDTO;
+
       it('should throw an error for missing name', () => {
-        const errorPipe = () => pipe.transform(badNameCat as any);
+        const errorPipe = () => pipe.transform(badNameCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Name must be a string.',
         );
       });
       it(failString, () => {
-        badNameCat.name = true as any;
+        badNameCat.name = true as unknown as string;
         const errorPipe = () => pipe.transform(badNameCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
@@ -70,19 +62,17 @@ describe('CatPipe', () => {
       });
     });
     describe('breed errors', () => {
-      const badBreedCat: CatDTO = {
-        age: 5,
-        name: 'Test Name',
-      } as any;
+      const badBreedCat = { age: 5, name: 'Test Name' } as CatDTO;
+
       it('should throw an error for missing breed', () => {
-        const errorPipe = () => pipe.transform(badBreedCat as any);
+        const errorPipe = () => pipe.transform(badBreedCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
           'Incoming cat is not formatted correctly. Breed must be a string.',
         );
       });
       it(failString, () => {
-        badBreedCat.breed = true as any;
+        badBreedCat.breed = true as unknown as string;
         const errorPipe = () => pipe.transform(badBreedCat);
         expect(errorPipe).toThrowError(BadRequestException);
         expect(errorPipe).toThrowError(
