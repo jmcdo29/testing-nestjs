@@ -1,8 +1,8 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { CatController } from './cat.controller';
-import { CatDTO } from './cat.dto';
-import { CatService } from './cat.service';
+import { Test } from '@nestjs/testing';
 import { v4 as uuidv4 } from 'uuid';
+import { CatController } from './cat.controller';
+import { CatDTO, TCat } from './cat.dto';
+import { CatService } from './cat.service';
 
 const catId = uuidv4();
 const testCat1 = 'Test Cat 1';
@@ -14,7 +14,7 @@ describe('Cat Controller', () => {
   let service: CatService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       controllers: [CatController],
       // If you've looked at the complex sample you'll notice that these functions
       // are a little bit more in depth using mock implementation
@@ -24,7 +24,7 @@ describe('Cat Controller', () => {
         {
           provide: CatService,
           useValue: {
-            getAll: jest.fn().mockResolvedValue([
+            getAll: jest.fn<CatDTO[], []>().mockImplementation(() => [
               { name: testCat1, breed: testBreed1, age: 4, ownerId },
               {
                 name: 'Test Cat 2',
@@ -39,33 +39,35 @@ describe('Cat Controller', () => {
                 ownerId,
               },
             ]),
-            getOne: jest.fn().mockImplementation((id: string) =>
-              Promise.resolve({
-                name: testCat1,
-                breed: testBreed1,
-                age: 4,
-                ownerId,
-                id,
-              }),
-            ),
+            getOne: jest
+              .fn<Promise<TCat>, [string]>()
+              .mockImplementation((id) =>
+                Promise.resolve({
+                  name: testCat1,
+                  breed: testBreed1,
+                  age: 4,
+                  ownerId,
+                  id,
+                }),
+              ),
             insertOne: jest
-              .fn()
-              .mockImplementation((cat: CatDTO) =>
+              .fn<Promise<TCat>, [CatDTO]>()
+              .mockImplementation((cat) =>
                 Promise.resolve({ id: catId, ...cat }),
               ),
             updateOne: jest
-              .fn()
-              .mockImplementation((id: string, cat: CatDTO) =>
-                Promise.resolve({ id, ...cat }),
-              ),
-            deleteOne: jest.fn().mockResolvedValue({ deleted: true }),
+              .fn<Promise<TCat>, [string, CatDTO]>()
+              .mockImplementation((id, cat) => Promise.resolve({ id, ...cat })),
+            deleteOne: jest
+              .fn<{ deleted: boolean }, []>()
+              .mockImplementation(() => ({ deleted: true })),
           },
         },
       ],
     }).compile();
 
-    controller = module.get<CatController>(CatController);
-    service = module.get<CatService>(CatService);
+    controller = module.get(CatController);
+    service = module.get(CatService);
   });
 
   it('should be defined', () => {
