@@ -18,7 +18,7 @@ describe('CatsService', () => {
         {
           provide: HttpService,
           useValue: {
-            get: jest.fn(() => ({ id: 'Hello' })),
+            get: jest.fn(),
             post: jest.fn(),
             patch: jest.fn(),
             put: jest.fn(),
