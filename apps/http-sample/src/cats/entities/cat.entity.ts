@@ -3,3 +3,5 @@ export class Cat {
   age: number;
   breed: string;
 }
+
+export type TCat = Cat & { id: number };

@@ -1,10 +1,17 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { of } from 'rxjs';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
+import { UpdateCatDto } from './dto/update-cat.dto';
 
-const testCat = { id: 1, name: 'Test cat', age: 5, breed: 'Russian Blue' };
-const testCatUpdate = {
+const testCat: UpdateCatDto = {
+  id: 1,
+  name: 'Test cat',
+  age: 5,
+  breed: 'Russian Blue',
+};
+
+const testCatUpdate: UpdateCatDto = {
   id: 1,
   name: 'Test cat Update',
   age: 5,
@@ -13,10 +20,9 @@ const testCatUpdate = {
 
 describe('CatsController', () => {
   let controller: CatsController;
-  let service: CatsService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       controllers: [CatsController],
       providers: [
         {
@@ -32,8 +38,7 @@ describe('CatsController', () => {
       ],
     }).compile();
 
-    controller = module.get<CatsController>(CatsController);
-    service = module.get<CatsService>(CatsService);
+    controller = module.get(CatsController);
   });
 
   it('should be defined', () => {
