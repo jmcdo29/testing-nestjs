@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 import { CatService } from './cat.service';
-import { ICat } from './interface/cat.interface';
+import { ICat, TCatDeleteRes, TCatPostRes } from './interface/cat.interface';
 
 const cats: ICat[] = [
   {
@@ -14,53 +14,63 @@ const cats: ICat[] = [
 
 describe('CatController', () => {
   let controller: CatController;
-  let service: CatService;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       controllers: [CatController],
-      // providers: [
-      //   {
-      //     provide: CatService,
-      //     useValue: {
-      //       getAll: jest.fn(),
-      //       // addCat: 1,
-      //     },
-      //   },
-      // ],
     })
+      // alternative way to mock the functions
       .useMocker((token) => {
         if (token === CatService) {
-          // console.log(
-          //   'Yes token is catService dont know why',
-          //   token.toString(),
-          // );
           return {
             getAll: jest
               .fn<Promise<ICat[]>, []>()
               .mockImplementation(() => Promise.resolve(cats)),
-            addCat: jest.fn<ICat, [ICat]>().mockImplementation((cat) => {
-              // const allCats = [...cats];
-              if (cat.id === 1) {
-                // Simulate that transaction failed!
-                throw new Error('Transaction failed!');
-              }
+            addCat: jest
+              .fn<Promise<TCatPostRes>, [ICat]>()
+              .mockImplementation((cat) => {
+                if (cat.id === 1) {
+                  // Simulate that transaction failed!
+                  throw new Error('Transaction failed!');
+                }
 
-              cats.push(cat);
-              return cats[cats.length - 1];
-            }),
+                cats.push(cat);
+                return Promise.resolve({
+                  message: 'Cat Created Successfully!',
+                });
+              }),
+            updateCat: jest
+              .fn<Promise<Partial<ICat>>, [cat: Partial<ICat>]>()
+              .mockImplementation((cat) => {
+                const catIdx = cats.findIndex((ct) => ct.id === cat.id);
+                if (catIdx < 0) {
+                  throw new Error('Transaction failed!');
+                }
+
+                const currentCat = cats[catIdx];
+                cats[catIdx] = { ...currentCat, ...cat };
+                return Promise.resolve(cats[catIdx]);
+              }),
+            deleteCat: jest
+              .fn<Promise<TCatDeleteRes>, [string]>()
+              .mockImplementation((id) => {
+                const catIdx = cats.findIndex((ct) => ct.id === +id);
+                if (catIdx < 0) {
+                  throw new Error('Transaction failed!');
+                }
+
+                cats.splice(catIdx, 1);
+                return Promise.resolve({
+                  deleted: true,
+                  message: 'Cat Deleted Successfully!',
+                });
+              }),
           };
         }
-        // if (typeof token === 'function') {
-        //   const mockMetadata = moduleMocker.getMetadata(token) as MockFunctionMetadata<any, any>;
-        //   const Mock = moduleMocker.generateFromMetadata(mockMetadata);
-        //   return new Mock();
-        // }
       })
       .compile();
 
     controller = module.get(CatController);
-    service = module.get(CatService);
   });
 
   it('should be defined', () => {
@@ -70,7 +80,6 @@ describe('CatController', () => {
   describe('getAll', () => {
     it(`should get all cats`, async () => {
       const allCats = await controller.getAllCats();
-      console.log('All Cats', allCats);
       expect(allCats).toBeDefined();
     });
   });
@@ -84,14 +93,19 @@ describe('CatController', () => {
         breed: 'Test Breed!',
       };
 
+      const allCatsLength = (await controller.getAllCats()).length;
       const resultCat = await controller.addCat(cat);
-      const allCats = await controller.getAllCats();
 
-      expect(allCats[allCats.length - 1]).toStrictEqual(resultCat);
+      const updatedCatsLength = (await controller.getAllCats()).length;
+
+      // Although, we don't need to check the new length, but for more clarification for test case
+      expect(updatedCatsLength).toStrictEqual(allCatsLength + 1);
+      expect(resultCat).toStrictEqual({
+        message: 'Cat Created Successfully!',
+      });
     });
 
     it(`should create cat with transaction fails when cat id is passed 1`, async () => {
-      let catsLengh = 0;
       try {
         const cat: ICat = {
           id: 1,
@@ -99,16 +113,62 @@ describe('CatController', () => {
           age: 5,
           breed: 'Test Breed!',
         };
-
-        catsLengh = (await controller.getAllCats()).length;
-
         await controller.addCat(cat);
-        // const allCats = await controller.getAllCats();
-        // expect(allCats[allCats.length - 1]).toStrictEqual(resultCat);
       } catch (error) {
-        const updatedCats = await controller.getAllCats();
+        expect(error.message).toStrictEqual('Transaction failed!');
+      }
+    });
+  });
 
-        expect(updatedCats.length).toStrictEqual(catsLengh);
+  describe(`updateCat (Transaction Mocking)`, () => {
+    it(`should update cat with transaction success`, async () => {
+      const cat: ICat = {
+        id: 1,
+        name: 'Updated Cat Name',
+        age: 4,
+        breed: 'South Arabian',
+      };
+
+      const resultCat = await controller.updateCat(cat);
+      expect(resultCat).toStrictEqual({
+        id: 1,
+        name: 'Updated Cat Name',
+        age: 4,
+        breed: 'South Arabian',
+      });
+    });
+
+    it(`should transaction fails when cat id is incorrect`, async () => {
+      try {
+        const cat: ICat = {
+          id: 2,
+          name: 'Another Cat',
+          age: 4,
+          breed: 'South Arabian',
+        };
+        await controller.updateCat(cat);
+      } catch (error) {
+        expect(error.message).toStrictEqual('Transaction failed!');
+      }
+    });
+  });
+
+  describe(`deleteCat (Transaction Mocking)`, () => {
+    it(`should delete cat with transaction success`, async () => {
+      const catId = '1'; // string because mongodb _id is ObjectId string under the hood
+
+      const deletedCat = await controller.deleteCat(catId);
+      expect(deletedCat).toStrictEqual({
+        deleted: true,
+        message: 'Cat Deleted Successfully!',
+      });
+    });
+
+    it(`should transaction fails when cat id is incorrect`, async () => {
+      try {
+        const catId = '1';
+        await controller.deleteCat(catId);
+      } catch (error) {
         expect(error.message).toStrictEqual('Transaction failed!');
       }
     });

@@ -4,3 +4,11 @@ export interface ICat {
   age: number;
   breed: string;
 }
+
+export type TCatPostRes = {
+  message: string;
+};
+
+export type TCatDeleteRes = TCatPostRes & {
+  deleted: boolean;
+};

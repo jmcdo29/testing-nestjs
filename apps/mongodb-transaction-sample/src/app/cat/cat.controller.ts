@@ -1,6 +1,14 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { CatService } from './cat.service';
-import { ICat } from './interface/cat.interface';
+import { ICat, TCatDeleteRes, TCatPostRes } from './interface/cat.interface';
 
 @Controller('cat')
 export class CatController {
@@ -12,12 +20,17 @@ export class CatController {
   }
 
   @Post()
-  async addCat(@Body() cat: ICat): Promise<ICat> {
+  async addCat(@Body() cat: ICat): Promise<TCatPostRes> {
     return this.catService.addCat(cat);
   }
 
-  // @Put()
-  // async updateCat(@Body() cat: Partial<ICat>) {
-  //   return [];
-  // }
+  @Put()
+  async updateCat(@Body() cat: Partial<ICat>) {
+    return this.catService.updateCat(cat);
+  }
+
+  @Delete('/:id')
+  async deleteCat(@Param('id') id: string): Promise<TCatDeleteRes> {
+    return this.catService.deleteCat(id);
+  }
 }
