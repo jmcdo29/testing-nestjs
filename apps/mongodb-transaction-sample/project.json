@@ -1,0 +1,64 @@
+{
+  "name": "mongodb-transaction-sample",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mongodb-transaction-sample/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/mongodb-transaction-sample",
+        "main": "apps/mongodb-transaction-sample/src/main.ts",
+        "tsConfig": "apps/mongodb-transaction-sample/tsconfig.app.json",
+        "assets": ["apps/mongodb-transaction-sample/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/mongodb-transaction-sample/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "mongodb-transaction-sample:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "mongodb-transaction-sample:build:development"
+        },
+        "production": {
+          "buildTarget": "mongodb-transaction-sample:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mongodb-transaction-sample/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/mongodb-transaction-sample/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
