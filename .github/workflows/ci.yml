@@ -22,6 +22,7 @@ jobs:
             http-sample,
             microservice-sample,
             mongo-sample,
+            mongodb-transaction-sample,
             render-sample,
             rxjs-sample,
             sequelize-sample,
@@ -60,7 +61,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Start Docker-Compose
-        run: docker-compose up -d
+        run: docker compose up -d
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
@@ -69,7 +70,7 @@ jobs:
       - name: Run tests
         run: pnpm run test:e2e
       - name: Stop Docker-Compose
-        run: docker-compose down
+        run: docker compose down
 
   automerge:
     needs: e2e-test
