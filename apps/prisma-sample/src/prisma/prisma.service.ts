@@ -1,13 +1,8 @@
-import {
-  INestApplication,
-  Injectable,
-  Logger,
-  OnModuleInit,
-} from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
 @Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit {
+export class PrismaService extends PrismaClient {
   logger = new Logger(PrismaService.name);
 
   constructor() {
@@ -21,19 +16,19 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
     });
   }
 
-  async onModuleInit() {
-    await this.$connect();
+  // async onModuleInit() {
+  //   await this.$connect();
 
-    this.$on('query' as any, async (e: any) => {
-      this.logger.debug(`(${e.duration}ms) ${e.query}`);
-    });
-  }
+  //   this.$on('query' as any, async (e: any) => {
+  //     this.logger.debug(`(${e.duration}ms) ${e.query}`);
+  //   });
+  // }
 
-  async enableShutdownHooks(app: INestApplication) {
-    this.$on('beforeExit', async () => {
-      await app.close();
-    });
-  }
+  // async enableShutdownHooks(app: INestApplication) {
+  //   this.$on('beforeExit', async () => {
+  //     await app.close();
+  //   });
+  // }
 
   async truncate() {
     const records = await this.$queryRawUnsafe<Array<any>>(`SELECT tablename
