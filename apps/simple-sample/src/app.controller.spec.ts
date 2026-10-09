@@ -31,5 +31,10 @@ describe('AppController', () => {
       appService.getHello = jest.fn().mockReturnValueOnce('Hello, Name!');
       expect(appController.getHello('Name')).toBe('Hello, Name!');
     });
+    it('should pass the lang query parameter to the service', () => {
+      appService.getHello = jest.fn().mockReturnValueOnce('Hola, Name!');
+      expect(appController.getHello('Name', 'es')).toBe('Hola, Name!');
+      expect(appService.getHello).toHaveBeenCalledWith('Name', 'es');
+    });
   });
 });

@@ -1,8 +1,15 @@
 import { Injectable } from '@nestjs/common';
 
+const greetings: Record<string, string> = {
+  en: 'Hello',
+  es: 'Hola',
+  fr: 'Bonjour',
+};
+
 @Injectable()
 export class AppService {
-  getHello(name?: string): string {
-    return `Hello, ${name || 'World'}!`;
+  getHello(name?: string, lang?: string): string {
+    const greeting = greetings[lang] ?? greetings.en;
+    return `${greeting}, ${name || 'World'}!`;
   }
 }

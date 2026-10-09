@@ -25,5 +25,18 @@ describe('AppController (e2e)', () => {
     it('/?name=Tester', () => {
       return requestFunction('/?name=Tester', 'Hello, Tester!', app);
     });
+    it('/?name=Tester&lang=es', () => {
+      return requestFunction('/?name=Tester&lang=es', 'Hola, Tester!', app);
+    });
+    it('/?name=Tester&lang=fr', () => {
+      return requestFunction('/?name=Tester&lang=fr', 'Bonjour, Tester!', app);
+    });
+    it('/?name=Tester&lang=unknown', () => {
+      return requestFunction(
+        '/?name=Tester&lang=unknown',
+        'Hello, Tester!',
+        app,
+      );
+    });
   });
 });
