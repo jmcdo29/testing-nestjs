@@ -9,7 +9,10 @@ const greetings: Record<string, string> = {
 @Injectable()
 export class AppService {
   getHello(name?: string, lang?: string): string {
-    const greeting = greetings[lang] ?? greetings.en;
+    const greeting =
+      lang && Object.prototype.hasOwnProperty.call(greetings, lang)
+        ? greetings[lang]
+        : greetings.en;
     return `${greeting}, ${name || 'World'}!`;
   }
 }
