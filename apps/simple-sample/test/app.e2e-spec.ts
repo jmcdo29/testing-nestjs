@@ -47,5 +47,8 @@ describe('AppController (e2e)', () => {
     it('/?lang=unknown', () => {
       return requestFunction('/?lang=unknown', 'Hello, World!', app);
     });
+    it('/?lang=constructor', () => {
+      return requestFunction('/?lang=constructor', 'Hello, World!', app);
+    });
   });
 });

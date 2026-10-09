@@ -28,5 +28,11 @@ describe('AppService', () => {
     it('should fall back to English for an unknown lang', () => {
       expect(service.getHello('Tester', 'de')).toBe('Hello, Tester!');
     });
+    it('should fall back to English for inherited prototype lang "constructor"', () => {
+      expect(service.getHello('Tester', 'constructor')).toBe('Hello, Tester!');
+    });
+    it('should fall back to English for inherited prototype lang "toString"', () => {
+      expect(service.getHello(undefined, 'toString')).toBe('Hello, World!');
+    });
   });
 });
