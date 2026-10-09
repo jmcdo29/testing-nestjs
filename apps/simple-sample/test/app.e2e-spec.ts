@@ -38,5 +38,14 @@ describe('AppController (e2e)', () => {
         app,
       );
     });
+    it('/?lang=es', () => {
+      return requestFunction('/?lang=es', 'Hola, World!', app);
+    });
+    it('/?lang=fr', () => {
+      return requestFunction('/?lang=fr', 'Bonjour, World!', app);
+    });
+    it('/?lang=unknown', () => {
+      return requestFunction('/?lang=unknown', 'Hello, World!', app);
+    });
   });
 });
